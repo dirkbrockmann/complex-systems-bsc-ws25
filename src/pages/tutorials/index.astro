@@ -1,0 +1,29 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Link from '../../components/Link.astro';
+import TutorialPreview from '../../components/TutorialPreview.astro';
+import ListLayout from '../../layouts/ListLayout.astro';
+import { sortItemsByDateDesc } from '../../utils/data-utils';
+
+const tutorials = (await getCollection('tutorials')).filter((tutorial) => !tutorial.data.draft).sort(sortItemsByDateDesc);
+const preamble = await getEntry('pages', 'tutorial-index');
+const { title, seo, image, showHeader } = preamble.data;
+const { Content } = await render(preamble);
+---
+
+<!-- <BaseLayout title="Tutorials" description="Tutorials on diverse topics relevant for the Introduction to Complex systems Course." showHeader={true}>
+    
+    <Content components={{ a: 'Link' }} />
+
+    <h1 class="mb-12 text-2xl leading-tight font-serif italic sm:mb-16 sm:text-4xl">List of Tutorials:</h1>
+
+    {tutorials.map((tutorial) => <TutorialPreview tutorial={tutorial} class="mb-10 sm:mb-12" />)}
+</BaseLayout> -->
+<ListLayout title={title} seo={seo} image={image} showHeader={showHeader}>
+    <div slot="preamble">
+        <Content components={{ a: Link }} />
+    </div>
+    <div slot="list">
+        {tutorials.map((tutorial) => <TutorialPreview tutorial={tutorial} class="mb-10 sm:mb-12" />)}
+    </div>
+</ListLayout>
