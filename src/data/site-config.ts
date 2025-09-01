@@ -61,7 +61,7 @@ const siteConfig: SiteConfig = {
         alt: 'SynoSys (Dark)'
     },
     website: 'https://dirkbrockmann.github.io/',
-    base: '/complex-systems-course/',
+    base: '/complex-systems-bsc-ws25/',
     title: 'Introduction to Complex Systems',
     author: {
         name: 'Dirk Brockmann',

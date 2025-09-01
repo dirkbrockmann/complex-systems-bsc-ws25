@@ -1,13 +1,13 @@
 {
-    "name": "complex-systems-course",
+    "name": "complex-systems-bsc-ws25",
     "type": "module",
     "description": "A course on complex systems in biology, including topics like agent-based modeling, pattern formation, complex networks, synchronization, and more.",
     "license": "CC-BY-4.0",
     "author": "Dirk Brockmann",
-    "homepage": "https://synosys.github.io/complex-systems-course/",
+    "homepage": "https://synosys.github.io/complex-systems-bsc-ws25/",
     "repository": {
         "type": "git",
-        "url": "https://github.com/dirkbrockmann/complex-systems-course.git",
+        "url": "https://github.com/dirkbrockmann/complex-systems-bsc-ws25.git",
         "version": "1.0.0"
     },
     "scripts": {
