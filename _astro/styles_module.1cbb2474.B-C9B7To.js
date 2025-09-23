@@ -1,0 +1,1 @@
+const s="_xaxis_ovtz4_2",_="_yaxis_ovtz4_7",t="_axis_label_ovtz4_12",o="_curve1_ovtz4_16",c="_curve2_ovtz4_16",a="_dots1_ovtz4_22",v="_dots2_ovtz4_28",x={xaxis:s,yaxis:_,axis_label:t,curve1:o,curve2:c,dots1:a,dots2:v};export{x as s};
