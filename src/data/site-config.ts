@@ -63,6 +63,7 @@ const siteConfig: SiteConfig = {
     website: 'https://dirkbrockmann.github.io/',
     base: '/complex-systems-bsc-ws25/',
     title: 'Introduction to Complex Systems',
+    email: 'complex-systems-bsc@tu-dresden.de',
     author: {
         name: 'Dirk Brockmann',
         image: {
@@ -88,11 +89,19 @@ const siteConfig: SiteConfig = {
             href: '/tldr'
         },
         {
+            text: 'Blog',
+            href: '/blog'
+        },
+        {
+            text: 'Lectures',
+            href: '/lectures'
+        },
+        {
             text: 'Seminar',
             href: '/seminar'
         },
         {
-            text: 'Lab Course',
+            text: 'Lab',
             href: '/lab'
         },
         {
@@ -102,10 +111,6 @@ const siteConfig: SiteConfig = {
         {
             text: 'Contact',
             href: '/contact'
-        },
-        {
-            text: 'Explorables',
-            href: 'https://complexity-explorables.org'
         }
     ],
     footerNavLinks: [

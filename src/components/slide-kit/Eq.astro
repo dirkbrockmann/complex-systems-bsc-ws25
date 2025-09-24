@@ -1,0 +1,45 @@
+---
+import katex from 'katex';
+
+export interface Props {
+  expr: string;                       // LaTeX without $$ delimiters
+  display?: boolean;                  // block equation (default true)
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | number; // preset or rem value
+  align?: 'left' | 'center' | 'right'; // display alignment
+  class?: string;                     // extra classes if needed
+}
+
+const {
+  expr,
+  display = true,
+  size = 'md',
+  align = 'center',
+  class: className = '',
+} = Astro.props;
+
+const html = katex.renderToString(expr, {
+  displayMode: display,
+  throwOnError: false,
+});
+
+// map sizes to rem; numbers are treated as rem directly
+const sizeMap = {
+  sm: '1.25rem',
+  md: '1.75rem',
+  lg: '2.5rem',
+  xl: '3.5rem',
+  '2xl': '5rem',
+} as const;
+
+const fontSize =
+  typeof size === 'number' ? `${size}rem` : (sizeMap[size] ?? sizeMap.md);
+
+// center/left/right for block mode
+const textAlign =
+  display ? (align === 'left' ? 'left' : align === 'right' ? 'right' : 'center') : undefined;
+---
+<div
+  class={`not-prose ${className}`}
+  style={`font-size:${fontSize};${textAlign ? `text-align:${textAlign};` : ''}`}
+  set:html={html}
+/>

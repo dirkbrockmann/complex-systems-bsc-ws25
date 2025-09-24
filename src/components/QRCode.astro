@@ -1,0 +1,35 @@
+---
+import QRCodeLib from 'qrcode';
+
+export interface Props {
+  value: string;           // The data to encode (URL, text, etc.)
+  size?: number;           // Size in pixels (default: 160)
+  alt?: string;            // Alt text for accessibility
+  class?: string;          // Extra classes for styling
+}
+
+const {
+  value,
+  size = 160,
+  alt = 'QR code',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+// Generate QR code as a data URL at build time
+const qrDataUrl = await QRCodeLib.toDataURL(value, {
+  width: size,
+  margin: 1,
+  color: { dark: '#000', light: '#fff' }
+});
+---
+<img
+  src={qrDataUrl}
+  alt={alt}
+  width={size}
+  height={size}
+  class={`rounded shadow ${className}`}
+  loading="lazy"
+  decoding="async"
+  {...rest}
+/>

@@ -33,6 +33,21 @@ font-size:16px
     stroke-linecap:round;
 }
 
+/* Marker styling: use the marker element and the path inside it. Because this is
+   a CSS module, the class names will be scoped and exported as `styles.marker`
+   and `styles.markerPath` from the JS module. Styling here controls the arrow
+   head color and stroke so it responds to dark mode. */
+.marker {
+    /* marker elements themselves don't inherit fill/stroke; keep pointer-events off so
+       the marker head doesn't capture mouse events meant for the curve/paths */
+    pointer-events: none;
+}
+
+.markerPath {
+    fill: black;
+    stroke: none;
+}
+
 
 @media (prefers-color-scheme: dark) {
     .curve {
@@ -50,4 +65,17 @@ font-size:16px
     fill:white
 }
 
+}
+
+@media (prefers-color-scheme: dark) {
+    /* dark-mode overrides for the marker path so arrowheads match the curve color */
+    .markerPath {
+        fill: white;
+        stroke: none;
+    }
+    .arrow{
+    
+    stroke:white
+    
+}
 }

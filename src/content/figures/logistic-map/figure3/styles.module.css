@@ -1,0 +1,58 @@
+
+.xaxis {
+   font-family:'Newsreader Variable', serif; 
+   font-size:12px
+}
+
+.yaxis {
+    font-family:'Newsreader Variable', serif;
+    
+}
+
+.axis_label{
+font-size:16px
+}
+
+.curve, .diag {
+    stroke:black;	
+	stroke-width:1px;
+    fill:none;
+}
+
+
+.trace1 { 
+    fill: none;
+    stroke-width: 2px;
+    stroke: darkred; 
+}
+
+.trace2 { 
+    fill: none;
+    stroke-width: 2px;
+    stroke: black; 
+}  
+
+.transient { --is-trace-part: 1; }
+.attractor { --is-trace-part: 1; }
+
+
+
+@media (prefers-color-scheme: dark) {
+    .curve,.diag {
+        stroke:white;	
+    }
+    
+    
+    .trace2{
+        stroke:white
+    }
+	.trace1{
+        stroke:red
+    }
+
+
+.axis_label{
+    fill:white
+}
+
+}

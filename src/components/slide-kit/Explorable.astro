@@ -1,0 +1,38 @@
+---
+export type Props = {
+  id: string;
+  caption?: string;
+  align?: 'start' | 'center' | 'end';
+  class?: string;
+  displayClass?: string;
+  captionClass?: string;
+};
+
+const {
+  id,
+  caption,
+  align = 'center',
+  class: className = '',
+  displayClass = '',
+  captionClass = '',
+  ...rest
+} = Astro.props as Props;
+
+const alignClass =
+  align === 'start' ? 'ml-0 mr-auto' :
+  align === 'end'  ? 'ml-auto mr-0'  :
+  'mx-auto';
+
+const hasSlotCaption = Astro.slots.has('default');
+const hasCaption = hasSlotCaption || !!caption;
+---
+<figure class={`not-prose ${alignClass} ${className}`} {...rest}>
+  <div id={id} class={`explorable ${displayClass}`}>
+    <slot name="figure" />
+  </div>
+  {hasCaption ? (
+    <figcaption class={`mt-3 text-center ${captionClass}`}>
+      {hasSlotCaption ? <slot /> : caption}
+    </figcaption>
+  ) : null}
+</figure>

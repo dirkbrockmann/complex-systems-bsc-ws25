@@ -1,0 +1,29 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import Link from '../../components/Link.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+import { sortItemsByDateDesc } from '../../utils/data-utils';
+
+export async function getStaticPaths() {
+    const lectures = (await getCollection('lectures')).sort(sortItemsByDateDesc);
+console.log(lectures.map(e => ({ id: e.id, slug: e.slug })));
+    return lectures.map((lecture) => ({
+        params: { lecture: lecture.id },
+        props: {
+            lecture
+        }
+    }));
+}
+
+type Props = {
+    lecture: CollectionEntry<'lectures'>;
+};
+
+const { lecture } = Astro.props;
+const { title, publishDate,seo } = lecture.data;
+const { Content } = await render(lecture);
+---
+
+<PageLayout title={title} seo={seo} showHeader={false} publishDate={publishDate}>
+    <Content components={{ a: Link }} />
+</PageLayout>

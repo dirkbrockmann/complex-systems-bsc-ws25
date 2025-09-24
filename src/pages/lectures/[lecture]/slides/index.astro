@@ -1,0 +1,45 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import SlideLayout from '../../../../layouts/SlideLayout.astro';
+import { parseSlideId } from '../../../../utils/slide-path.ts';
+
+
+type SlideEntry = CollectionEntry<'slides'>;
+
+export async function getStaticPaths() {
+  const slides = await getCollection('slides');
+
+  // group by lecture
+  const byLecture = new Map<string, SlideEntry[]>();
+  for (const s of slides) {
+    const { lecture } = parseSlideId(s.id);
+    (byLecture.get(lecture) ?? byLecture.set(lecture, []).get(lecture)!).push(s);
+  }
+
+  // pick first slide per lecture (by order, then filename)
+  const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+  return Array.from(byLecture.entries()).map(([lecture, list]) => {
+    list.sort((a, b) => {
+      const ao = a.data.order ?? Infinity;
+      const bo = b.data.order ?? Infinity;
+      if (ao !== bo) return ao - bo;
+      return collator.compare(parseSlideId(a.id).slide, parseSlideId(b.id).slide);
+    });
+    const first = list[0];
+    return { params: { lecture }, props: { entry: first, lecture, list } };
+  });
+}
+
+type Props = { entry: SlideEntry; lecture: string; list: SlideEntry[] };
+const { entry, lecture, list } = Astro.props as Props;
+const { Content } = await render(entry);
+
+const title = entry.data.title ?? parseSlideId(entry.id).slide;
+
+// Link to the second slide (first “real” slide) using a relative URL
+const nextName = list.length > 1 ? parseSlideId(list[1].id).slide : undefined;
+const nextHref = nextName ? `./${nextName}/` : undefined;
+---
+<SlideLayout title={title} lecture={lecture} backHref="../" nextHref={nextHref}>
+  <Content />
+</SlideLayout>

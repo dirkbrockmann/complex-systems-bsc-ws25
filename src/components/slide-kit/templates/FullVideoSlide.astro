@@ -1,0 +1,51 @@
+---
+import Video from '../Video.astro';
+
+export interface Props {
+  src?: string;
+  sources?: Array<{ src: string; type?: string } | string>;
+  caption?: string;
+  poster?: any;                // ImageMetadata | string (matches your Video.astro)
+  fit?: 'contain' | 'cover';
+  bleed?: boolean;
+  class?: string;
+  captionClass?: string;
+  autoplay?: boolean;
+  muted?: boolean;
+  loop?: boolean;
+  controls?: boolean;
+}
+
+const {
+  src,
+  sources,
+  caption,
+  poster,
+  fit = 'contain',
+  bleed = false,
+  class: className = '',
+  captionClass = '',
+  autoplay = false,
+  muted = false,
+  loop = false,
+  controls = true,
+  ...rest
+} = Astro.props;
+---
+<div class={`not-prose h-full min-h-0 ${bleed ? '-m-8' : ''} ${className}`} {...rest}>
+  <Video
+    src={src}
+    sources={sources}
+    poster={poster}
+    controls={controls}
+    autoplay={autoplay}
+    muted={autoplay ? true : muted}
+    loop={loop}
+    class="m-0 h-full"
+    mediaClass="w-full h-full bg-black"
+    videoClass={`${fit === 'cover' ? 'object-cover' : 'object-contain'}`}
+    aspect="16/9"
+  >
+    <span slot="caption" class={`block text-center ${captionClass}`}>{caption}</span>
+  </Video>
+</div>

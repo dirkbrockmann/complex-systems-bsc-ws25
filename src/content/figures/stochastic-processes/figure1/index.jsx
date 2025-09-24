@@ -2,7 +2,7 @@
 
 import * as d3 from 'd3';
 import * as widgets from 'd3-widgets';
-import 'katex/dist/katex.min.css';
+//import 'katex/dist/katex.min.css';
 import {map} from 'lodash-es';
 import {useEffect,useRef} from 'react';
 import config from './config.js';

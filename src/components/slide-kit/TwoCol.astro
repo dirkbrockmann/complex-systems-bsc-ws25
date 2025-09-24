@@ -1,0 +1,42 @@
+---
+export interface Props {
+  ratio?: '1:1' | '2:1' | '1:2';
+  align?: 'start' | 'center' | 'end';       // vertical align inside each column
+  gapClass?: string;                         // gap-… utilities
+  class?: string;                            // container classes (px-… gutters, bg, etc.)
+  leftClass?: string;                        // left column classes (bg, p-…, rounded, shadow, …)
+  rightClass?: string;                       // right column classes
+  fullHeight?: boolean;                      // make grid fill parent height
+}
+
+const {
+  ratio = '1:1',
+  align = 'start',
+  gapClass = 'gap-8',
+  class: className = '',
+  leftClass = '',
+  rightClass = '',
+  fullHeight = false,
+  ...rest
+} = Astro.props;
+
+const cols =
+  ratio === '2:1'
+    ? 'grid-cols-[2fr_1fr]'
+    : ratio === '1:2'
+    ? 'grid-cols-[1fr_2fr]'
+    : 'grid-cols-[1fr_1fr]';
+
+const vAlign =
+  align === 'center' ? 'justify-center' : align === 'end' ? 'justify-end' : 'justify-start';
+
+const heightClass = fullHeight ? 'h-full' : '';
+---
+<div class={`grid ${heightClass} min-h-0 items-stretch ${cols} ${gapClass} ${className}`} {...rest}>
+  <div class={`min-h-0 flex flex-col ${vAlign} ${leftClass}`}>
+    <slot name="left" />
+  </div>
+  <div class={`min-h-0 flex flex-col ${vAlign} ${rightClass}`}>
+    <slot name="right" />
+  </div>
+</div>

@@ -1,0 +1,46 @@
+---
+import YouTube from '../YouTube.astro';
+
+export interface Props {
+  videoId?: string;
+  url?: string;
+  caption?: string;
+  bleed?: boolean;
+  class?: string;
+  captionClass?: string;
+  autoplay?: boolean;
+  controls?: boolean;
+  mute?: boolean;
+  loop?: boolean;
+}
+
+const {
+  videoId,
+  url,
+  caption,
+  bleed = false,
+  class: className = '',
+  captionClass = '',
+  autoplay = false,
+  controls = true,
+  mute = false,
+  loop = false,
+  ...rest
+} = Astro.props;
+---
+<div class={`not-prose h-full min-h-0 ${bleed ? '-m-8' : ''} ${className}`} {...rest}>
+  <YouTube
+    videoId={videoId}
+    url={url}
+    autoplay={autoplay}
+    controls={controls}
+    mute={autoplay ? true : mute}
+    loop={loop}
+    class="m-0 h-full"
+    mediaClass="w-full h-full bg-black"
+    frameClass="w-full h-full"
+    aspect="16/9"
+  >
+    <span slot="caption" class={`block text-center ${captionClass}`}>{caption}</span>
+  </YouTube>
+</div>

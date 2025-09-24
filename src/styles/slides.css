@@ -1,0 +1,69 @@
+@reference 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@layer slides {
+  /* Full-window root + scaling */
+  .slide-root {
+    @apply w-[100vw] h-[100dvh] overflow-hidden relative;
+
+    /* base slide size */
+    --base-w: 1920; /* unitless */
+    --base-h: 1080;
+
+    /* contain scale (letterbox) */
+    --sw: calc(100vw / (var(--base-w) * 1px));
+    --sh: calc(100dvh / (var(--base-h) * 1px));
+    --slide-scale: min(var(--sw), var(--sh));
+  }
+
+  /* Fixed-size canvas centered + scaled */
+  .slide-stage {
+    @apply absolute  left-1/2 top-1/2 origin-center will-change-transform;
+
+    width: calc(var(--base-w) * 1px);
+    height: calc(var(--base-h) * 1px);
+    transform: translate(-50%, -50%) scale(var(--slide-scale)); /* keep as raw CSS */
+  }
+
+  /* Prose: full width + bigger base text for slides */
+  .slide-stage .prose {
+    @apply max-w-none w-full m-0 text-3xl leading-8 font-sans;
+  }
+
+  /* Headings */
+  .slide-stage .prose :is(h1, h2) { @apply text-center; }
+  .slide-stage .prose h1 { @apply text-8xl leading-tight mt-0 mb-6; }
+  .slide-stage .prose h2 { @apply text-6xl leading-snug mt-6 mb-4; }
+  .slide-stage .prose h3 { @apply text-4xl leading-snug mt-4 mb-3; }
+
+  
+  /* Media */
+  .slide-stage :where(img, video, svg, canvas) { @apply max-w-full h-auto; }
+
+  /* Spacing adjustments for first and last children of prose */
+  .slide-stage .prose > :first-child { margin-top: 0; }
+  .slide-stage .prose > :last-child { margin-bottom: 0; }
+
+  /* Bigger captions for figures in slides (works with or without .prose) */
+  .slide-stage figure > figcaption,
+  .slide-stage figure > figcaption :where(p) {
+    @apply text-left text-2xl md:text-3xl leading-snug;
+    hyphens: auto;
+  }
+
+  /* Remove default paragraph margin inside captions */
+  .slide-stage figure > figcaption :where(p) {
+    @apply m-0;
+  }
+
+  /* Reset heading styles inside .not-prose so only utility classes apply */
+  .slide-stage .not-prose h1,
+  .slide-stage .not-prose h2,
+  .slide-stage .not-prose h3,
+  .slide-stage .not-prose h4,
+  .slide-stage .not-prose h5,
+  .slide-stage .not-prose h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

@@ -3,6 +3,7 @@ import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal
 import newsreaderWoff2 from '@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2?url';
 import siteConfig from '../data/site-config';
 import '../styles/global.css';
+import ThemeScript from './ThemeScript.astro';
 
 export type Props = {
     title?: string;
@@ -71,3 +72,5 @@ function formatCanonicalURL(url: string | URL) {
 <meta property="twitter:description" content={description} />
 {resolvedImage?.src && <meta property="twitter:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta name="twitter:image:alt" content={resolvedImage?.alt} />}
+
+<ThemeScript />

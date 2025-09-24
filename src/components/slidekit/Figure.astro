@@ -1,0 +1,8 @@
+---
+interface Props { src: string; alt?: string; caption?: string; max?: string }
+const { src, alt = "", caption, max = "max-h-[60vh]" } = Astro.props as Props;
+---
+<figure class="flex flex-col items-center">
+  <img src={src} alt={alt} class={`w-auto ${max} rounded-xl`} />
+  {caption && <figcaption class="text-sm text-zinc-500 !mt-3">{caption}</figcaption>}
+</figure>

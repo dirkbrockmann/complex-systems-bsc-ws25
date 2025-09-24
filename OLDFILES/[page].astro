@@ -1,0 +1,25 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import Link from '../components/Link.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+
+  const reserved = new Set(['lectures', 'tutorials', 'blog', 'index']);
+  const tops = pages.filter((p) => !p.id.includes('/') && !reserved.has(p.id));
+
+  return tops.map((page) => ({
+    params: { page: page.id },
+    props: { page },
+  }));
+}
+
+type Props = { page: CollectionEntry<'pages'> };
+const { page } = Astro.props;
+const { title, seo, image, showHeader } = page.data;
+const { Content } = await render(page);
+---
+<PageLayout title={title} seo={seo} image={image} showHeader={showHeader}>
+  <Content components={{ a: Link }} />
+</PageLayout>

@@ -5,9 +5,9 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 
 export async function getStaticPaths() {
-    const projects = (await getCollection('tutorials')).sort(sortItemsByDateDesc);
+    const tutorials = (await getCollection('tutorials')).sort(sortItemsByDateDesc);
 
-    return projects.map((tutorial) => ({
+    return tutorials.map((tutorial) => ({
         params: { id: tutorial.id },
         props: {
             tutorial

@@ -1,0 +1,51 @@
+---
+title: Complexity Explorables
+description: An essential element of the course are the Complexity Explorables, which are interactive illustrations and simulations that help to develop an intuition about complex systems concepts.
+publishDate: 'Sep 16 2025'
+tags:
+  - Guide
+seo:
+  image:
+    src: '/post-1.jpg'
+    alt: A person standing at the window
+---
+
+import Explorable from '../../components/Explorable.astro';
+import Figure from '../../components/Figure.astro';
+import * as Margin from '../../components/MarginNote';
+import complexityexplorables from '../../assets/generated/complexityexplorables_transparent.png';
+import complexityexplorablesDark from '../../assets/generated/complexityexplorables_dark.png';
+import Eimer from '../../content/figures/explorables/flockn_roll';
+
+
+## Complexity Explorables
+
+The Complexity Explorables are a collection of interactive web-based illustrations 
+and simulations that help to develop an intuition about complex systems concepts. 
+
+You can find them here: [https://www.complexity-explorables.org](https://www.complexity-explorables.org).
+
+<Figure src={complexityexplorables} srcDark={complexityexplorablesDark} alt="Complexity." margin={false}>
+A snapshot from the Complexity Explorables website. 
+</Figure>
+
+The site went online in 2017 with the first explorable. Meanwhile the site hosts around 50 
+different explorables on various topics. Some illustrated famous models from complexity science,
+others display more recent models.
+
+If you want an overview of all explorables, go to [https://complexity-explorables.org/explorables/](https://complexity-explorables.org/explorables/).
+
+<Explorable id="flockn_roll" margin={false}>    
+    This is a popular explorable. It's about collective behavior and swarming phenomena in 
+    animal groups. An explorable always has a display box, and a control box. Try playing
+    with the sliders. Each explorable comes with a short text that descibes
+    the model, explains the meaning of the control parameters etc. The text
+    for this particular explorable isn't shown here. If you want more detail
+    go to the original explorable [“Flock'n Roll” - Collective behavior and swarming](https://www.complexity-explorables.org/explorables/flockn-roll/).
+    <Eimer slot="figure" client:load id="flockn_roll"/>
+</Explorable>
+
+### Open Source
+
+Many explorables are available on github. I am currently working on making each Exporable's source code 
+available on github. If you are interested check the repositories [here](https://github.com/dirkbrockmann?tab=repositories). 

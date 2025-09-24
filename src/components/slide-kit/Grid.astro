@@ -1,0 +1,47 @@
+---
+export interface Props {
+  rows: number;                 // m
+  cols: number;                 // n
+  gapClass?: string;            // Tailwind gap classes
+  class?: string;               // container classes (bg, p-*, rounded, etc.)
+  itemClass?: string;           // classes applied to each child wrapper
+  fullHeight?: boolean;         // stretches to parent height (use when parent is constrained)
+  align?: 'start' | 'center' | 'end' | 'stretch'; // vertical alignment of cell content
+  justify?: 'start' | 'center' | 'end' | 'stretch'; // horizontal alignment of cell content
+}
+const {
+  rows,
+  cols,
+  gapClass = 'gap-8',
+  class: className = '',
+  itemClass = '',
+  fullHeight = false,
+  align = 'stretch',
+  justify = 'stretch',
+} = Astro.props;
+
+// Tailwind alignment classes for the grid’s items
+const itemsAlign =
+  align === 'center' ? 'items-center'
+  : align === 'end'  ? 'items-end'
+  : align === 'start'? 'items-start'
+  : 'items-stretch';
+
+const justifyItems =
+  justify === 'center' ? 'justify-items-center'
+  : justify === 'end'  ? 'justify-items-end'
+  : justify === 'start'? 'justify-items-start'
+  : 'justify-items-stretch';
+
+const heightClass = fullHeight ? 'h-full' : '';
+---
+<div
+  class={`grid ${heightClass} ${gapClass} ${itemsAlign} ${justifyItems} ${className}`}
+  style={`
+    grid-template-columns: repeat(${cols}, minmax(0, 1fr));
+    grid-template-rows: repeat(${rows}, 1fr);
+  `}
+>
+  
+  <slot />
+</div>

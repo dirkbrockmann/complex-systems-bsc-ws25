@@ -1,12 +1,10 @@
 @import '@fontsource-variable/inter' layer(base);
 @import '@fontsource-variable/newsreader' layer(base);
-/*@import '@fontsource-variable/eb-garamond' layer(base);*/
 @import '@fontsource-variable/newsreader/wght-italic.css' layer(base);
+@import 'katex/dist/katex.min.css' layer(base);
 
-@import 'katex/dist/katex.min.css';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -77,6 +75,9 @@ html.dark {
     --border-color-main: var(--border-main);
 }
 
+/* Declare cascade order so @layer slides comes last */
+@layer base, components, utilities, slides;
+
 @layer utilities {
     .prose {
         --tw-prose-body: var(--text-color-main);
@@ -139,18 +140,19 @@ html.dark {
         @apply mx-[10%] font-normal italic text-left border-none pl-0 my-0 text-xl;
     }
 
-    
-
-}   
-
-
-.prose .katex {
+    /* KaTeX overrides (keep them layered) */
+    .prose .katex {
 	    font-size: 1em;
 }
 
 .katex-display .katex {
-	    font-size: 1.0em;
+	    font-size: 1em;
 }
+
+}   
+
+
+
 
 .explorable .d3-widgets {
         

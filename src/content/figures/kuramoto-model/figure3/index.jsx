@@ -23,6 +23,7 @@ const loadExplorable = (displayContainer,controlsContainer) => {
 
     display.append('defs').append('marker')
         .attr('id','arrowhead')
+        .attr('class', styles.marker)
         .attr('viewBox','-0 -5 10 10')
         .attr('refX',5)
         .attr('refY',0)
@@ -31,9 +32,8 @@ const loadExplorable = (displayContainer,controlsContainer) => {
         .attr('markerHeight',3)
         .attr('xoverflow','visible')
         .append('svg:path')
-        .attr('d','M 0,-5 L 10 ,0 L 0,5')
-        .attr('fill','black')
-        .style('stroke','none');
+        .attr('class', styles.markerPath)
+        .attr('d','M 0,-5 L 10 ,0 L 0,5');
 
     const sliders = map(config.widgets.sliders,
         v => widgets.slider()

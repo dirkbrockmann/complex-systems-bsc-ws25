@@ -1,0 +1,54 @@
+---
+import { getCollection, type CollectionEntry, render } from 'astro:content';
+import SlideLayout from '../../../../layouts/SlideLayout.astro';
+import { parseSlideId } from '../../../../utils/slide-path.ts';
+
+type SlideEntry = CollectionEntry<'slides'>;
+
+export async function getStaticPaths() {
+  const slides = await getCollection('slides');
+  return slides.map((entry) => {
+    const { lecture, slide } = parseSlideId(entry.id);
+    return { params: { lecture, slide }, props: { entry } };
+  });
+}
+
+const { entry }:{ entry: SlideEntry } = Astro.props;
+const { Content } = await render(entry);
+
+const { lecture, slide: current } = parseSlideId(entry.id);
+
+// Fetch only this lecture's slides directly
+const all = await getCollection('slides', ({ id }) => parseSlideId(id).lecture === lecture);
+
+// Stable sort: order then natural slide name
+const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+all.sort((a, b) => {
+  const ao = a.data.order ?? Infinity, bo = b.data.order ?? Infinity;
+  if (ao !== bo) return ao - bo;
+  return collator.compare(parseSlideId(a.id).slide, parseSlideId(b.id).slide);
+});
+
+const idx = all.findIndex((s) => s.id === entry.id);
+const firstName = all[0] ? parseSlideId(all[0].id).slide : undefined;
+const prevName = idx > 0 ? parseSlideId(all[idx - 1].id).slide : undefined;
+const nextName = idx < all.length - 1 ? parseSlideId(all[idx + 1].id).slide : undefined;
+
+const href = (name?: string) => (name ? `../${name}/` : undefined);
+
+const startHref = href(firstName) ?? './';
+const prevHref = href(prevName);
+const nextHref = href(nextName);
+
+const title = entry.data.title ?? current;
+---
+<SlideLayout
+  title={title}
+  lecture={lecture}
+  lectureHref="../../"
+  startHref={startHref}
+  prevHref={prevHref}
+  nextHref={nextHref}
+>
+  <Content />
+</SlideLayout>

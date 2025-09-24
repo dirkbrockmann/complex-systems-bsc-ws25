@@ -1,0 +1,23 @@
+---
+import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import newsreaderWoff2 from '@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2?url';
+import '../styles/global.css';
+import '../styles/slides.css';
+import ThemeScript from './ThemeScript.astro';
+
+export type Props = { title: string; description?: string };
+
+const { title, description = '' } = Astro.props;
+
+const canon = (u: string | URL) => {
+  const s = u.toString();
+  return s.includes('?') ? s.replace(/\/?$/, '') : s.replace(/\/?$/, '/');
+};
+// Use Astro.site as base so canonical is absolute
+const canonicalURL = new URL(Astro.request.url, Astro.site);
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<ThemeScript />

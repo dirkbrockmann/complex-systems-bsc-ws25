@@ -1,5 +1,4 @@
 ---
-id: kuramoto-model
 title: 'The Kuramoto model of coupled oscillators'
 description: 'This tutorial explores the Kuramoto model, a mathematical model of coupled oscillators, focusing on synchronization phenomena and the emergence of collective behavior in complex systems.'
 publishDate: '2025-06-02'
@@ -104,7 +103,12 @@ This is a little odd because, the average is no longer half way between the orig
 Well, this might be the correct answer, but maybe not. It depends on what we mean by **average** angle. If we want the answer to be the angle of the line that goes through the midpoint of the arc that we get if we walk from $\theta_1$ to $\theta_2$, it's not the correct answer<Margin.Cite id="wurm" />. 
 
 <Margin.Note>
-<Margin.Ref id="wurm" />One way of solving this without having to worry about the weird numerical discontinuity of the angle $\theta$ in computing averages is going back to Cartesian Coordinates. So let's say we have a set of angles $\theta_n$, with $n=1,...,N$ and we want to compute the average we can form the vectors $(\cos\theta_n,\sin\theta_n)$, compute the averages of the $x$- and $y$-components
+<Margin.Ref id="wurm" />
+One way of solving this without having to worry about the weird numerical discontinuity 
+of the angle $\theta$ in computing averages is going back to Cartesian Coordinates. 
+So let's say we have a set of angles $\theta_{n}$, with $n=1,...,N$ and we want to compute 
+the average we can form the vectors $(\cos\theta_n,\sin\theta_n)$, compute the averages 
+of the $x$- and $y$-components
 $$
 \left< x\right>=\frac{1}{N}\sum_n \cos\theta_n
 $$

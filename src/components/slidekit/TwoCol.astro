@@ -1,0 +1,10 @@
+---
+interface Props { gap?: string; align?: "start"|"center"|"end"; ratio?: "1/1"|"2/1"|"1/2" }
+const { gap = "gap-8", align = "center", ratio = "1/1" } = Astro.props as Props;
+const alignCls = align === 'start' ? 'items-start' : align === 'end' ? 'items-end' : 'items-center';
+const ratioCls = ratio === '2/1' ? '[grid-template-columns:2fr_1fr]' : ratio === '1/2' ? '[grid-template-columns:1fr_2fr]' : '[grid-template-columns:1fr_1fr]';
+---
+<section class={`grid ${ratioCls} ${gap} ${alignCls} h-full`}>
+  <div class="min-w-0"><slot name="left" /></div>
+  <div class="min-w-0"><slot name="right" /></div>
+</section>

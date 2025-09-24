@@ -1,0 +1,16 @@
+---
+title: Die Wurst
+publishDate: 2025-09-01
+---
+
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig4 from '../../../../content/figures/stochastic-processes/figure4';
+
+
+<Explorable id="figure_4" class="max-w-[50%]" captionClass=''>    
+    The solution $p(x,t)$ to the diffusion equation 
+    $\partial_{t}p(x,t)=D\partial_{x}^{2}p(x,t)$ for $D=1$ and an 
+    initially sharply peaked $p(x,0)$.
+    <Fig4 slot="figure" client:load id="diffusion_pdf"/>
+</Explorable>

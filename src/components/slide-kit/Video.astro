@@ -1,0 +1,152 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+export interface Source {
+  src: string;           // typically imported from src/assets, e.g. mp4/webm
+  type?: string;         // e.g. 'video/mp4', 'video/webm'
+}
+
+export interface Track {
+  src: string;           // VTT file (can be from public or imported URL)
+  kind?: 'subtitles' | 'captions' | 'descriptions' | 'chapters' | 'metadata';
+  srclang?: string;      // e.g. 'en'
+  label?: string;        // e.g. 'English'
+  default?: boolean;
+}
+
+export interface Props {
+  src?: string;                 // single source (string URL from import)
+  sources?: Array<Source | string>;
+  poster?: ImageMetadata | string;
+  caption?: string;
+
+  // Player
+  controls?: boolean;
+  autoplay?: boolean;
+  muted?: boolean;
+  loop?: boolean;
+  playsInline?: boolean;
+  preload?: 'auto' | 'metadata' | 'none';
+  start?: number;               // seconds offset to start playback
+  tracks?: Track[];
+
+  // Layout/styling
+  class?: string;               // <figure> classes
+  mediaClass?: string;          // wrapper (aspect, rounding, shadow)
+  videoClass?: string;          // <video> classes (object-contain/cover)
+  aspect?: string | number;     // e.g. "16/9", "4/3", 1
+  autoAspect?: boolean;         // derive aspect from video metadata when aspect is not set
+}
+
+const {
+  src,
+  sources = [],
+  poster,
+  caption,
+  controls = true,
+  autoplay = false,
+  muted = false,
+  loop = false,
+  playsInline = true,
+  preload = 'metadata',
+  start,
+  tracks = [],
+  class: className = '',
+  mediaClass = '',
+  videoClass = '',
+  aspect,
+  autoAspect = true,
+  ...rest
+} = Astro.props;
+
+function normalizeSources() {
+  const list: Source[] = [];
+  if (src) list.push({ src });
+  for (const s of sources) {
+    if (typeof s === 'string') list.push({ src: s });
+    else if (s && typeof s.src === 'string') list.push(s);
+  }
+  return list;
+}
+const srcList = normalizeSources();
+const hasCaption = !!caption || Astro.slots.has('caption');
+const captionId = hasCaption ? `vidcap-${Math.random().toString(36).slice(2)}` : undefined;
+
+const posterIsStr = typeof poster === 'string';
+const autoAspectEffective = !aspect && autoAspect;
+---
+<figure class={`not-prose my-4 ${className}`} aria-labelledby={captionId} {...rest}>
+  <div
+    class={`relative overflow-hidden ${!aspect && !autoAspectEffective ? 'aspect-video' : ''} ${mediaClass}`}
+    style={aspect ? `aspect-ratio:${aspect};` : undefined}
+  >
+    <video
+      class={`block w-full h-full ${videoClass}`}
+      controls={controls}
+      autoplay={autoplay}
+      muted={autoplay ? true : muted}
+      loop={loop}
+      playsinline={playsInline}
+      preload={preload}
+      poster={posterIsStr ? (poster as string) : undefined}
+    >
+      {poster && !posterIsStr ? (
+        <Image src={poster as ImageMetadata} alt="" aria-hidden="true" class="hidden" />
+      ) : null}
+
+      {srcList.map((s) => (
+        <source src={s.src} type={s.type} />
+      ))}
+
+      {tracks.map((t) => (
+        <track
+          src={t.src}
+          kind={t.kind ?? 'subtitles'}
+          srclang={t.srclang}
+          label={t.label}
+          {...(t.default ? { default: true } : {})}
+        />
+      ))}
+
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  {hasCaption ? (
+    <figcaption id={captionId} class="mt-3 text-center text-neutral-600 dark:text-neutral-300">
+      {caption}
+      <slot name="caption" />
+    </figcaption>
+  ) : null}
+
+  {(autoAspectEffective || (start && start > 0)) ? (
+    <script is:inline>
+      (function () {
+        var wrap = document.currentScript && document.currentScript.previousElementSibling;
+        var video = wrap && wrap.querySelector && wrap.querySelector('video');
+        if (!video) return;
+
+        function onMeta() {
+          try {
+            // Auto aspect from intrinsic video dimensions
+            if (/* auto */ true) {
+              var w = video.videoWidth;
+              var h = video.videoHeight;
+              if (w && h && wrap && wrap.style) {
+                wrap.style.aspectRatio = w + ' / ' + h;
+              }
+            }
+          } catch (e) {}
+          try {
+            var START = Number(%%START%%);
+            if (START > 0) video.currentTime = START;
+          } catch (e) {}
+        }
+
+        if (video.readyState >= 1) onMeta();
+        else video.addEventListener('loadedmetadata', onMeta, { once: true });
+      })();
+    </script>
+  ) : null}
+</figure>

@@ -2,17 +2,24 @@
 // filepath: /Users/zwerg/Coding/astro/dante/src/layouts/PageLayout.astro
 
 import BaseLayout, { type Props } from './BaseLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 
 // Prefer top-level props (from .astro), fallback to frontmatter (from MDX)
 const title = Astro.props.title ?? Astro.props.frontmatter?.title;
 const seo = Astro.props.seo ?? Astro.props.frontmatter?.seo;
 const showHeader = Astro.props.showHeader ?? Astro.props.frontmatter?.showHeader ?? false;
+const publishDate = Astro.props.publishDate ?? Astro.props.frontmatter?.publishDate;
 ---
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image} showHeader={showHeader}>
     <article class="mb-16 sm:mb-24">
         <header class="mb-8">
             <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">{seo?.title ?? title}</h1>
+            {publishDate && (
+                <div class="mt-2 font-serif">
+                    <FormattedDate date={publishDate} />
+                </div>
+            )}
         </header>
         <div class="max-w-none prose sm:prose-lg">
             <slot />

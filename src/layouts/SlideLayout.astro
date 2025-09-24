@@ -1,0 +1,44 @@
+---
+import SlideHead from '../components/SlideHead.astro';
+import SlideNav from '../components/slide-kit/SlideNav.astro';
+
+export interface Props {
+  title: string;
+  lecture: string;
+  description?: string;
+  lectureHref: string;
+  startHref: string;
+  prevHref?: string;
+  nextHref?: string;
+}
+
+const {
+  title,
+  lecture,
+  description = '',
+  lectureHref,
+  startHref,
+  prevHref,
+  nextHref,
+} = Astro.props;
+---
+<html lang="en" class="antialiased break-words">
+  <head>
+    <SlideHead title={title} description={description} />
+  </head>
+  <body class="bg-main text-main">
+    <div id="slide-root" class="slide-root bg-main text-main" style="--base-w: 1920; --base-h: 1080;">
+      <div class="slide-stage">
+        <div class="h-full min-h-0 grid grid-rows-[1fr_auto] gap-6 p-8">
+          <div class="h-full min-h-0 overflow-hidden">
+            <div class="prose bg-red-100 max-w-none w-full h-full min-h-0 overflow-auto first:mt-0 last:mb-0">
+              <slot />
+            </div>
+          </div>
+
+          <SlideNav lectureHref={lectureHref} startHref={startHref} prevHref={prevHref} nextHref={nextHref} />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+
+.xaxis {
+   font-family:'Newsreader Variable', serif; 
+   font-size:12px
+}
+
+.yaxis {
+    font-family:'Newsreader Variable', serif;
+    
+}
+
+.axis_label{
+font-size:16px
+}
+
+.curve1, .curve2 {
+    stroke:black;	
+	stroke-width:1px;
+    fill:none;
+}
+
+.dots1 {
+    stroke:black;	
+	stroke-width:1px;
+    fill:#cccccc;
+}
+
+.dots2 {
+    stroke:black;	
+	stroke-width:1px;
+    fill:darkred;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .curve1, .curve2 {
+        stroke:white;	
+    }
+    .dots1 {
+        stroke:white;
+        fill:#767676;	
+	}
+    .dots2 {
+        stroke:white;
+        fill:red;	
+	}
+
+.axis_label{
+    fill:white
+}
+
+}

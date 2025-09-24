@@ -1,0 +1,43 @@
+
+.xaxis {
+   font-family:'Newsreader Variable', serif; 
+   font-size:12px
+}
+
+.yaxis {
+    font-family:'Newsreader Variable', serif;
+    
+}
+
+.axis_label{
+font-size:16px
+}
+
+.curve {
+    stroke:black;	
+	stroke-width:1px;
+    fill:none;
+}
+
+.dots {
+    stroke:black;	
+	stroke-width:1px;
+    fill:#cccccc;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .curve {
+    stroke:white;	
+    }
+    .dots {
+    stroke:white;
+    fill:#767676;	
+	
+}
+
+.axis_label{
+    fill:white
+}
+
+}

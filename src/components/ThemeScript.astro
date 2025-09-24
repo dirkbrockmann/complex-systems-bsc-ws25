@@ -1,0 +1,41 @@
+<script is:inline>
+  (function () {
+    try {
+      const mql = window.matchMedia('(prefers-color-scheme: dark)');
+      const getStored = () => localStorage.getItem('theme');
+      const apply = (dark) => {
+        document.documentElement.classList.toggle('dark', !!dark);
+        if (typeof syncWidgetDarkMode === 'function') syncWidgetDarkMode(!!dark);
+      };
+
+      // Persisted preference; default to 'light'
+      const pref = localStorage.getItem('theme') || 'light';
+      document.documentElement.classList.toggle('dark', pref === 'dark');
+
+      // Optional: keep in sync if you add a theme toggle elsewhere
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') {
+          document.documentElement.classList.toggle('dark', e.newValue === 'dark');
+        }
+      });
+
+      // Initial apply: stored preference wins, else system
+      const stored = getStored();
+      apply(stored ? stored === 'dark' : mql.matches);
+
+      // Follow system changes only when no stored preference
+      if (!stored) mql.addEventListener('change', (e) => apply(e.matches));
+
+      // React to changes from other tabs/windows
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') apply(e.newValue === 'dark');
+      });
+
+      // Re-apply after Astro client-side transitions
+      document.addEventListener('astro:after-swap', () => {
+        const s = getStored();
+        apply(s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+      });
+    } catch {}
+  })();
+</script>

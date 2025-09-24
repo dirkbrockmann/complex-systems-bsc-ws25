@@ -1,0 +1,18 @@
+
+.xaxis {
+   font-family:'Newsreader Variable', serif;
+   font-size:16px; 
+}
+
+.yaxis {
+    font-family:'Newsreader Variable', serif;
+    font-size:16px;    
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+   .axis_label{
+       fill:white
+   }
+}

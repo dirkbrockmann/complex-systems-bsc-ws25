@@ -1,0 +1,83 @@
+---
+export interface Props {
+  lectureHref: string;
+  startHref: string;
+  prevHref?: string;
+  nextHref?: string;
+  class?: string;
+}
+const { lectureHref, startHref, prevHref, nextHref, class: className = '' } = Astro.props;
+---
+<nav id="slide-nav" class={`shrink-0 flex items-center justify-center gap-3 ${className}`} aria-label="Slide controls">
+  <a
+    id="lecture-link"
+    href={lectureHref}
+    class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline"
+  >Lecture</a>
+
+  <a
+    id="start-link"
+    rel="start"
+    href={startHref}
+    class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline"
+  >Start</a>
+
+  <a
+    id="prev-link"
+    rel="prev"
+    href={prevHref ?? '#'}
+    aria-disabled={prevHref ? 'false' : 'true'}
+    tabindex={prevHref ? undefined : -1}
+    class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline aria-disabled:opacity-40 aria-disabled:pointer-events-none"
+  >Prev</a>
+
+  <a
+    id="next-link"
+    rel="next"
+    href={nextHref ?? '#'}
+    aria-disabled={nextHref ? 'false' : 'true'}
+    tabindex={nextHref ? undefined : -1}
+    class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline aria-disabled:opacity-40 aria-disabled:pointer-events-none"
+  >Next</a>
+</nav>
+
+<script is:inline>
+  (() => {
+    const lecture = document.getElementById('lecture-link');
+    const start = document.getElementById('start-link');
+    const prev = document.getElementById('prev-link');
+    const next = document.getElementById('next-link');
+
+    const isDisabled = (a) =>
+      !a || a.getAttribute('aria-disabled') === 'true' || a.getAttribute('href') === '#';
+
+    const shouldIgnore = (e) => {
+      const t = e.target;
+      if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return true;
+      return t && (
+        t.tagName === 'INPUT' ||
+        t.tagName === 'TEXTAREA' ||
+        t.tagName === 'SELECT' ||
+        t.isContentEditable
+      );
+    };
+
+    window.addEventListener('keydown', (e) => {
+      if (shouldIgnore(e)) return;
+
+      if (e.key === 'ArrowLeft' && !isDisabled(prev)) {
+        e.preventDefault();
+        location.assign(prev.getAttribute('href'));
+      } else if (e.key === 'ArrowRight' && !isDisabled(next)) {
+        e.preventDefault();
+        location.assign(next.getAttribute('href'));
+      } else if (e.key === 'Home' && start) {
+        e.preventDefault();
+        location.assign(start.getAttribute('href'));
+      } else if (e.key === 'Escape' && lecture) {
+        e.preventDefault();
+        location.assign(lecture.getAttribute('href'));
+      }
+    });
+  })();
+</script>
