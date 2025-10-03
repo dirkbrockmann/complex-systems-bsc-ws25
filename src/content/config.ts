@@ -60,6 +60,10 @@ const slides = defineCollection({
   schema: z.object({
     title: z.string().optional(),
     order: z.number().optional(),
+        // Mark a slide as a draft (included only in dev unless overridden in route logic)
+        draft: z.boolean().optional(),
+        // Force exclude a slide even in production builds (unless explicitly enabled in route logic)
+        hidden: z.boolean().optional(),
     seo: seoSchema.optional(),
   }),
 });

@@ -3,11 +3,18 @@ import { getCollection, type CollectionEntry, render } from 'astro:content';
 import SlideLayout from '../../../../layouts/SlideLayout.astro';
 import { parseSlideId } from '../../../../utils/slide-path.ts';
 
+
 type SlideEntry = CollectionEntry<'slides'>;
 
 export async function getStaticPaths() {
+  
+
   const slides = await getCollection('slides');
-  return slides.map((entry) => {
+  const filtered = slides.filter(s => {
+    if (!import.meta.env.DEV && (s.data.draft || s.data.hidden)) return false;
+    return true;
+  });
+  return filtered.map((entry) => {
     const { lecture, slide } = parseSlideId(entry.id);
     return { params: { lecture, slide }, props: { entry } };
   });
@@ -18,8 +25,12 @@ const { Content } = await render(entry);
 
 const { lecture, slide: current } = parseSlideId(entry.id);
 
-// Fetch only this lecture's slides directly
-const all = await getCollection('slides', ({ id }) => parseSlideId(id).lecture === lecture);
+// Fetch only this lecture's slides directly; mirror filtering used in getStaticPaths
+const all = await getCollection('slides', ({ id }) => parseSlideId(id).lecture === lecture)
+  .then(arr => arr.filter(s => {
+    if (!import.meta.env.DEV && (s.data.draft || s.data.hidden)) return false;
+    return true;
+  }));
 
 // Stable sort: order then natural slide name
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
@@ -30,6 +41,9 @@ all.sort((a, b) => {
 });
 
 const idx = all.findIndex((s) => s.id === entry.id);
+if (idx === -1) {
+  throw new Error('Slide not available (draft/hidden in production).');
+}
 const totalSlides = all.length;
 
 const firstName = all[0] ? parseSlideId(all[0].id).slide : undefined;
