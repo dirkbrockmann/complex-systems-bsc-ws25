@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en" class="antialiased break-words"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cellphone</title><meta name="description" content><script>
+  (function () {
+    try {
+      const mql = window.matchMedia('(prefers-color-scheme: dark)');
+      const getStored = () => localStorage.getItem('theme');
+      const apply = (dark) => {
+        document.documentElement.classList.toggle('dark', !!dark);
+        if (typeof syncWidgetDarkMode === 'function') syncWidgetDarkMode(!!dark);
+      };
+
+      // Persisted preference; default to 'light'
+      const pref = localStorage.getItem('theme') || 'light';
+      document.documentElement.classList.toggle('dark', pref === 'dark');
+
+      // Optional: keep in sync if you add a theme toggle elsewhere
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') {
+          document.documentElement.classList.toggle('dark', e.newValue === 'dark');
+        }
+      });
+
+      // Initial apply: stored preference wins, else system
+      const stored = getStored();
+      apply(stored ? stored === 'dark' : mql.matches);
+
+      // Follow system changes only when no stored preference
+      if (!stored) mql.addEventListener('change', (e) => apply(e.matches));
+
+      // React to changes from other tabs/windows
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') apply(e.newValue === 'dark');
+      });
+
+      // Re-apply after Astro client-side transitions
+      document.addEventListener('astro:after-swap', () => {
+        const s = getStored();
+        apply(s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+      });
+    } catch {}
+  })();
+</script><link rel="stylesheet" href="/complex-systems-bsc-ws25/_astro/index.D2-FCCWa.css">
+<link rel="stylesheet" href="/complex-systems-bsc-ws25/_astro/_slide_.DmbdCtTW.css"></head> <body class="bg-main text-main"> <div id="slide-root" class="slide-root bg-main text-main" style="--base-w: 1920; --base-h: 1080;"> <div class="slide-stage"> <div class="h-full min-h-0 grid grid-rows-[1fr_auto] gap-6 p-8"> <div class="h-full min-h-0 overflow-hidden"> <div class="prose max-w-none w-full h-full min-h-0 overflow-auto first:mt-0 last:mb-0">  <!-- not-prose so Typography doesn't interfere --><div class="not-prose h-full min-h-0  max-w-[20%] mx-auto my-8" boxed="true"> <figure class="not-prose  mx-auto m-0 h-full" aria-labelledby="figcap-sxz58ptc27n"> <div class="relative overflow-hidden  w-full h-full bg-transparent"> <img src="/complex-systems-bsc-ws25/_astro/cellphone.Bwi0wsEU_Z17xl9C.webp" alt="Cellphone" sizes="100vw" loading="lazy" decoding="async" width="739" height="1485" class="block w-full h-full object-contain  object-cover w-full h-full"> </div> <figcaption id="figcap-sxz58ptc27n" class="mt-3 text-center mt-3 text-center ">   </figcaption> </figure> </div>  </div> </div> <nav id="slide-nav" class="shrink-0 flex items-center justify-center gap-3 " aria-label="Slide controls"> <a id="lecture-link" href="../../" class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline">Lecture</a> <p class="slide-counter">22 / 33</p> <a id="start-link" rel="start" href="../slide-1-intro/" class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline">Start</a> <a id="prev-link" rel="prev" href="../slide-21-complexity/" aria-disabled="false" class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline aria-disabled:opacity-40 aria-disabled:pointer-events-none">Prev</a> <a id="next-link" rel="next" href="../slide-23-feynman-1/" aria-disabled="false" class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline aria-disabled:opacity-40 aria-disabled:pointer-events-none">Next</a> </nav> <script>
+  (() => {
+    const lecture = document.getElementById('lecture-link');
+    const start = document.getElementById('start-link');
+    const prev = document.getElementById('prev-link');
+    const next = document.getElementById('next-link');
+
+    const isDisabled = (a) =>
+      !a || a.getAttribute('aria-disabled') === 'true' || a.getAttribute('href') === '#';
+
+    const shouldIgnore = (e) => {
+      const t = e.target;
+      if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return true;
+      return t && (
+        t.tagName === 'INPUT' ||
+        t.tagName === 'TEXTAREA' ||
+        t.tagName === 'SELECT' ||
+        t.isContentEditable
+      );
+    };
+
+    window.addEventListener('keydown', (e) => {
+      if (shouldIgnore(e)) return;
+
+      if (e.key === 'ArrowLeft' && !isDisabled(prev)) {
+        e.preventDefault();
+        location.assign(prev.getAttribute('href'));
+      } else if (e.key === 'ArrowRight' && !isDisabled(next)) {
+        e.preventDefault();
+        location.assign(next.getAttribute('href'));
+      } else if (e.key === 'Home' && start) {
+        e.preventDefault();
+        location.assign(start.getAttribute('href'));
+      } else if (e.key === 'Escape' && lecture) {
+        e.preventDefault();
+        location.assign(lecture.getAttribute('href'));
+      }
+    });
+  })();
+</script> </div> </div> </div> </body></html>
