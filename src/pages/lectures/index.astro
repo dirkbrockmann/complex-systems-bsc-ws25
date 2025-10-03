@@ -30,7 +30,7 @@ const { Content } = preamble ? await render(preamble) : { Content: () => '' };
         {lectures.map((lecture, i) => (
             <LecturePreview
                 lecture={lecture}
-                sequence={i + 1}   /* number in current (sorted) list */
+                sequence={lectures.length - i} 
                 class="mb-10 sm:mb-12"
             />
         ))}
