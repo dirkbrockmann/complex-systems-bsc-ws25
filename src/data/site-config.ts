@@ -3,6 +3,8 @@ import {default as complexityImg} from '../assets/complexity.png';
 import authorImg from '../assets/dirk.png';
 import logoDark from '../assets/generated/logo_dark.png';
 import logoLight from '../assets/logo.png';
+import { courseConfig } from './course-config';
+
 
 export type Image = {
     src: ImageMetadata;
@@ -63,7 +65,7 @@ const siteConfig: SiteConfig = {
     website: 'https://dirkbrockmann.github.io/',
     base: '/complex-systems-bsc-ws25/',
     title: 'Introduction to Complex Systems',
-    email: 'complex-systems-bsc@tu-dresden.de',
+    email: courseConfig.email,
     author: {
         name: 'Dirk Brockmann',
         image: {
@@ -72,7 +74,7 @@ const siteConfig: SiteConfig = {
         },
         url: 'https://synosys.github.io'
     },
-    subtitle: 'Module M0500-31W20, WiSe 2025/25',
+    subtitle: 'Module M0500-31W20, WiSe 2025/26',
     description: '',
     image: {
         src: complexityImg.src,

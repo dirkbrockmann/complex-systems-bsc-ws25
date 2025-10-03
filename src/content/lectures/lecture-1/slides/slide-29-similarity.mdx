@@ -1,0 +1,40 @@
+---
+title: Similarity
+publishDate: 2025-09-01
+order: 28
+---
+
+import roads_to_rome from '../../../../assets/roads_to_rome.png';
+import tree_roots from '../../../../assets/tree_roots.png';
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+
+# Similarities
+
+<TwoCol ratio="1:1" gapClass="gap-8" class="my-8 ">
+  <div slot="left">
+    <Figure
+  src={tree_roots}
+  alt="Tree Roots"
+  boxed={false}
+  fit="contain"
+  class="max-w-[100%] mx-auto"
+    />
+  </div>
+  <div slot="right">
+   
+    <Figure
+  src={roads_to_rome}
+  alt="Roads to Rome"
+  boxed={false}
+  fit="contain"
+  class="max-w-[88%] mx-auto"
+/>
+
+  </div>
+</TwoCol>
+
+
+
+

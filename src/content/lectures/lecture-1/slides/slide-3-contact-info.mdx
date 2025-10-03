@@ -1,0 +1,77 @@
+---
+title: Contact Information
+publishDate: 2025-09-01
+order: 3
+---
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import QRCode from '../../../../components/QRCode.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import chickenLight from '../../../../assets/complexityexplorables.png';
+import chickenDark from '../../../../assets/generated/complexityexplorables_dark.png';
+import siteConfig from '../../../../data/site-config.ts';
+
+# Contact Information
+
+
+    <Grid
+      rows={2}
+      cols={3}
+      gapClass="gap-6"
+      class="px-12"
+    >
+      <div class="min-h-0 overflow-auto bg-amber-100/60 p-6 rounded-xl shadow-md">
+      
+      ## Course Email:
+
+      [{siteConfig.email}](mailto:{siteConfig.email})
+
+      </div>
+      
+      <div class="min-h-0 overflow-auto bg-sky-100/60 p-6 rounded-xl shadow-md">
+      ## Phone:
+      
+      +49 351 463 33 1 99
+      
+      </div>
+      
+      <div class="min-h-0 overflow-auto bg-emerald-100/60 p-6 rounded-xl shadow-md">
+      
+      ## WhatsApp:
+
+      +49 172 59 14 795
+
+      </div>
+      <div class="min-h-0 overflow-auto bg-rose-100/60 p-6 rounded-xl shadow-md">
+      ## Telegram:
+
+      +49 172 59 14 795
+      </div>
+
+      <div class="min-h-0 overflow-auto bg-indigo-100/60 p-6 rounded-xl shadow-md">
+      ## Signal:
+
+      +49 172 59 14 795
+      
+      
+      </div>
+      
+    </Grid>
+  
+  
+{/* # das hier ist eine Überschrift
+
+<Figure
+  src={chickenLight}
+  srcDark={chickenDark}
+  alt="Ein Huhn"
+  boxed={true}
+  fit="cover"
+  class="max-w-[30%] bg-green-50 border-2 border-green-200 dark:bg-neutral-900 rounded-5xl shadow-lg"
+  mediaClass="bg-yellow-40 dark:bg-neutral-900 rounded-5xl"
+  imgClass="rounded-xl"
+>
+  Ein Huhn ist ein Vogel, der Eier legt.
+</Figure> */}
+
+
+

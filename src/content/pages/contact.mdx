@@ -9,11 +9,12 @@ import dirkDark from '../../assets/generated/dirk_dark.png';
 import dirk from '../../assets/generated/dirk_transparent.png';
 import Figure from "../../components/Figure.astro";
 import MarginNote from "../../components/MarginNote/Note.astro";
+import { courseConfig } from '../../data/course-config.ts';
 
-
+console.log(courseConfig);
 
 <Figure src={dirk} srcDark={dirkDark} alt="Dirk Brockmann" margin={true}>
-**Your instructor:** Dirk Brockmann.
+**Your instructor:** {courseConfig.responsible}.
 </Figure>
 Here's some information about your instructor, in case you need to get in touch and keep being updated about the course.
 
@@ -21,9 +22,9 @@ Here's some information about your instructor, in case you need to get in touch 
 
 I've set up an email address specifically for communication about this course. The best way to reach me (and get a response) is by using this email:
 
-[complex-systems-bsc@tu-dresden.de](mailto:complex-systems-bsc@tu-dresden.de)
+[{courseConfig.email}](mailto:{courseConfig.email})
 
-If you need to get in touch with me concerning other matters, contact my assistant **Franziska Schäfer** at
+If you need to get in touch with me concerning other matters, contact my assistant **{courseConfig.office}** at
 SynoSys (Center Synergy of Systems):
 
 [synosys@tu-dresden.de](mailto:synosys@tu-dresden.de)
@@ -37,7 +38,7 @@ to sign up for it.
 
 ## Phone
 
-Here's my office phone number: **+49 (0)351 463 33199**
+Here's my office phone number: **+{courseConfig.phone}**
 
 ## Office
 

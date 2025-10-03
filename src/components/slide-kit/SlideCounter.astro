@@ -1,0 +1,8 @@
+---
+export interface Props {
+  slideNumber: number;
+  totalSlides: number;
+}
+const { slideNumber, totalSlides } = Astro.props;
+---
+<p class="slide-counter">{slideNumber} / {totalSlides}</p>

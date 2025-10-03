@@ -51,7 +51,7 @@ const hasSlotCaption = Astro.slots.has('default');
 const hasCaption = hasSlotCaption || !!caption;
 const captionId = hasCaption ? `figcap-${Math.random().toString(36).slice(2)}` : undefined;
 ---
-<figure class={`not-prose my-4 ${alignClass} ${className}`} aria-labelledby={captionId} {...rest}>
+<figure class={`not-prose  ${alignClass} ${className}`} aria-labelledby={captionId} {...rest}>
   <div class={`relative overflow-hidden ${boxed ? '' : 'inline-block'} ${mediaClass}`}>
     {srcDark ? (
       <>

@@ -1,5 +1,16 @@
 @reference 'tailwindcss';
 @plugin '@tailwindcss/typography';
+/* Declare cascade order so @layer slides comes last */
+@layer base, components, utilities, slides;
+
+@theme inline {
+    --font-sans: 'IBM Plex Sans Variable', 'Inter Variable', serif;
+    --font-serif: 'EB Garamond Variable', 'Newsreader Variable', serif;
+    --text-color-main: var(--text-main);
+    --background-color-main: var(--bg-main);
+    --background-color-muted: var(--bg-muted);
+    --border-color-main: var(--border-main);
+}
 
 @layer slides {
   /* Full-window root + scaling */
@@ -30,12 +41,26 @@
     @apply max-w-none w-full m-0 text-3xl leading-8 font-sans;
   }
 
-  /* Headings */
-  .slide-stage .prose :is(h1, h2) { @apply text-center; }
-  .slide-stage .prose h1 { @apply text-8xl leading-tight mt-0 mb-6; }
-  .slide-stage .prose h2 { @apply text-6xl leading-snug mt-6 mb-4; }
-  .slide-stage .prose h3 { @apply text-4xl leading-snug mt-4 mb-3; }
+  .slide-stage .prose p {
+    @apply mx-auto max-w-[80%] w-full m-0 text-center text-3xl leading-relaxed font-sans;
+  }
 
+  .slide-stage .prose blockquote, .slide-stage .prose blockquote p {
+    @apply font-serif italic text-center m-0 text-6xl;
+  }
+  .slide-stage .prose blockquote footer {
+    @apply text-4xl font-sans mt-4;
+  }
+
+  /* Headings */
+  .slide-stage .prose :is(h1, h2) { @apply text-center ; }
+  .slide-stage .prose h1 { @apply text-8xl leading-tight mt-0 mb-6 font-light; }
+  .slide-stage .prose h2 { @apply text-6xl leading-snug mt-6 mb-4 font-light; }
+  .slide-stage .prose h3 { @apply text-4xl leading-snug mt-4 mb-3 font-light; }
+  
+  .slide-stage .prose :where(ul, ol) {
+        @apply leading-snug;
+    }
   
   /* Media */
   .slide-stage :where(img, video, svg, canvas) { @apply max-w-full h-auto; }

@@ -77,9 +77,9 @@ const isStr = (v: any): v is string => typeof v === 'string';
       </div>
     ) : null}
 
-    {kicker ? <p class="uppercase tracking-wide text-sm text-neutral-600 dark:text-neutral-400">{kicker}</p> : null}
+    {kicker ? <p class="uppercase tracking-wide text-sm  text-center mx-auto">{kicker}</p> : null}
 
-    <h1 class={`font-extrabold leading-tight ${align === 'left' ? '' : 'mx-auto'} text-1xl`}>
+    <h1 class={` leading-tight ${align === 'left' ? '' : 'mx-auto'} text-1xl`}>
       {title}
     </h1>
 
@@ -96,12 +96,12 @@ const isStr = (v: any): v is string => typeof v === 'string';
     ) : null}
 
     {url || qr ? (
-      <div class="mt-4 flex flex-col items-center gap-2">
+      <div class="mt-2 flex flex-col items-center gap-2">
         {url ? (
           <a href={url} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline break-all">{url}</a>
         ) : null}
         {qr ? (
-          <QRCode value={qr} size={160} class="mt-2" />
+          <QRCode value={qr} size={150} class="mt-2" />
         ) : null}
       </div>
     ) : null}

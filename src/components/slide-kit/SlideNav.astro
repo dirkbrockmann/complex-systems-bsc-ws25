@@ -1,12 +1,17 @@
 ---
+import SlideCounter from './SlideCounter.astro';
+
+
 export interface Props {
   lectureHref: string;
   startHref: string;
   prevHref?: string;
   nextHref?: string;
   class?: string;
+  slideNumber: number;
+  totalSlides: number;
 }
-const { lectureHref, startHref, prevHref, nextHref, class: className = '' } = Astro.props;
+const { lectureHref, startHref, prevHref, nextHref, class: className = '', slideNumber, totalSlides } = Astro.props;
 ---
 <nav id="slide-nav" class={`shrink-0 flex items-center justify-center gap-3 ${className}`} aria-label="Slide controls">
   <a
@@ -14,7 +19,8 @@ const { lectureHref, startHref, prevHref, nextHref, class: className = '' } = As
     href={lectureHref}
     class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline"
   >Lecture</a>
-
+<SlideCounter slideNumber={slideNumber} totalSlides={totalSlides} />
+ 
   <a
     id="start-link"
     rel="start"

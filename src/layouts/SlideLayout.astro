@@ -10,6 +10,8 @@ export interface Props {
   startHref: string;
   prevHref?: string;
   nextHref?: string;
+  slideNumber: number;
+  totalSlides: number
 }
 
 const {
@@ -20,7 +22,11 @@ const {
   startHref,
   prevHref,
   nextHref,
+  slideNumber,
+  totalSlides,
 } = Astro.props;
+
+
 ---
 <html lang="en" class="antialiased break-words">
   <head>
@@ -31,12 +37,11 @@ const {
       <div class="slide-stage">
         <div class="h-full min-h-0 grid grid-rows-[1fr_auto] gap-6 p-8">
           <div class="h-full min-h-0 overflow-hidden">
-            <div class="prose bg-red-100 max-w-none w-full h-full min-h-0 overflow-auto first:mt-0 last:mb-0">
+            <div class="prose max-w-none w-full h-full min-h-0 overflow-auto first:mt-0 last:mb-0">
               <slot />
             </div>
           </div>
-
-          <SlideNav lectureHref={lectureHref} startHref={startHref} prevHref={prevHref} nextHref={nextHref} />
+          <SlideNav slideNumber={slideNumber} totalSlides={totalSlides}  lectureHref={lectureHref} startHref={startHref} prevHref={prevHref} nextHref={nextHref} />
         </div>
       </div>
     </div>

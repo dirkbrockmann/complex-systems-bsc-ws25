@@ -3,11 +3,12 @@
 export type Props = {
     author: string;
     cite: string;
+    quote: string;
 };
-const { author, cite } = Astro.props;
+const { author, cite, quote } = Astro.props;
 ---
 
 <blockquote>
-    <slot />
-    <footer class="not-prose font-normal text-right not-italic text-base mt-2">— {author} <span class="italic">{cite}</span></footer>
+    <p>{quote}</p>
+    <footer class="text-right not-italic text-base mt-2">— {author}, <span>{cite}</span></footer>
 </blockquote>

@@ -1,6 +1,8 @@
 @import '@fontsource-variable/inter' layer(base);
 @import '@fontsource-variable/newsreader' layer(base);
 @import '@fontsource-variable/newsreader/wght-italic.css' layer(base);
+@import '@fontsource-variable/eb-garamond' layer(base);
+@import '@fontsource-variable/ibm-plex-sans' layer(base);
 @import 'katex/dist/katex.min.css' layer(base);
 
 @import 'tailwindcss';
@@ -66,9 +68,8 @@ html.dark {
 */
 
 @theme inline {
-    --font-sans: 'Inter Variable', sans-serif;
-    --font-serif: 'Newsreader Variable', serif;
-    /*--font-serif: 'EB Garamond Variable', serif;*/
+    --font-sans: 'IBM Plex Sans Variable', 'Inter Variable', serif;
+    --font-serif: 'EB Garamond Variable', 'Newsreader Variable', serif;
     --text-color-main: var(--text-main);
     --background-color-main: var(--bg-main);
     --background-color-muted: var(--bg-muted);
@@ -137,8 +138,13 @@ html.dark {
         @apply text-justify;
     }
     .prose blockquote, .prose blockquote p {
-        @apply mx-[10%] font-normal italic text-left border-none pl-0 my-0 text-xl;
+        @apply mx-[10%] font-normal italic text-left border-none pl-0 my-0;
     }
+   
+
+    .prose blockquote footer {
+        font-size: 0.75em; /* 87.5% of parent font size */
+    }   
 
     /* KaTeX overrides (keep them layered) */
     .prose .katex {
@@ -157,3 +163,5 @@ html.dark {
 .explorable .d3-widgets {
         
 }
+
+

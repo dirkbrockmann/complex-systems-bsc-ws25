@@ -1,0 +1,75 @@
+---
+title: Die Wurst
+publishDate: 2025-09-01
+order: 4
+---
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import ThreeCol from '../../../../components/slide-kit/ThreeCol.astro';
+import {courseConfig} from '../../../../data/course-config.ts';
+
+# The Course Components
+
+
+<Grid
+      rows={1}
+      cols={3}
+      gapClass="gap-6"
+      class="px-12"
+      >
+<div class=" min-h-0 overflow-auto bg-amber-100/60 p-1 rounded-xl shadow-md">
+      
+      ## Lecture
+
+
+- **Starting date:** {courseConfig.lecture.start}
+- **End date:** {courseConfig.lecture.end}
+- **Number of sessions:** {courseConfig.lecture.sessions}
+- **Date & Time:** {courseConfig.lecture.days}, {courseConfig.lecture.time}
+- **Instructor:** {courseConfig.instructors.lecture.join(", ")}
+
+</div>
+      
+  <div class="min-h-0 overflow-auto bg-sky-100/60 p-1 rounded-xl shadow-md">
+      ## Seminar
+      - **Starting date:** {courseConfig.seminar.start}
+      - **End date:** {courseConfig.seminar.end}
+      - **Number of sessions:** {courseConfig.seminar.sessions}
+      - **Date & Time:** {courseConfig.seminar.days}, {courseConfig.seminar.time}
+      - **Max. number of participants:** {courseConfig.maxParticipants}
+      - **Instructor:** {courseConfig.instructors.seminar.join(", ")}
+      
+  </div>
+
+  <div class="min-h-0 overflow-auto bg-emerald-100/60 p-1 rounded-xl shadow-md">
+      
+    ## Lab Course
+
+      - **Starting date:** {courseConfig.lab.start}
+      - **End date:** {courseConfig.lab.end}
+      - **Number of sessions:** {courseConfig.lab.sessions}
+      - **Date & Time:** {courseConfig.lab.days}, {courseConfig.lab.time}
+      - **Max. number of participants:** {courseConfig.maxParticipants}
+      - **Instructor:** {courseConfig.instructors.lab.join(", ")}
+
+  </div>
+     
+</Grid>
+  
+  
+{/* # das hier ist eine Überschrift
+
+<Figure
+  src={chickenLight}
+  srcDark={chickenDark}
+  alt="Ein Huhn"
+  boxed={true}
+  fit="cover"
+  class="max-w-[30%] bg-green-50 border-2 border-green-200 dark:bg-neutral-900 rounded-5xl shadow-lg"
+  mediaClass="bg-yellow-40 dark:bg-neutral-900 rounded-5xl"
+  imgClass="rounded-xl"
+>
+  Ein Huhn ist ein Vogel, der Eier legt.
+</Figure> */}
+
+
+

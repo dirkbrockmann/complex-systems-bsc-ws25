@@ -30,6 +30,8 @@ all.sort((a, b) => {
 });
 
 const idx = all.findIndex((s) => s.id === entry.id);
+const totalSlides = all.length;
+
 const firstName = all[0] ? parseSlideId(all[0].id).slide : undefined;
 const prevName = idx > 0 ? parseSlideId(all[idx - 1].id).slide : undefined;
 const nextName = idx < all.length - 1 ? parseSlideId(all[idx + 1].id).slide : undefined;
@@ -41,6 +43,7 @@ const prevHref = href(prevName);
 const nextHref = href(nextName);
 
 const title = entry.data.title ?? current;
+
 ---
 <SlideLayout
   title={title}
@@ -49,6 +52,8 @@ const title = entry.data.title ?? current;
   startHref={startHref}
   prevHref={prevHref}
   nextHref={nextHref}
+  slideNumber={idx + 1}
+  totalSlides={totalSlides}
 >
   <Content />
 </SlideLayout>

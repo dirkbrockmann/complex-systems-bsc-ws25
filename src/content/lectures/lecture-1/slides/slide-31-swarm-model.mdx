@@ -1,0 +1,35 @@
+---
+title: Swarm
+publishDate: 2025-09-01
+order: 31
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Video from '../../../../components/slide-kit/Video.astro';
+import flock from '../../../../assets/videos/flok.mp4';
+
+# A simple model for collective behavior
+
+<TwoCol ratio="2:1" gapClass="gap-8" class=" ">
+  <div slot="left">
+    <Video
+      src={flock}
+      controls={true}
+      autoplay={true}
+      loop={true}
+      class="mx-auto  max-w-[90%] rounded-xl shadow-lg"
+    />
+  </div>
+  <div slot="right">
+
+<div class="min-h-0 overflow-auto text-4xl bg-red-100/60 p-3 m-3 rounded-xl shadow-md">
+   ## three simple rules
+
+   - Avoid collisions
+   - Stay with group
+   - **Align with neighbors**
+    </div>
+  </div>
+</TwoCol>
+
+
