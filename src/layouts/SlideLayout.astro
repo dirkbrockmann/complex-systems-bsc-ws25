@@ -12,6 +12,8 @@ export interface Props {
   nextHref?: string;
   slideNumber: number;
   totalSlides: number
+  isDraft?: boolean;
+  isHidden?: boolean;
 }
 
 const {
@@ -24,6 +26,8 @@ const {
   nextHref,
   slideNumber,
   totalSlides,
+  isDraft = false,
+  isHidden = false,
 } = Astro.props;
 
 
@@ -41,7 +45,7 @@ const {
               <slot />
             </div>
           </div>
-          <SlideNav slideNumber={slideNumber} totalSlides={totalSlides}  lectureHref={lectureHref} startHref={startHref} prevHref={prevHref} nextHref={nextHref} />
+          <SlideNav slideNumber={slideNumber} totalSlides={totalSlides} isDraft={isDraft} isHidden={isHidden} lectureHref={lectureHref} startHref={startHref} prevHref={prevHref} nextHref={nextHref} />
         </div>
       </div>
     </div>

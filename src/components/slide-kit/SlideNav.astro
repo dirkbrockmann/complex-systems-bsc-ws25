@@ -10,10 +10,18 @@ export interface Props {
   class?: string;
   slideNumber: number;
   totalSlides: number;
+  isDraft?: boolean;
+  isHidden?: boolean;
 }
-const { lectureHref, startHref, prevHref, nextHref, class: className = '', slideNumber, totalSlides } = Astro.props;
+const { lectureHref, startHref, prevHref, nextHref, class: className = '', slideNumber, totalSlides, isDraft = false, isHidden = false } = Astro.props;
 ---
 <nav id="slide-nav" class={`shrink-0 flex items-center justify-center gap-3 ${className}`} aria-label="Slide controls">
+  {isDraft && import.meta.env.DEV ? (
+    <span class="px-3 py-2 rounded-lg bg-red-600 text-white font-semibold uppercase tracking-wide">Draft</span>
+  ) : null}
+  {isHidden && import.meta.env.DEV ? (
+    <span class="px-3 py-2 rounded-lg bg-pink-600 text-white font-semibold uppercase tracking-wide">Hidden</span>
+  ) : null}
   <a
     id="lecture-link"
     href={lectureHref}

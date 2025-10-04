@@ -57,6 +57,8 @@ const prevHref = href(prevName);
 const nextHref = href(nextName);
 
 const title = entry.data.title ?? current;
+const isDraft = !!entry.data.draft && import.meta.env.DEV;
+const isHidden = !!entry.data.hidden && import.meta.env.DEV;
 
 ---
 <SlideLayout
@@ -68,6 +70,8 @@ const title = entry.data.title ?? current;
   nextHref={nextHref}
   slideNumber={idx + 1}
   totalSlides={totalSlides}
+  isDraft={isDraft}
+  isHidden={isHidden}
 >
   <Content />
 </SlideLayout>
