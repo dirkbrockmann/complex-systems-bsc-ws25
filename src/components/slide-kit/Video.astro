@@ -121,7 +121,7 @@ const autoAspectEffective = !aspect && autoAspect;
   ) : null}
 
   {(autoAspectEffective || (start && start > 0)) ? (
-    <script is:inline>
+    <script is:inline define:vars={{ start: start ?? 0, autoAspectEffective }}>
       (function () {
         var wrap = document.currentScript && document.currentScript.previousElementSibling;
         var video = wrap && wrap.querySelector && wrap.querySelector('video');
@@ -130,7 +130,7 @@ const autoAspectEffective = !aspect && autoAspect;
         function onMeta() {
           try {
             // Auto aspect from intrinsic video dimensions
-            if (/* auto */ true) {
+            if (autoAspectEffective) {
               var w = video.videoWidth;
               var h = video.videoHeight;
               if (w && h && wrap && wrap.style) {
@@ -139,7 +139,7 @@ const autoAspectEffective = !aspect && autoAspect;
             }
           } catch (e) {}
           try {
-            var START = Number(%%START%%);
+            var START = Number(start);
             if (START > 0) video.currentTime = START;
           } catch (e) {}
         }

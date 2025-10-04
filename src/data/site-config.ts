@@ -3,7 +3,7 @@ import {default as complexityImg} from '../assets/complexity.png';
 import authorImg from '../assets/dirk.png';
 import logoDark from '../assets/generated/logo_dark.png';
 import logoLight from '../assets/logo.png';
-import { courseConfig } from './course-config';
+import courseConfig from './course-config.json';
 
 
 export type Image = {

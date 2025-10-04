@@ -22,10 +22,10 @@
         "publish": "npm run push && npm run deploy"
     },
     "dependencies": {
-        "@astrojs/mdx": "^4.2.3",
-        "@astrojs/react": "^4.3.0",
-        "@astrojs/rss": "^4.0.11",
-        "@astrojs/sitemap": "^3.3.0",
+        "@astrojs/mdx": "^4.3.6",
+        "@astrojs/react": "^4.4.0",
+        "@astrojs/rss": "^4.0.12",
+        "@astrojs/sitemap": "^3.6.0",
         "@explorables/albert_and_carl_friedrich": "^2.0.5",
         "@explorables/berlin_8_am": "^2.0.9",
         "@explorables/flockn_roll": "^2.0.22",
@@ -40,7 +40,7 @@
         "@tailwindcss/vite": "^4.0.17",
         "@types/react": "^19.1.5",
         "@types/react-dom": "^19.1.5",
-        "astro": "^5.5.6",
+        "astro": "^5.14.1",
         "d3": "^7.9.0",
         "d3-widgets": "^2.0.3",
         "install": "^0.13.0",
