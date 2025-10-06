@@ -94,11 +94,12 @@ const loadExplorable = (displayContainer,controlsContainer) => {
 	var diag = map(x,d=>({x:d,y:d}));
 
     const update = () => {
+        
         data0 = trace(x0_0.value(),N,lambda.value());
 	    data1 = trace(x0_1.value(),N,lambda.value());
         fofx = map(x,d=>({x:d,y:f(d,lambda.value())}));
 	    diag = map(x,d=>({x:d,y:d}));
-
+        
         display.select("."+styles.curve).datum(fofx).attr("d",line)
         display.select("."+styles.diag).datum(diag).attr("d",line)
         display.select("."+styles.trace1+"."+styles.transient)
