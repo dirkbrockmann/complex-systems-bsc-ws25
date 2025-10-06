@@ -49,5 +49,23 @@ const {
         </div>
       </div>
     </div>
+    <script>
+      (function() {
+        var root = document.getElementById('slide-root');
+        if (!root) return;
+        var cs = getComputedStyle(root);
+        var baseW = parseFloat(cs.getPropertyValue('--base-w')) || 1920;
+        var baseH = parseFloat(cs.getPropertyValue('--base-h')) || 1080;
+        var update = function() {
+          var vw = window.innerWidth || document.documentElement.clientWidth || 0;
+          var vh = window.innerHeight || document.documentElement.clientHeight || 0;
+          var s = Math.min(vw / baseW, vh / baseH);
+          var r = document.getElementById('slide-root');
+          if (r) r.style.setProperty('--slide-scale', String(s));
+        };
+        update();
+        window.addEventListener('resize', update, { passive: true });
+      })();
+    </script>
   </body>
 </html>
