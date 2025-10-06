@@ -2,22 +2,24 @@ import {config,load} from '@explorables/berlin_8_am';
 import * as d3 from 'd3';
 import {useEffect,useRef} from 'react';
 
+// Static class presets if the explorable remain in a row of display and controls panel
+
+const responsive = {
+    container: "flex flex-col sm:flex-row items-start gap-8",
+    display:   "w-full border-1 border-black dark:border-white sm:w-1/2 mb-0 h-auto",
+    controls:  "w-full sm:w-1/2 mb-0 h-auto"
+};
+const forced = {
+    container: "flex flex-row items-start gap-8",
+    display:   "border-1 border-black dark:border-white w-1/2 mb-0 h-auto",
+    controls:  "w-1/2 mb-0 h-auto"
+};
 
 export default ({id, forceRowOnSmall = false}) => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        // Compute class sets per instance, optionally forcing a single row on small screens
-        const responsive = {
-            container: "flex flex-col sm:flex-row items-start gap-8",
-            display:   "border-1 border-black dark:border-white w-full sm:w-2/3 mb-0 h-auto",
-            controls:  "w-full sm:w-1/3 mb-0 h-auto"
-        };
-        const forced = {
-            container: "flex flex-row flex-nowrap items-start gap-8 overflow-x-auto",
-            display:   "border-1 border-black dark:border-white w-1/2 mb-0 h-auto min-w-[280px] shrink-0",
-            controls:  "w-1/2 mb-0 h-auto min-w-[280px] shrink-0"
-        };
+        // Choose class set per instance, optionally forcing a single row on small screens
         const classes = forceRowOnSmall ? forced : responsive;
 
         if (containerRef.current) {
