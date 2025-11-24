@@ -1,0 +1,1 @@
+const t="_xaxis_5nxti_2",a="_yaxis_5nxti_7",_="_axis_label_5nxti_12",s="_curve_5nxti_16",n="_diag_5nxti_16",i="_trace1_5nxti_23",c="_trace2_5nxti_29",x="_transient_5nxti_35",r="_attractor_5nxti_36",e={xaxis:t,yaxis:a,axis_label:_,curve:s,diag:n,trace1:i,trace2:c,transient:x,attractor:r};export{e as s};
