@@ -1,0 +1,1 @@
+const s="_xaxis_psnpr_3",t="_yaxis_psnpr_8",a="_axis_label_psnpr_13",_="_curve_psnpr_18",r="_diag_psnpr_18",n="_trace1_psnpr_25",c="_trace2_psnpr_31",p="_transient_psnpr_37",e="_attractor_psnpr_38",i={xaxis:s,yaxis:t,axis_label:a,curve:_,diag:r,trace1:n,trace2:c,transient:p,attractor:e};export{i as s};
