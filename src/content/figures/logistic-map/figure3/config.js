@@ -1,6 +1,6 @@
 export default {
     container: {
-        class: "flex flex-col ",
+        class: "flex flex-col explorable",
     },
     display: {
         width: 600,
@@ -14,16 +14,16 @@ export default {
         grid: {x: 12,y: 12}
     },
     plot: {
-        margin: {l: 60,r: 20,t: 20,b: 50},
+        margin: {l: 100,r: 20,t: 20,b: 50},
         xr: [0,1],
         yr: [0,1],
         xaxis: {
-            label: "f(x\u2099)",
-            label_position: {x: 0,y: 35}
+            label: "x\u2099",
+            label_position: {x: 0,y: 45}
         },
         yaxis: {
-            label: "x\u2099",
-            label_position: {x: -50,y: 0}
+            label: "x\u2099\u208A\u2081",
+            label_position: {x: -80,y: 0}
         },
         dotsize: 2,
         N_sequences: 80,

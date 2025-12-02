@@ -43,6 +43,7 @@ const alignClass =
   'mx-auto';
 
 const fitClass = fit === 'cover' ? 'object-cover' : 'object-contain';
+// For boxed, use full width/height; otherwise, image can size to content but stay within max width.
 const imgSizeClass = boxed ? 'w-full h-full' : 'w-auto h-auto max-w-full';
 const invertClass = !srcDark && invertOnDark ? 'dark:invert dark:brightness-100' : '';
 
@@ -51,14 +52,16 @@ const hasSlotCaption = Astro.slots.has('default');
 const hasCaption = hasSlotCaption || !!caption;
 const captionId = hasCaption ? `figcap-${Math.random().toString(36).slice(2)}` : undefined;
 ---
-<figure class={`not-prose  ${alignClass} ${className}`} aria-labelledby={captionId} {...rest}>
-  <div class={`relative overflow-hidden ${boxed ? '' : 'inline-block'} ${mediaClass}`}>
+<figure class={`not-prose ${alignClass} ${className}`.trim()} aria-labelledby={captionId} {...rest}>
+  <div
+    class={`relative overflow-hidden ${boxed ? '' : 'inline-block'} ${mediaClass}`.trim()}
+  >
     {srcDark ? (
       <>
         <Image
           src={src}
           alt={alt}
-          class={`block ${imgSizeClass} ${boxed ? fitClass : ''} dark:hidden ${imgClass}`}
+          class={`block ${imgSizeClass} ${boxed ? fitClass : ''} dark:hidden ${invertClass} ${imgClass}`.trim()}
           sizes={sizes}
           loading={loading}
           decoding="async"
@@ -66,7 +69,7 @@ const captionId = hasCaption ? `figcap-${Math.random().toString(36).slice(2)}` :
         <Image
           src={srcDark}
           alt={alt}
-          class={`hidden dark:block ${imgSizeClass} ${boxed ? fitClass : ''} ${imgClass}`}
+          class={`hidden dark:block ${imgSizeClass} ${boxed ? fitClass : ''} ${invertClass} ${imgClass}`.trim()}
           sizes={sizes}
           loading={loading}
           decoding="async"
@@ -76,7 +79,7 @@ const captionId = hasCaption ? `figcap-${Math.random().toString(36).slice(2)}` :
       <Image
         src={src}
         alt={alt}
-        class={`block ${imgSizeClass} ${boxed ? fitClass : ''} ${invertClass} ${imgClass}`}
+        class={`block ${imgSizeClass} ${boxed ? fitClass : ''} ${invertClass} ${imgClass}`.trim()}
         sizes={sizes}
         loading={loading}
         decoding="async"
@@ -85,7 +88,7 @@ const captionId = hasCaption ? `figcap-${Math.random().toString(36).slice(2)}` :
   </div>
 
   {hasCaption ? (
-    <figcaption id={captionId} class={`mt-3 text-center ${captionClass}`}>
+    <figcaption id={captionId} class={`mt-3 text-center ${captionClass}`.trim()}>
       {hasSlotCaption ? <slot /> : caption}
     </figcaption>
   ) : null}

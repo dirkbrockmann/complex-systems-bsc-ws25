@@ -1,0 +1,28 @@
+---
+title: Nerve Cells
+publishDate: 2025-09-01
+order: 22
+---
+
+import neuron from '../../../../assets/generated/neuron2_transparent.png';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+
+# Neuronal Synchronization
+
+<TwoCol class="mb-6 pt-6" align="center">
+  <div slot="left">
+Nerve cells are an example of pulse-coupled oscillators. 
+When the emit action potentials to other neurons, 
+the receiving neuros change their membrane potential and their 
+internal phase that determines when they emit a spike themselves. 
+By this process neuros can attain a synchronous state.
+  </div>
+  <div slot="right">
+    <Figure
+      src={neuron}
+      alt="Neuron"
+      class="max-w-[90%] max-h-full mx-auto"
+    />
+  </div>
+</TwoCol>

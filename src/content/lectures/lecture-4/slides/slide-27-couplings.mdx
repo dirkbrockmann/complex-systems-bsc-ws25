@@ -1,0 +1,47 @@
+---
+title: Different Couplings
+publishDate: 2025-09-01
+order: 27
+---
+
+import manyo from '../../../../assets/generated/manyo_transparent.png';
+import manyo_dark from '../../../../assets/generated/manyo_dark.png';
+import bigo from '../../../../assets/generated/bigo_transparent.png';
+import bigo_dark from '../../../../assets/generated/bigo_dark.png';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+
+# Types of Coupled Oscillator Systems
+
+<TwoCol class="mb-6 pt-6" align="center">
+  <div slot="left">
+    <Figure
+      src={manyo}
+      srcDark={manyo_dark}
+      alt="Manyo"
+      class="max-w-[50%] mx-auto"
+      mediaClass="flex justify-center"
+      imgClass="max-w-full h-auto"
+      boxed={true}
+    >
+      Sometimes we have systems that exhibit spontaneous synchronition in 
+      which we have very many interacting oscillators with similar properties
+    </Figure>
+  </div>
+
+  <div slot="right">
+    <Figure
+      src={bigo}
+      srcDark={bigo_dark}
+      alt="Bigo"
+      class="max-w-[50%] mx-auto"
+      mediaClass="flex justify-center"
+      imgClass="max-w-full h-auto"
+      boxed={true}
+    >
+      Then there are systems in which a lot of 
+      small oscillators are coupled to a larger oscillator 
+      that mediates the coupling and synchronization.
+    </Figure>
+  </div>
+</TwoCol>

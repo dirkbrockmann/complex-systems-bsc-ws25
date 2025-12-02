@@ -1,12 +1,18 @@
 
+
 .xaxis {
-   font-family:'Newsreader Variable', serif; 
-   font-size:12px
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+    
 }
 
 .yaxis {
-    font-family:'Newsreader Variable', serif;
-    
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+
+}
+
+.axis_label {
+   font-size: 20px;
+   font-style: italic;
 }
 
 .axis_label{

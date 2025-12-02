@@ -1,0 +1,34 @@
+---
+title: Measles in the UK
+publishDate: 2025-09-01
+order: 20
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import Video from '../../../../components/slide-kit/Video.astro';
+import measles from '../../../../assets/videos/measles-3263.mp4';
+
+# Measles in the UK
+
+<TwoCol ratio="1:1" gapClass="gap-8" class="my-8 ">
+  <div slot="left">
+    
+Annual/biannual cycles of measles cases in the UK an example spatial synchronization.
+
+Grenfell, B. T., Bjørnstad, O. N. & Kappey, J. Travelling waves and spatial 
+hierarchies in measles epidemics. Nature 414, 716
+  
+  </div>
+  <div slot="right">
+    <Video
+      src={measles}
+      controls={true}
+      autoplay={true}
+      loop={true}
+      class="max-w-[80%] mx-auto"          
+      mediaClass="w-full"           
+      videoClass="w-full h-full"    
+    />
+  </div>
+</TwoCol>

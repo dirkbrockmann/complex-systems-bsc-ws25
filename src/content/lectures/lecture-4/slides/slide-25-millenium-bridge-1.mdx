@@ -1,0 +1,35 @@
+---
+title: The London Millennium Bridge
+publishDate: 2025-09-01
+order: 25
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import bridge_paper from '../../../../assets/paper_bridge.png';
+import bridge_paper1 from '../../../../assets/paper_bridge2.png';
+
+## The millennium bridge phenomenon analyzed
+
+
+<TwoCol  ratio = '1:1' class="mb-6 pt-6" align="center">
+  <div slot="left">
+    <Figure
+      src={bridge_paper}
+      alt="Bridge Paper"
+      class="max-w-[80%] mx-auto"
+    />
+  </div>
+  <div slot="right">
+    <Figure
+      src={bridge_paper1}
+      alt="Bridge Paper Figure"
+      class="max-w-[50%] mx-auto"
+    >
+    In [**this paper**](https://www.nature.com/articles/438043a)
+a simple model of phase coupled oscillators describes the conditions 
+for the phenomenon observed during the Millennium Bridge incident. 
+    </Figure>
+  </div>
+
+</TwoCol>

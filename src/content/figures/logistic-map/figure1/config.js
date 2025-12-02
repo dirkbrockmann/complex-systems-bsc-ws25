@@ -8,7 +8,7 @@ export default {
     controls: {
         width: 300*0.8,
         height: 150*0.8,
-        class: "d3-widgets p-0 mb-0 w-full h-auto",
+        class: "explorable d3-widgets p-0 mb-0 w-full h-auto",
         grid: {x: 12,y: 6},
         button: {
             id: "play_pause",

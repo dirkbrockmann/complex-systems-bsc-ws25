@@ -1,0 +1,17 @@
+---
+title: Understanding the Asymptotics
+publishDate: 2025-09-01
+order: 4
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/1-dimensional-dynamical-systems/figure3';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# Understanding the Asymptotics
+
+<Eq expr="\dot n=n(\beta-\alpha n)" size="xl" />
+
+<Explorable id="asymptotics" class="max-w-[30%]" captionClass=''>    
+    <Fig slot="figure" client:load id="asymptotics"/>
+</Explorable>

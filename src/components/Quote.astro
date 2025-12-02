@@ -4,11 +4,21 @@ export type Props = {
     author: string;
     cite: string;
     quote: string;
+    quoteClass?: string;
+    authorClass?: string;
 };
-const { author, cite, quote } = Astro.props;
+const {
+    author,
+    cite,
+    quote,
+    quoteClass = '',
+    authorClass = '',
+} = Astro.props;
 ---
 
-<blockquote>
-    <p>{quote}</p>
-    <footer class="text-right not-italic text-base mt-2">— {author}, <span>{cite}</span></footer>
+<blockquote class="quote-block">
+    <p class={quoteClass}>{quote}</p>
+    <footer class={`text-right not-italic mt-2 ${authorClass}`.trim()}>
+        — {author}, <span>{cite}</span>
+    </footer>
 </blockquote>

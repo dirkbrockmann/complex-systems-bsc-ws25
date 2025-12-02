@@ -1,0 +1,39 @@
+---
+title: Christiaan Huygens (1629 – 1695)
+publishDate: 2025-09-01
+order: 8
+figureMaxWidth: "max-w-[20%]"
+---
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import huygens from '../../../../assets/generated/huygens_transparent.png';
+import huygensDark from '../../../../assets/generated/huygens_dark.png';
+import huygensclock from '../../../../assets/generated/huygensclock_transparent.png';
+import huygensclockDark from '../../../../assets/generated/huygensclock_dark.png';
+
+
+# Christiaan Huygens (1629 – 1695)
+
+<TwoCol class="mb-6" align="center">
+  <Figure
+    slot="left"
+    src={huygens}
+    srcDark={huygensDark}
+    alt="Huygens"
+    class="max-w-[50%] mx-auto"
+  ></Figure>
+
+  <Figure
+    slot="right"
+    src={huygensclock}
+    srcDark={huygensclockDark}
+    alt="Huygens clock"
+    class="max-w-[80%] mx-auto"
+  ></Figure>
+</TwoCol>
+
+Huygens noticed that two mechanical clocks when attached 
+to a beam synchronize the movement of their pendula. 
+Even when perturbed, the clocks return to the sychronous state.
+
+

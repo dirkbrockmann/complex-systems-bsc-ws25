@@ -1,0 +1,17 @@
+---
+title: Bifurcation Diagram of the Logistic Map
+publishDate: 2025-09-01
+order: 32
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/logistic-map/figure4';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+## Bifurcations and Chaos
+
+<Eq expr="x_{n+1}=\lambda(1-x_{n})x_{n}" size="xl" />
+
+<Explorable id="bifurcationdiagram" class="max-w-[60%]" captionClass=''>    
+    <Fig slot="figure" client:load id="bifurcationdiagram"/>
+</Explorable>

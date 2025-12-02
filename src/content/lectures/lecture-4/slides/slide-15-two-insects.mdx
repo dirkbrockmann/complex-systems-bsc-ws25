@@ -1,0 +1,33 @@
+---
+title: Two Insect Species
+publishDate: 2025-09-01
+order: 15
+---
+
+import cicada from '../../../../assets/generated/cidada_transparent.png';
+import cicada_dark from '../../../../assets/generated/cidada_dark.png';
+import lightbug from '../../../../assets/generated/lightbug_transparent.png';
+import lightbug_dark from '../../../../assets/generated/lightbug_dark.png';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+
+# Two Insect Species
+
+<TwoCol class="mb-6 pt-6">
+  <div slot="left">
+    <Figure
+      src={cicada}
+      srcDark={cicada_dark}
+      alt="Cicada"
+      class="max-w-[70%] mx-auto"
+    />
+  </div>
+  <div slot="right">
+    <Figure
+      src={lightbug}
+      srcDark={lightbug_dark}
+      alt="Lightbug"
+      class="max-w-[70%] mx-auto"
+    />
+  </div>
+</TwoCol>

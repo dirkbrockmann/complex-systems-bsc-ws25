@@ -1,0 +1,34 @@
+---
+title: The London Millennium Bridge
+publishDate: 2025-09-01
+order: 26
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import bridge from '../../../../assets/paper_bridge3.png';
+
+## Indications of a critical transition
+
+<TwoCol ratio='2:1' class="mb-6 pt-6">
+<div slot="left">
+
+- The key finding of the paper was that the spontaneous synchronization of 
+the pedestrians in their gate, and therefore the wobble movement of the 
+bridge depends on the number of people that are on the bridge.
+- As the number of pedestrians is increased nothing much happens 
+until a **certain critical threshold** is reached beyond which synchronization sets in.
+- So, as we change a parameter (number of pedestrians) gradually, the response 
+of the system (degree of synchronizatiom) is not gradual, but abrupt. 
+This is a generic behavior of a critical phenomenon, which we will discuss later in more detail.
+
+</div>
+  <div slot="right">
+    <Figure
+      src={bridge}
+      alt="Bridge Paper Figure"
+      class="max-w-[100%] mx-auto"
+    />
+  </div>
+
+</TwoCol>

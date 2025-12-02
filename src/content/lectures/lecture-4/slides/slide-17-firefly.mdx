@@ -1,0 +1,39 @@
+---
+title: Fire Fly Synchronization
+publishDate: 2025-09-01
+order: 17
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import Video from '../../../../components/slide-kit/Video.astro';
+import firefly from '../../../../assets/generated/firefly_transparent.png';
+import fireflyDark from '../../../../assets/generated/firefly_dark.png';
+import fireflies from '../../../../assets/videos/fireflies.mp4';
+
+# Firefly Synchronization
+
+<TwoCol ratio="1:1" gapClass="gap-8" class="my-8 ">
+  <div slot="left">
+    <Figure
+      src={firefly}
+      srcDark={fireflyDark}
+      alt="Firefly Synchronization"
+      boxed={true}
+      fit="contain"
+      class="max-w-[70%] mx-auto"
+    />
+  </div>
+  <div slot="right">
+    <Video
+      src={fireflies}
+      controls={true}
+      autoplay={true}
+      loop={true}
+      class="max-w-[80%] mx-auto"          
+      mediaClass="w-full"           
+      videoClass="w-full h-full"    
+    />
+  </div>
+</TwoCol>
+

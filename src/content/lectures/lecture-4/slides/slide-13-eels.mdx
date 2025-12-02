@@ -1,0 +1,29 @@
+---
+title: Eels
+publishDate: 2025-09-01
+order: 13
+---
+
+import eels from '../../../../assets/eel2.png';
+import eelbook from '../../../../assets/eel1.png';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+
+# Eels (Anguilla anguilla)
+## The migration routes of the European eel
+
+<TwoCol class="mb-6 pt-6" align="center">
+  <Figure
+    slot="left"
+    src={eels}
+    alt="Eels"
+    class="max-w-[70%] mx-auto"
+  ></Figure>
+
+  <Figure
+    slot="right"
+    src={eelbook}
+    alt="Eel book"
+    class="max-w-[40%] mx-auto"
+  ></Figure>
+</TwoCol>

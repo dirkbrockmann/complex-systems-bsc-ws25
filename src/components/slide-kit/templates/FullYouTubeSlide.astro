@@ -28,7 +28,10 @@ const {
   ...rest
 } = Astro.props;
 ---
-<div class={`not-prose h-full min-h-0 ${bleed ? '-m-8' : ''} ${className}`} {...rest}>
+<div
+  class={`not-prose h-full min-h-0 ${bleed ? '-m-8' : ''} ${className}`.trim()}
+  {...rest}
+>
   <YouTube
     videoId={videoId}
     url={url}
@@ -41,6 +44,10 @@ const {
     frameClass="w-full h-full"
     aspect="16/9"
   >
-    <span slot="caption" class={`block text-center ${captionClass}`}>{caption}</span>
+    {caption && (
+      <span class={`block text-center ${captionClass}`.trim()}>
+        {caption}
+      </span>
+    )}
   </YouTube>
 </div>

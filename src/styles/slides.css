@@ -3,15 +3,6 @@
 /* Declare cascade order so @layer slides comes last */
 @layer base, components, utilities, slides;
 
-@theme inline {
-    --font-sans: 'IBM Plex Sans Variable', 'Inter Variable', serif;
-    --font-serif: 'EB Garamond Variable', 'Newsreader Variable', serif;
-    --text-color-main: var(--text-main);
-    --background-color-main: var(--bg-main);
-    --background-color-muted: var(--bg-muted);
-    --border-color-main: var(--border-main);
-}
-
 @layer slides {
   /* Full-window root + scaling */
   .slide-root {
@@ -91,4 +82,18 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+
+ .slide-stage .explorable .d3-widgets {
+    --d3w-font-family: var(--font-sans);
+    --d3w-font-weight: 400;
+    --axis-font-family: var(--font-sans);
+  }
+  .slide-stage .explorable {
+    --d3w-font-family: var(--font-sans);
+    --d3w-font-weight: 400;
+    --axis-font-family: var(--font-sans);
+  }
+
 }
+
+ 

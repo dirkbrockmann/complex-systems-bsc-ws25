@@ -1,0 +1,36 @@
+---
+title: The London Millennium Bridge
+publishDate: 2025-09-01
+order: 24
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import Video from '../../../../components/slide-kit/Video.astro';
+import milleniumBridge from '../../../../assets/videos/millenium_Bridge.mp4';
+
+# The London Millennium Bridge
+
+<TwoCol ratio="1:1" gapClass="gap-8" class="my-8 ">
+<div slot="left">
+
+- [**The millennium bridge**](https://en.wikipedia.org/wiki/Millennium_Bridge,_London) 
+  in London is a suspension bridge that opened operation in June 2000.
+- Once it was opened, many pededrians crossed it and the bridge began to wobble 
+(lateral movement) due to resonance with the walking rhythms of the pedestrians.
+
+</div>
+  <div slot="right">
+    <Video
+      src={milleniumBridge}
+      controls={true}
+      autoplay={true}
+      loop={true}
+      class="max-w-[80%] mx-auto"          
+      mediaClass="w-full"           
+      videoClass="w-full h-full"
+      muted={true}   
+    />
+  </div>
+</TwoCol>
+

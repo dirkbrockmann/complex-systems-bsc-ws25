@@ -1,0 +1,88 @@
+---
+title: Homework Assignment 2 (due Dec 2, 2025)
+description: The logistic map, period doubling and chaos
+publishDate: 'Nov 27 2025'
+tags:
+  - Assignment
+---
+
+import siteConfig from '../../data/site-config.ts';
+
+import Fig from '../figures/logistic-map/figure7';
+import Explorable from '../../components/Explorable.astro';
+
+
+## Assignment 2: The logistic map, period doubling and chaos
+
+In the [second lecture](/lectures/lecture-2) we introduced the logistic map:
+
+$$
+x_{n+1}=\lambda(1-x_{n})x_{n}\qquad x_n\in [0,1], \lambda \in [0,4]
+$$
+
+based on a simple, discrete time model for reproduction, growth, and dynamics 
+of a population of a species in an ecological context.
+We discussed how the behavior of the model depends on the key growth 
+parameter $\lambda$, how fixpoints can be computed, how they
+loose stability, that period doubling occurs and, finally, 
+when a critical $\lambda\approx 3.569946...$ is reached the dynamics becomes
+aperiodic and chaotic and therefore appear to be unpredicatable. We also
+discussed that this implies sensitivity to initial conditions.
+
+## A: The Bifurcation diagram
+
+Revisit the [bifurcation diagram](/lectures/lecture-2/slides/slide-4-bifurcationdiagram/) we discussed in class. In the bifurcation diagram,
+you can see the period doubling events at the sequence of critical values of the growth
+parameter $\lambda$. We discussed in class that the distance ($\lambda_n-\lambda_{n-1}$) between successive
+period doubling events becomes smaller and smaller so that eventually, at some point
+the period is infinite, after an infinite amount of period doubling events. 
+Beyond that point ($\lambda\approx 3.569946...$) all sequences of the map are aperiodic.
+
+1. Using the interactive bifurcation diagram, identify period doubling
+   bifurcation points $\lambda_1$, $\lambda_2$, $\lambda_3$ and $\lambda_4, ...$ and make a table of them.
+
+2. Compute the ratios:
+
+$$
+\delta_n = \frac{\lambda_{n} - \lambda_{n-1}}{\lambda_{n+1} - \lambda_{n}}
+$$
+
+This ratios is named the **Feigenbaum constant** (see [Lecture Notes on the Logistic Map](/lectures/lecture-2)).
+
+3. Inspect the bifurcation diagram closely. Way beyond the critical $\lambda\approx 3.569946...$, 
+in the regime of aperiodic dynamics, you can see bands and gaps of less complexity. 
+What is going on there?
+Explain what the behavior looks like around the value $\lambda\approx 3.83$. 
+You can use 
+[the sequence generator](/lectures/lecture-2/slides/slide-2-time-series/) and
+the [Cobwebbing Tool](/lectures/lecture-2/slides/slide-3-cobwebbing/) 
+to investigate what is going on. Explain what the logistic map behaves like here, and why it
+is puzzling.
+
+
+## Another chaotic map
+
+Another system with similar behavior is the map defined by:
+
+$$
+x_{n+1}=\lambda (1-2x_{n}^2).
+$$
+
+This system is defined for $x\in [-1,1]$ and for $\lambda \in [0,1]$.
+
+1. Compute the fixpoints of this system.
+2. [Read the Lecture Notes](/lectures/lecture-2) and 
+try to compute the fixpoints' stability and the first critical
+transition into a regime where the system has no stable fixpoints.
+3. Look at the bifucation digram below and repeat what you have done for the
+logistic map in terms of computing the convergence of the ratio:
+
+$$
+\delta_n = \frac{\lambda_{n} - \lambda_{n-1}}{\lambda_{n+1} - \lambda_{n}}
+$$
+
+<Explorable id="figure_7" margin={false} className="pl-10 explorable">
+    <Fig slot="figure" client:load id="bifurcation_other_map"/>
+</Explorable>
+
+

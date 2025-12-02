@@ -1,0 +1,81 @@
+.xaxis {
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+    font-size: 16px;
+}
+
+.yaxis {
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+font-size: 16px;
+}
+
+.axis_label {
+   font-size: 20px;
+   font-style: italic;
+}
+
+.fixpoint{
+    fill:darkred;
+}
+
+.fixpoint.stable {
+    fill:darkblue
+}
+
+.curve {
+    stroke:black;	
+	stroke-width:3px;
+    fill:none;
+}
+
+.arrow{
+    stroke-width:4px;
+    stroke:black;
+    stroke-linecap:round;
+}
+
+/* Marker styling: use the marker element and the path inside it. Because this is
+   a CSS module, the class names will be scoped and exported as `styles.marker`
+   and `styles.markerPath` from the JS module. Styling here controls the arrow
+   head color and stroke so it responds to dark mode. */
+.marker {
+    /* marker elements themselves don't inherit fill/stroke; keep pointer-events off so
+       the marker head doesn't capture mouse events meant for the curve/paths */
+    pointer-events: none;
+}
+
+.markerPath {
+    fill: black;
+    stroke: none;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .curve {
+    stroke:white;	
+
+}
+.fixpoint{
+    fill:red;
+}
+
+.fixpoint.stable {
+    fill:blue
+}
+.axis_label{
+    fill:white
+}
+
+}
+
+@media (prefers-color-scheme: dark) {
+    /* dark-mode overrides for the marker path so arrowheads match the curve color */
+    .markerPath {
+        fill: white;
+        stroke: none;
+    }
+    .arrow{
+    
+    stroke:white
+    
+}
+}

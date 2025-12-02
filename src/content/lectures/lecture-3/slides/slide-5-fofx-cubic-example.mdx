@@ -1,0 +1,17 @@
+---
+title: A cubic dynamical system
+publishDate: 2025-09-01
+order: 5
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/1-dimensional-dynamical-systems/figure4';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# A cubic dynamical system
+
+<Eq expr="\dot{x}=a+bx+\frac{1}{2}cx^2+\frac{1}{6}dx^3" size="xl" />
+
+<Explorable id="cubic_system" class="max-w-[30%]" captionClass=''>    
+    <Fig slot="figure" client:load id="cubic_system"/>
+</Explorable>

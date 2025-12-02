@@ -133,7 +133,7 @@ const loadExplorable = (displayContainer,controlsContainer) => {
 
     display.append("text").text(config.plot.xaxis.label)
         .attr("class",styles.axis_label)
-        .attr("transform","translate(" + (X(N/2) + config.plot.xaxis.label_position.x) + "," + (Y(0) + config.plot.xaxis.label_position.y) + ")")
+        .attr("transform","translate(" + (X(0.5) + config.plot.xaxis.label_position.x) + "," + (Y(0) + config.plot.xaxis.label_position.y) + ")")
     
     display.append("text").text(config.plot.yaxis.label)
         .attr("class",styles.axis_label)

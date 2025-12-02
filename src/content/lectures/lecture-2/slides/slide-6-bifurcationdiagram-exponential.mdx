@@ -1,0 +1,17 @@
+---
+title: Another Bifurcation Diagram
+publishDate: 2025-09-01
+order: 32
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/logistic-map/figure6'
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+## Bifurcartions and Chaos
+
+<Eq expr="x_{n+1} = \lambda  x_{n} \exp (-x_{n})" size="xl" />
+
+<Explorable id="bifurcationdiagram" class="max-w-[60%]" captionClass=''>    
+    <Fig slot="figure" client:load id="bifurcationdiagram"/>
+</Explorable>

@@ -1,16 +1,17 @@
 
 .xaxis {
-   font-family:'Newsreader Variable', serif; 
-   font-size:12px
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+    font-size: 16px;
 }
 
 .yaxis {
-    font-family:'Newsreader Variable', serif;
-    
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+font-size: 16px;
 }
 
-.axis_label{
-font-size:16px
+.axis_label {
+   font-size: 20px;
+   font-style: italic;
 }
 
 .curve, .diag {
@@ -18,7 +19,6 @@ font-size:16px
 	stroke-width:1px;
     fill:none;
 }
-
 
 .trace1 { 
     fill: none;

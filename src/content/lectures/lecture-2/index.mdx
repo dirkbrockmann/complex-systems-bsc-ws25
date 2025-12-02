@@ -1,6 +1,6 @@
 ---
 title: 'The logistic map'
-description: 'This tutorial explores the properties of the logistic map, a classic example of a one-dimensional dynamical system, focusing on its bifurcation diagram and chaotic behavior.'
+description: 'We explore the properties of the logistic map, a classic example of a one-dimensional dynamical system, focusing on its bifurcation diagram and chaotic behavior.'
 publishDate: '2025-11-25'
 tags:
   - Lecture
@@ -13,6 +13,7 @@ seo:
 
 import Explorable from '../../../components/Explorable.astro';
 import Figure from '../../../components/Figure.astro';
+import * as Margin from '../../../components/MarginNote';
 import logistic_map_fig1 from '../../../assets/generated/logistic_map_fig1_transparent.png';
 import logistic_map_fig1Dark from '../../../assets/generated/logistic_map_fig1_dark.png';
 import logistic_map_fig2 from '../../../assets/generated/logistic_map_fig2_transparent.png';
@@ -21,6 +22,7 @@ import logistic_map_fig3 from '../../../assets/generated/logistic_map_fig3_trans
 import logistic_map_fig3Dark from '../../../assets/generated/logistic_map_fig3_dark.png';
 import logistic_map_fig4 from '../../../assets/generated/logistic_map_fig4_transparent.png';
 import logistic_map_fig4Dark from '../../../assets/generated/logistic_map_fig4_dark.png';
+import feigenbaum from '../../../assets/feigenbaum.png';
 import Fig1 from '../../../content/figures/logistic-map/figure1';
 import Fig2 from '../../../content/figures/logistic-map/figure2';
 import Fig3 from '../../../content/figures/logistic-map/figure3';
@@ -28,8 +30,15 @@ import Fig4 from '../../../content/figures/logistic-map/figure4';
 import Fig5 from '../../../content/figures/logistic-map/figure5';
 import Fig6 from '../../../content/figures/logistic-map/figure6';
 
-This little adventure explores and explains the properties of a famous discrete time dynamical systems, 
+<Margin.Note>
+If you want to revisit the slides, you will be able to check out the [**Lecture 2 - Slidedeck**](slides/slide-1-logistic-map/).
+The slides only contain the interactive viszualizations that were used in class.
+</Margin.Note>
+
+This lecture explores and explains the properties of a famous discrete time dynamical systems, 
 known as the [***logistic map***](https://en.wikipedia.org/wiki/Logistic_map). 
+
+
 
 The logistic map looks like this:
 
@@ -455,7 +464,26 @@ simple logistic map. We can compute the ratio
 $$
 \delta=\lim_{k\rightarrow\infty}\frac{\lambda_{n}-\lambda_{n-1}}{\lambda_{n+1}-\lambda_{n}}=4.669
 $$
-The limit is known as **Feigenbaum's constant**. This is a universal constant
+The limit is known as **Feigenbaum's constant**<Margin.Cite id="feigenbaum" />. 
+
+<Margin.Note>
+<Margin.Ref id="feigenbaum" />The constant is named after **Mitchell Feigenbaum (1944-2019)** who discovered it 
+in the 1970s while studying period-doubling bifurcations in dynamical systems.
+Feigenbaum is considered one of the most important figures in the development
+of chaos theory. He was also a very charmismatic person.
+
+<Figure src={feigenbaum} alt="Mitchell Feigenbaum." margin={false}></Figure>
+
+Until his death we was a heavy smoker. In a conversation at a conference 
+he told me that when smoking was banned from restaurants in New York City,
+he and his wife got a personal chef to cook for them everyday since they
+couldn't smoke in restaurants anymore.
+
+Here's an interesting orbituary about him: ["Mitchell Feigenbaum and the End of Chaoplexity"](https://johnhorgan.org/cross-check/mitchell-feigenbaum-and-the-end-of-chaoplexity).
+</Margin.Note>
+
+
+ This is a universal constant
 that keeps reappearing in systems like the logistic map and is intimitaly connected to chaotic systems. 
 
 What's even more puzzling is that the periodic solutions
@@ -488,7 +516,7 @@ that is attractive, all the collected 1000 points will be one of the
 8 points that make up the period-8-cycle. So we would get 8 _dots_ in the plot. 
 You can see what is happening in **the panel below**.
 
-<Explorable id="figure_4" margin={false}>
+<Explorable id="figure_4" margin={false} className="pl-10 explorable">
     **The bifurcations in the logistic map:**
     As we increase $\lambda$ a cascade of period doubling events 
     leads to deterministic chaos. **You can click on a region that 
@@ -552,7 +580,7 @@ system that encorporates reproduction and self-regulation of a population. Becau
 we can expect that models that are structurally similar but more realistic generate similar behavior
 and that the funky effects observed in the logistic map are universal.
 
-<Explorable id="figure_6" margin={false}>
+<Explorable id="figure_6" margin={false} className="pl-10 explorable">
     **Another bifurcation diagram:**
     This one illustrates the bifurcations and period doubling of 
     the map defined by $f(x)=\lambda x \exp (-x)$. **Again  click 
@@ -564,7 +592,7 @@ and that the funky effects observed in the logistic map are universal.
 **The above panel** illustrates the bifurcation diagram of the map
 
 $$
-x\_{n+1} = \lambda  x\_{n} \exp (-x\_{n})
+x_{n+1} = \lambda  x_{n} \exp (-x_{n})
 $$
 
 which isn't limited to a parameter range for the reproduction rate $\lambda<4$ but is plausible for any non-negative value. The bifurcation diagram looks qualitatively similar to the one of the logistic map. 

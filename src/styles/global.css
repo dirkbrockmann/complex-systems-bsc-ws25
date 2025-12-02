@@ -155,13 +155,23 @@ html.dark {
 	    font-size: 1em;
 }
 
-}   
-
-
 
 
 .explorable .d3-widgets {
-        
+    --d3w-font-family: var(--font-serif);
+    --d3w-font-weight: 400;
+     --axis-font-family: var(--font-serif);
 }
+.explorable {
+    --d3w-font-family: var(--font-serif);
+    --d3w-font-weight: 400;
+     --axis-font-family: var(--font-serif);
+}
+
+
+
+}   
+
+
 
 

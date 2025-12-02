@@ -7,7 +7,7 @@ export default {
     canvas: {
         width: 900,
         height: 450,
-        class: " absolute inset-0 w-full h-full"
+        class: " absolute inset-0 w-full h-full explorable"
     },
     svg: {
         width: 900,
@@ -19,17 +19,17 @@ export default {
         xr: [5,40],
         yr: [0,16],
         xaxis: {
-            label: "lambda",
-            label_position: {x: 0,y: 35}
+            label: "\u03BB",
+            label_position: {x: 0,y: 45}
         },
         yaxis: {
             label: "fixpoints",
             label_position: {x: -50,y: 0}
         },
         dotsize: 0.35,
-        N_transient:1000,
-		N : 2000,
-        N_lambda: 1000,
+        N_transient:5000,
+		N : 10000,
+        N_lambda: 2000,
         alpha:0.3,
         zoomalpha:0.8,
         zoomdepth:5,

@@ -1,0 +1,74 @@
+---
+title: Synchronization
+description: In this lecture, we will explore the phenomenon of synchronization in complex systems. We will discuss how individual components of a system can spontaneously align their behavior, leading to emergent collective dynamics. Examples from nature and technology will be examined to illustrate the principles of synchronization.
+publishDate: 'Dec 2 2025'
+draft: false
+tags:
+  - Lecture
+---
+
+import Youtube from '../../../components/Youtube.astro';
+import Figure from '../../../components/Figure.astro';
+import * as Margin from '../../../components/MarginNote';
+
+import metronomesDark from '../../../assets/generated/metronomes_dark.png';
+import metronomes from '../../../assets/generated/metronomes_transparent.png';
+import sync from '../../../assets/sync.png';
+
+<Figure src={metronomes} srcDark={metronomesDark} margin={true} alt="metronomes on a board">
+**How to synchronize:** All you need are five metronomes, a board and two empty cans.
+</Figure>
+
+In this lecture, we will explore the phenomenon of synchronization 
+in natural systems. Synchronization is one of the most fundamental processes
+in nature that drive the emergence of order from a disordered state. 
+So in some sense it's the opposite of chaos.
+
+Synchronization occurs everywhere, in biological systems, physical systems, 
+social systems, and technological systems, and on all scales, ranging
+from intracellular processes in living cells, to the scale of galaxies.
+
+The first descriptions goes back to the Dutch scientist Christiaan Huygens
+in the 17th century, who observed that two pendulum clocks mounted on the same wall
+would eventually synchronize their swings.
+
+
+Most of the material for the lecture is contained in the 
+slide deck: 
+
+>[**Lecture 4 - Slidedeck - Synchronization**](slides/slide-1-intro/)
+
+In this lecture, we will specifically discuss the **Kuramoto Model**,
+a paradigmatic model for synchronization phenomena in complex systems.
+The details of the Kuramoto Model is provided in the tutorial:
+
+>[**The Kuramoto Model of coupled oscillators**](/tutorials/kuramoto-model/)
+
+in the tutorial section.
+
+One of the leading researchers in the field of synchronization is
+[Steven Strogatz](https://en.wikipedia.org/wiki/Steven_Strogatz) 
+from Cornell University.
+
+
+## Recommended Screen Time
+
+
+<Youtube videoId="aSNrKS-sCE0" title="Steven Strogatz – The math of sync">
+  **The math of sync:** Steven Strogatz explains the mathematics of 
+  synchronization, with examples from fireflies to power grids.
+</Youtube>
+
+## Recommended reading
+
+He has written an excellent popular scientific book on the topic. It's great
+reading and also short.<Margin.Cite id="sync" />. 
+
+<Margin.Note>
+<Margin.Ref id="sync" />**Great reading:** Steve Strogatz book on synchronization.
+
+<div className="max-w-[40%] mx-auto">
+  <Figure src={sync} alt="Sync." margin={false} />
+</div>
+
+</Margin.Note>

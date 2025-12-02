@@ -1,0 +1,39 @@
+.xaxis {
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+    font-size: 16px;
+}
+
+.yaxis {
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+font-size: 16px;
+}
+
+.axis_label {
+   font-size: 20px;
+   font-style: italic;
+}
+
+
+.fadenkreuz {
+    stroke:black;	
+    stroke-width:1px;
+    fill:none;
+    opacity:0;
+    stroke-dasharray: 3 3;
+}
+
+.coord {
+    font-family: var(--axis-font-family, var(--font-serif, serif));
+    font-size: 16px;
+    fill: black;
+    opacity:0;
+}
+
+
+
+
+@media (prefers-color-scheme: dark) {
+   .axis_label{
+       fill:white
+   }
+}

@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import * as widgets from 'd3-widgets';
-import {each,map,range} from 'lodash-es';
+import {round} from 'lodash-es';
 import {useEffect,useRef} from 'react';
 import config from './config.js';
 import styles from './styles.module.css';
@@ -9,10 +9,10 @@ import styles from './styles.module.css';
 const loadExplorable = (canvasContainer,SvgContainer) => {
 
     // canvasContainer is expected to be a <canvas> element
-    const canvas = canvasContainer;
-    const svg = SvgContainer;
+    const canvas = d3.select(canvasContainer);
+    const svg = d3.select(SvgContainer);
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvasContainer.getContext('2d');
 
     const xr = config.plot.xr;
     const yr = config.plot.yr;
@@ -38,21 +38,51 @@ const loadExplorable = (canvasContainer,SvgContainer) => {
         dot: (a) => `rgba(0,0,0,${a})`,
     };
 
-    d3.select(canvas)
+    const f = (x,r) => { return r*x*(1-x);};
+
+    canvas
         .style("z-index",4)
 		.style("padding","0px").style("margin","0px")
 		.style("overflow","visible")
 		.on("click",zoomin)
+        .on("mouseover",function(){
+		    svg.selectAll("."+styles.fadenkreuz).transition().duration(100).style("opacity",1)
+		    svg.selectAll("."+styles.coord).transition().duration(100).style("opacity",1)
+	    })
+	    .on("mouseout",function(){
+		    svg.selectAll("."+styles.fadenkreuz).transition().duration(100).style("opacity",0)	
+		    svg.selectAll("."+styles.coord).transition().duration(100).style("opacity",0)
+	    })
+        .on("mousemove", function() {
+            let p = d3.pointer(event, this);
+            
+		    let rect = this.getBoundingClientRect();
+		    let scaleX = this.width / rect.width;    
+		    let scaleY = this.height / rect.height;
+		    p[0]=p[0]*scaleX
+		    p[1]=p[1]*scaleY
+            
+            let lamm=Xc.invert(p[0]) ; 
+		    let xm= Yc.invert(p[1]);
+            
+		    svg.select("#vertical").attr("x1",X(lamm)).attr("x2",X(lamm))
+		    svg.select("#horizonal").attr("y1",Y(xm)).attr("y2",Y(xm))
+            
+            svg.select("."+styles.coord).datum(p).attr("transform",function(d){
+				return "translate("+ (d[0]+5) +","+(d[1]-5)+")"
+			})
+			.text(function(d){
+				return "("+round(Xc.invert(d[0]),8)+","+round(Yc.invert(d[1]),8)+")"
+			})
+        });
 
-    d3.select(svg)	 	
-    	.style("position","absolute")
-	 	.style("pointer-events","none")
-	 	.style("overflow","visible")
+    svg.style("position","absolute").style("pointer-events","none").style("overflow","visible")
+       
 
     const N = config.plot.N;
     var palette = getPalette(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    console.log(palette.dot(0.5));
-    const f = (x,r) => { return r*x*(1-x);};
+    
+    
     
     // palette factory
     
@@ -133,20 +163,18 @@ const loadExplorable = (canvasContainer,SvgContainer) => {
 		Y.domain([xr0 , xr1])
 
 
-		ctx.clearRect(0, 0,canvas.width,canvas.height);
-		//ctx.fillStyle = "rgba(255, 255, 255, 0)";
-		//ctx.fillRect(0,0,canvas.width,canvas.height);	
+		ctx.clearRect(0, 0,canvasContainer.width,canvasContainer.height);
 			
 		simulation = setInterval(go, 0)
-		d3.select(svg).selectAll("."+styles.xaxis).transition().call(xAxis)
-        d3.select(svg).selectAll("."+styles.yaxis).transition().call(yAxis)
+		svg.selectAll("."+styles.xaxis).transition().call(xAxis)
+        svg.selectAll("."+styles.yaxis).transition().call(yAxis)
 	}
 
     
-    const canvasRect = (canvas.parentElement || canvas).getBoundingClientRect();
+    const canvasRect = (canvasContainer.parentElement || canvasContainer).getBoundingClientRect();
     
-    canvas.width = Math.round(canvasRect.width);
-    canvas.height = Math.round(canvasRect.height);
+    canvasContainer.width = Math.round(canvasRect.width);
+    canvasContainer.height = Math.round(canvasRect.height);
     
     Xc.range([0, canvasRect.width]).domain([lambda_0, lambda_1]);
     Yc.range([canvasRect.height, 0]).domain([yr[0], yr[1]]);
@@ -163,16 +191,47 @@ const loadExplorable = (canvasContainer,SvgContainer) => {
 		lambda+=dl;
 	}
 
-
-    d3.select(svg).append("g").call(xAxis)
+    const display = svg.append("g")
+        
+        
+    display.append("g").call(xAxis)
         .attr("class",styles.xaxis)
         .attr("transform","translate(" + 0 + "," + Y(0) + ")");
 
-    d3.select(svg).append("g").call(yAxis)
+    display.append("g").call(yAxis)
         .attr("class",styles.yaxis)
         .attr("transform","translate(" + X(config.plot.xr[0]) + "," + 0 + ")");
 
+    display.append("text").text(config.plot.xaxis.label)
+        .attr("class",styles.axis_label)
+        .attr("transform","translate(" + (X(0.5*(config.plot.xr[1]+config.plot.xr[0])) + config.plot.xaxis.label_position.x) + "," + (Y(0) + config.plot.xaxis.label_position.y) + ")")
     
+    display.append("text").text(config.plot.yaxis.label)
+        .attr("class",styles.axis_label)
+        .attr("transform","translate(" + (X(config.plot.xr[0]) + config.plot.yaxis.label_position.x) + "," + (Y(0.5) + config.plot.yaxis.label_position.y) + ")rotate(-90)")
+
+    display.append("line").attr("class",styles.fadenkreuz)
+		.attr("id","vertical")
+		.attr("x1",X.range()[0])
+		.attr("x2",X.range()[0])
+		.attr("y1",Y.range()[0])
+		.attr("y2",Y.range()[1])
+		
+			
+    display.append("line").attr("class",styles.fadenkreuz)
+		.attr("id","horizonal")
+		.attr("x1",X.range()[0])
+		.attr("x2",X.range()[1])
+		.attr("y1",Y.range()[0])
+		.attr("y2",Y.range()[0])
+    
+    display.append("text").datum([0,0]).attr("class",styles.coord)
+			.attr("transform",function(d){
+				return "translate("+ (d[0]) +","+(d[1])+")"
+			})
+			.text(function(d){
+				return "("+X.invert(d[0])+","+Y.invert(d[1])+")"
+			}).style("opacity",0)
 
     const cleanup = () => {
         ro.disconnect();
