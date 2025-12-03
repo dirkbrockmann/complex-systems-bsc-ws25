@@ -49,7 +49,7 @@ const lectures = defineCollection({
   loader: glob({ pattern: '**/index.{md,mdx}', base: './src/content/lectures' }),
   schema: z.object({
     title: z.string(),
-     description: z.string().optional(),
+    description: z.string().optional(),
     publishDate: z.coerce.date(),
     draft: z.boolean().optional(),
     seo: seoSchema.optional(),

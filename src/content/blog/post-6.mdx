@@ -1,0 +1,134 @@
+---
+title: Homework Assignment 3 (due Dec 10, 2025)
+description: One dimensional dynamical systems and the Kuramoto Model
+publishDate: 'Dec 3 2025'
+tags:
+  - Course
+---
+
+
+import siteConfig from '../../data/site-config.ts';
+
+import Explorable from '../../components/Explorable.astro';
+import * as Margin from '../../components/MarginNote';
+import LifeDeath from '../../content/figures/assignment3/figure1';
+import Fig4 from '../../content/figures/kuramoto-model/figure4';
+import Fig5 from '../../content/figures/kuramoto-model/figure5';
+
+
+## One dimensional dynamical systems.
+
+Below are a number of one-dimensional dynamical systems $\dot x = f(x)$. Analyze their dynamics 
+graphically by drawing $f(x)$. Determine the location of the fixpoints and their stability. 
+If you don't recall how that
+works revisit the [Lecture Notes on One Dimensional Dynamical Systems](/lectures/lecture-3). Remember: You do not need
+to do anything analytically. All you have to do is draw $f(x)$.
+
+- $\dot{x}=x(x-1)$
+- $\dot{x}=x^{3}-2x$
+- $\dot{x}=x^{2}-x^{3}$
+- $\dot{x}=\sin^2(2\pi x)$
+- $\dot{x}=-x(\lambda-x^{2})$ when $\lambda>0$ or when $\lambda< 0 $ or when $\lambda=0$
+- $\dot{x}=(x-a)(x-b)(x-c)$ with $a< b < c$
+
+## Making a Model for Spontaneous Life and Death
+
+
+<Explorable id="lifedeath" margin={true}>    
+    **Spontaneous Life and Death:** Particles emerge out of nowhere and die again. 
+    (Note: when you turn the death rate to the smallest possible value on the slider,
+    it doesn **not** correspond to zero.)
+    <LifeDeath slot="figure" client:load id="lifedeath"/>
+</Explorable>
+
+Imagine you have a system in which individual organisms can be sponaneously
+generated out of nothing at some rate $\alpha$. When they exist,
+they can die at some rate $\beta$. So, schematically two reactions
+can occur
+
+$$
+\emptyset  \xrightarrow{\alpha}  X
+$$
+
+and
+$$
+X  \xrightarrow{\beta}  \emptyset
+$$
+
+Now try to describe this by a time continuous 1d dynamical system for the concentration
+$x(t)$ of particles in your system. Be careful. Although the schematic
+equations above look so symmetric, the changes in $x(t)$ that are
+caused by them are different. The birth process is constant over
+time whereas the death count depends on how many individuals exist.
+When you have derived your dynamical system, analyse it.
+
+
+## Chimera States in the Kuramoto Model
+
+
+In class we discussed the **Kuramoto model** of phase coupled oscillators. Specifically,
+we looked at two coupled oscillators:
+
+$$
+\dot{\theta}_1=\omega_1 + \frac{K}{2}\sin(\theta_2-\theta_1)
+$$
+
+$$
+\dot{\theta}_2=\omega_2 + \frac{K}{2}\sin(\theta_1-\theta_2)
+$$
+
+Now, the generalization of this to $N$ oscillators is straightforward:
+
+$$
+\dot{\theta}_i=\omega_i + \frac{K}{N}\sum_{j=1}^{N}\sin(\theta_j-\theta_i).
+$$
+
+In this model, all oscillators interact with all other oscillators.
+Below is an explorable that I also showed in class. It visualizes
+the Kuramoto model for many oscillators. Your task is to find what
+is known as a **chimera state**. This is a state in which some
+of the oscillators are synchronized (i.e. they move around in a phase locked state)
+whereas others are not synchronized (i.e. they move around incoherently).
+
+Chimera states are difficult to find. You need to play around with two parameters:
+
+1. The coupling strength $K$
+2. The oscillators' angular speed variability.
+
+Try to find a chimera state in which only one or two single oscillators aren't synchronized.
+When you found such a state, take screenshots that provide evidence that you did. You need to figure
+out how you can accommplish that. 
+
+1. _Hint:_ You need to submit two pictures.
+2. _Hint:_ It helps to use the co-moving reference frame feature.
+
+
+<Explorable id="figure_4" margin={false}>    
+    Synchronization of phase-coupled oscillators in the Kuramoto Model. 
+    This is the Complexity Exporable [**“Ride my Kuramotocycle!”**](https://www.complexity-explorables.org/explorables/ride-my-kuramotocycle/).
+    <Fig4 slot="figure" client:load id="ride_my_kuramoto_cycle"/>
+</Explorable>
+
+
+## When the Kuramoto Model becomes Psychedelic
+
+
+Another well studied version of the Kuramoto model is a system in which 
+oscillators are arranged on a square lattice, and each oscillator is 
+interacting only with its immediate neighbors. 
+
+Below is another explorable for that. In it each lattice site is an oscillator and the color
+in the spectrum indicates the phase of each oscillator. When you start the
+simulation the coupling parameter $K$ is zero. Increase it slowly and observe what happens.
+
+Describe what you observe. What generic features do you observe? What features are stable with
+respect to changing parameters? What do you observe when you wait a long time?
+
+
+
+<Explorable id="figure_6" margin={false}>    
+    In this simulation, phase coupled oscillators are arranged on a square lattice. Each oscillator interacts with its immediate neighbors. This is the Complexity Exporable [**“Spin Wheels”**](https://www.complexity-explorables.org/explorables/spin-wheels/) _Phase-coupled oscillators on a lattice_. If you want more information go to the Complexity Exporable website: [www.complexity-explorables.org](https://www.complexity-explorables.org).
+    <Fig5 slot="figure" client:load id="spinwheels"/>
+</Explorable>
+
+

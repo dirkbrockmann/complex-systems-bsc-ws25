@@ -16,7 +16,7 @@ export interface Track {
 }
 
 export interface Props {
-  src: string;                 // single source (string URL from import)
+  src?: string;                 // single source (string URL from import)
   sources?: Array<Source | string>;
   poster?: ImageMetadata | string;
   caption?: string;
@@ -76,16 +76,77 @@ const captionId = hasCaption ? `vidcap-${Math.random().toString(36).slice(2)}` :
 const posterIsStr = typeof poster === 'string';
 const autoAspectEffective = !aspect && autoAspect;
 ---
+<figure class={`not-prose my-4 ${className}`} aria-labelledby={captionId} {...rest}>
+  <div
+    class={`relative overflow-hidden ${!aspect && !autoAspectEffective ? 'aspect-video' : ''} ${mediaClass}`}
+    style={aspect ? `aspect-ratio:${aspect};` : undefined}
+  >
+    <video
+      class={`block w-full h-full ${videoClass}`}
+      controls={controls}
+      autoplay={autoplay}
+      muted={autoplay ? true : muted}
+      loop={loop}
+      playsinline={playsInline}
+      preload={preload}
+      poster={posterIsStr ? (poster as string) : undefined}
+    >
+      {poster && !posterIsStr ? (
+        <Image src={poster as ImageMetadata} alt="" aria-hidden="true" class="hidden" />
+      ) : null}
 
-<div class={className} {...rest}>
-  <video
-    src={src}
-    poster={poster}
-    muted={muted}
-    loop={loop}
-    autoplay={autoplay}
-    controls={controls}
-    playsinline={playsInline}
-    class={mediaClass}
-  />
-</div>
+      {srcList.map((s) => (
+        <source src={s.src} type={s.type} />
+      ))}
+
+      {tracks.map((t) => (
+        <track
+          src={t.src}
+          kind={t.kind ?? 'subtitles'}
+          srclang={t.srclang}
+          label={t.label}
+          {...(t.default ? { default: true } : {})}
+        />
+      ))}
+
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  {hasCaption ? (
+    <figcaption id={captionId} class="mt-3 text-center text-neutral-600 dark:text-neutral-300">
+      {caption}
+      <slot name="caption" />
+    </figcaption>
+  ) : null}
+
+  {(autoAspectEffective || (start && start > 0)) ? (
+    <script is:inline define:vars={{ start: start ?? 0, autoAspectEffective }}>
+      (function () {
+        var wrap = document.currentScript && document.currentScript.previousElementSibling;
+        var video = wrap && wrap.querySelector && wrap.querySelector('video');
+        if (!video) return;
+
+        function onMeta() {
+          try {
+            // Auto aspect from intrinsic video dimensions
+            if (autoAspectEffective) {
+              var w = video.videoWidth;
+              var h = video.videoHeight;
+              if (w && h && wrap && wrap.style) {
+                wrap.style.aspectRatio = w + ' / ' + h;
+              }
+            }
+          } catch (e) {}
+          try {
+            var START = Number(start);
+            if (START > 0) video.currentTime = START;
+          } catch (e) {}
+        }
+
+        if (video.readyState >= 1) onMeta();
+        else video.addEventListener('loadedmetadata', onMeta, { once: true });
+      })();
+    </script>
+  ) : null}
+</figure>

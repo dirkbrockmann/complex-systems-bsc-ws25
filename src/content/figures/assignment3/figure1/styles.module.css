@@ -1,0 +1,36 @@
+.xaxis {
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+    font-size: 12px;
+}
+
+.yaxis {
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+font-size: 12px;
+}
+
+.axis_label {
+   font-size: 20px;
+   font-style: italic;
+}
+
+
+.agent {
+    fill: black;
+}
+
+.plotline{
+    fill:none;
+    stroke:darkred;
+    stroke-width:5px;
+    stroke-linecap: round;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .agent {
+        fill: white;
+    }
+    .plotline {
+        stroke: red
+    }
+}
