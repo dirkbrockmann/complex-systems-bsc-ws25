@@ -40,7 +40,7 @@ export default {
         slider_girth: 10,
         slider_knob: 12,
         slider_gap: 1,
-        slider_fontsize: 14,
+        slider_fontsize: 20,
         sliders: [
             {
                 id: "alpha",

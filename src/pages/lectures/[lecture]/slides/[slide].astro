@@ -2,7 +2,7 @@
 import { getCollection, type CollectionEntry, render } from 'astro:content';
 import SlideLayout from '../../../../layouts/SlideLayout.astro';
 import { parseSlideId } from '../../../../utils/slide-path.ts';
-
+import Link from '../../../../components/Link.astro';
 
 type SlideEntry = CollectionEntry<'slides'>;
 
@@ -73,5 +73,5 @@ const isHidden = !!entry.data.hidden && import.meta.env.DEV;
   isDraft={isDraft}
   isHidden={isHidden}
 >
-  <Content />
+  <Content components={{ a: Link }} />
 </SlideLayout>

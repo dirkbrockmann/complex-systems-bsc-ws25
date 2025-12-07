@@ -15,10 +15,12 @@ const loadExplorable = (displayContainer,controlsContainer) => {
     const xr = config.plot.xr;
     const yr = config.plot.yr;
 
-    const X = d3.scaleLinear().domain(xr).range([config.plot.margin.l,config.display.width - config.plot.margin.r]);
-    const Y = d3.scaleLinear().domain(yr).range([config.display.height - config.plot.margin.b,config.plot.margin.t]);
+    const X = d3.scaleLinear().domain(xr).range([0,config.display.width - config.plot.margin.r - config.plot.margin.l]);
+    const Y = d3.scaleLinear().domain(yr).range([0,-config.display.height + config.plot.margin.b+config.plot.margin.t]);
+    
     const xAxis = d3.axisBottom(X);
     const yAxis = d3.axisLeft(Y);
+    
     const curve = d3.line().x(d => X(d.x)).y(d => Y(d.y));
 
     display.append('defs').append('marker')
@@ -42,6 +44,7 @@ const loadExplorable = (displayContainer,controlsContainer) => {
             .range(v.range)
             .value(v.value)
             .fontsize(config.widgets.slider_fontsize)
+            .labelpadding(0)
             .size(config.widgets.slider_size)
             .girth(config.widgets.slider_girth)
             .knob(config.widgets.slider_knob)
@@ -71,52 +74,49 @@ const loadExplorable = (displayContainer,controlsContainer) => {
 
     var points = map(range(xr[0],xr[1],(xr[1] - xr[0]) / 200),x => ({x: x,y: f(x)}));
     var roots = findAllRoots(f,fp,config.plot.xr);
-
-    console.log(roots)
     
     const update = () => {
         roots = findAllRoots(f,fp,config.plot.xr);
         points = map(range(xr[0],xr[1],(xr[1] - xr[0]) / 200),x => ({x: x,y: f(x)}));
-        display.selectAll("." + styles.fixpoint).remove();
-        display.selectAll("." + styles.fixpoint).data(roots).enter().append("circle")
+        plot.selectAll("." + styles.fixpoint).remove();
+        plot.selectAll("." + styles.fixpoint).data(roots).enter().append("circle")
             .attr("class",styles.fixpoint)
             .attr("r",config.plot.fixpointradius)
             .attr("transform",function(d) {return "translate(" + X(d) + "," + Y(0) + ")"})
             .classed(styles.stable,d => (fp(d) < 0))
-        display.select("." + styles.curve).datum(points).attr("d",curve)
-        display.selectAll("." + styles.arrow)
+        plot.select("." + styles.curve).datum(points).attr("d",curve)
+        plot.selectAll("." + styles.arrow)
             .data(arrow_anchors)
             .attr("d",x0 => {
                 let al = arrow_scale * Math.abs(f(x0)) > 1 ? max_arrow_length * Math.sign(f(x0)) : arrow_scale * f(x0) * max_arrow_length;
                 let a = [{x: x0,y: 0},{x: x0 + al,y: 0}];
                 return curve(a);
             })
-console.log(roots)
+
     }
 
     each(sliders,s => s.update(update));
 
-
-    display.append("g").call(xAxis)
+    const plot = display.append("g")
+             .attr("transform","translate(" + (config.plot.margin.l) + "," + (config.display.height-config.plot.margin.b) + ")")
+        
+    plot.append("g").call(xAxis)
         .attr("class",styles.xaxis)
         .attr("transform","translate(" + 0 + "," + Y(0) + ")");
 
-    display.append("g").call(yAxis)
+    plot.append("g").call(yAxis)
         .attr("class",styles.yaxis)
         .attr("transform","translate(" + X(0) + "," + 0 + ")");
 
-    display.append("text").text(config.plot.xaxis.label).attr("class",styles.axis_label)
-        .attr("transform","translate(" + X(4) + "," + (Y(0) + 40) + ")")
+    plot.append("text").text(config.plot.xaxis.label).attr("class",styles.axis_label)
+        .attr("transform","translate(" + (X(config.plot.xaxis.label_position.x) + config.plot.xaxis.label_offset.x) + "," + (Y(config.plot.xaxis.label_position.y) + config.plot.xaxis.label_offset.y) + ")")
 
+    plot.append("text").text(config.plot.yaxis.label).attr("class",styles.axis_label)
+        .attr("transform","translate(" + (X(config.plot.yaxis.label_position.x) + config.plot.yaxis.label_offset.x) + "," + (Y(config.plot.yaxis.label_position.y) + config.plot.yaxis.label_offset.y) + ")")
 
-    display.append("text").text(config.plot.yaxis.label).attr("class",styles.axis_label)
-        .attr("transform","translate(" + (X(0) + 20) + "," + (Y(2) + 10) + ")")
+    plot.append("path").datum(points).attr("d",curve).attr("class",styles.curve);
 
-
-    display.append("path").datum(points).attr("d",curve)
-        .attr("class",styles.curve);
-
-    display.selectAll("." + styles.arrow)
+    plot.selectAll("." + styles.arrow)
         .data(arrow_anchors).enter().append("path")
         .attr("d",x0 => {
             let al = arrow_scale * Math.abs(f(x0)) > 1 ? max_arrow_length * Math.sign(f(x0)) : arrow_scale * f(x0) * max_arrow_length;

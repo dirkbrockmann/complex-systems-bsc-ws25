@@ -17,16 +17,18 @@ export default {
         arrow_scale: 1,
         number_of_arrows: 10,
         fixpointradius: 8,
-        margin: {l: 40,r: 10,t: 10,b: 10},
+        margin: {l: 80,r: 20,t: 20,b: 20},
         xr: [0,1],
         yr: [-.5,1],
         xaxis: {
-            label: "n",
-            label_position: {x: 280,y: 190}
+            label: "x",
+            label_position: {x: 1,y: 0},
+            label_offset: {x: 0,y: 40}
         },
         yaxis: {
-            label: "f(n)",
-            label_position: {x: 175,y: 20}
+            label: "f(x)",
+            label_position: {x: 0,y: 1},
+            label_offset: {x: -80,y: 0}
         }
     },
     widgets: {

@@ -1,0 +1,17 @@
+---
+title: The SIS Model
+publishDate: 2025-09-01
+order: 8
+hidden: false
+---
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/1-dimensional-dynamical-systems/figure6';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# The SIS Model
+
+<Eq expr="\dot{x}=\alpha x(1-x)-\beta x" size="xl" />
+
+<Explorable id="fofx_sis" class="max-w-[40%]" captionClass=''>    
+    <Fig slot="figure" client:load id="fofx_sis"/>
+</Explorable>

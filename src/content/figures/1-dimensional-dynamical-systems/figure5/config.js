@@ -14,20 +14,23 @@ export default {
         grid: {x: 12,y: 12}
     },
     plot: {
-        width: 400,
+        width: 360,
         height: 180,
-        margin: {l: 0,r: 0,t: 0,b: 0},
-        position: {x: 5.5,y: 10.5},
+        margin: {l: 0,r: 0,t: 0,b: 30},
+        position: {x: 6,y: 11},
+        yrange: [0,500],
+        xrange: [0,500],
         fontsize: "20px",
         xaxis: {
             label: "t",
-            position: {x: 400,y: -10}
+            position: {x: 500,y: 0},
+            offset: {x: 0,y: 40}
         },
         yaxis: {
             label: "I(t)",
-            position: {x: 10,y: -320}
-        },
-        yrange: [0,500],
+            position: {x: 0,y: 500},
+            offset: {x: -80,y: 0}
+        }
     },
     widgets: {
         slider_size: 250,
@@ -39,14 +42,14 @@ export default {
                 id: "transmission_rate",
                 label: "Transmission rate",
                 range: [0,1],
-                value: .2,
+                value: .75,
                 position: {x: .5,y: 11}
             },
             {
                 id: "recovery_rate",
                 label: "Recovery rate",
-                range: [0,0.005],
-                value: 0.0025,
+                range: [0,0.1],
+                value: 0.05,
                 position: {x: .5,y: 7.5}
             },
         ],

@@ -1,0 +1,35 @@
+---
+title: Critical Phenomena & Tipping Points
+description: In this lecture, we will explore the properties of systems that exihibt critical points
+publishDate: 2025-09-01
+order: 2
+---
+import TitleSlide from '../../../../components/slide-kit/TitleSlide.astro';
+import uniLight from '../../../../assets/generated/complexity_transparent.png';
+import uniDark from '../../../../assets/generated/complexity_dark.png';
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+
+import sandpile from '../../../../assets/generated/sandpile_transparent.png';
+import sandpile_dark from '../../../../assets/generated/sandpile_dark.png';
+import tipping_point from '../../../../assets/generated/tippingpoint_transparent.png';
+import tipping_point_dark from '../../../../assets/generated/tippingpoint_dark.png';
+import firefly from '../../../../assets/generated/firefly_transparent.png';
+import fireflyDark from '../../../../assets/generated/firefly_dark.png';
+
+# Critical Phenomena & Tipping Points
+## Phase Transitions, Tipping Points, and Hysteresis
+
+<Grid rows={1} cols={3} gapClass="gap-6" class="px-12 max-w-[80%] mx-auto my-12">
+  <Figure src={sandpile} srcDark={sandpile_dark} alt="sandpile">
+    A sandpile is an example of **Self-Organized Criticality**
+  </Figure>
+
+  <Figure src={tipping_point} srcDark={tipping_point_dark} alt="Tipping Point">
+    A Tipping Point defines a transition point that is irreversible.
+  </Figure>
+    <Figure src={firefly} srcDark={fireflyDark} alt="Firefly Synchronization">
+      The synchronization of fireflies is a critical phenomenon.
+  </Figure>
+</Grid>
+

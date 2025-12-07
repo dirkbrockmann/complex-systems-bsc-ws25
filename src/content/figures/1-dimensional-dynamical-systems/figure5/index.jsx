@@ -2,7 +2,7 @@
 
 import * as d3 from 'd3';
 import * as widgets from 'd3-widgets';
-import {each,map,maxBy,range,filter} from "lodash-es";
+import {each,map,range,filter} from "lodash-es";
 import {useEffect,useRef} from 'react';
 import config from './config.js';
 import styles from './styles.module.css';
@@ -14,10 +14,10 @@ const loadExplorable = (displayContainer,controlsContainer) => {
     const N = 500; // Number of particles
     const initially_infected = 10;
 	const L = 300; // world size
-    const Tmax = 500;
+    const Tmax = config.plot.xrange[1]; // max time
 	const dt = 1;
-	const R_coll = 2;;
-	const speed = 0.5;
+	const R_coll = 3;;
+	const speed = 1;
     const agentsize = 5;
 	
     var timer = {}
@@ -30,18 +30,16 @@ const loadExplorable = (displayContainer,controlsContainer) => {
 
     const T = d3.scaleLinear()
         .domain([0,Tmax])
-        .range([config.plot.margin.l,config.plot.width - config.plot.margin.r]);
+        .range([0,config.plot.width - config.plot.margin.r-config.plot.margin.l]);
 
     const R = d3.scaleLinear()
         .domain(config.plot.yrange)
-        .range([config.plot.height - config.plot.margin.b,config.plot.margin.t]);
-        //.range([0,config.plot.height]);
+        .range([0,-config.plot.height + config.plot.margin.b+config.plot.margin.t]);
 
 
     const tAxis = d3.axisBottom(T);
     const rAxis = d3.axisLeft(R);
     
-
     const pcurve = d3.line().x(d => T(d.t)).y(d => R(d.r));
 
     var tick, agents, count;
@@ -74,6 +72,7 @@ const loadExplorable = (displayContainer,controlsContainer) => {
                 .range(v.range)
                 .value(v.value)
                 .fontsize(config.widgets.slider_fontsize)
+                .labelpadding(0)
                 .size(config.widgets.slider_size)
                 .girth(config.widgets.slider_girth)
                 .knob(config.widgets.slider_knob)
@@ -109,7 +108,6 @@ const loadExplorable = (displayContainer,controlsContainer) => {
                 d.state="S"		    
             }})
 
-        
 	    display.selectAll("." + styles.agent).data(agents)
             .classed(styles.infected,d=>d.state=="I")
             .classed(styles.susceptible,d=>d.state=="S")
@@ -171,9 +169,9 @@ const loadExplorable = (displayContainer,controlsContainer) => {
 
             .attr("transform",function(d) {return "translate(" + X(d.x) + "," + Y(d.y) + ")"})
 
-        controls.append("path").datum(count).attr("d",pcurve)
+        plot.append("path").datum(count).attr("d",pcurve)
             .attr("class",styles.plotline)
-            .attr("transform","translate(" + axpos.x + "," + (axpos.y -config.plot.height) + ")")
+            
 
     }
 
@@ -191,32 +189,23 @@ const loadExplorable = (displayContainer,controlsContainer) => {
     controls.selectAll(null).data(buttons).enter().append(widgets.widget);
     controls.selectAll(null).data(sliders).enter().append(widgets.widget);
 
-    setup();
+    const plot = controls.append("g")
+         .attr("transform","translate(" + (axpos.x + config.plot.margin.l) + "," + (axpos.y - config.plot.margin.b) + ")")
     
-    // axes
-    
-
-    
-    controls.append("g")
-         .attr("transform","translate(" + axpos.x + "," + axpos.y + ")")
-         .attr("class",styles.xaxis)
-         .call(tAxis)
+    plot.append("g").attr("class",styles.xaxis).call(tAxis)        
+    plot.append("g").attr("class",styles.yaxis).call(rAxis)
         
-    controls.append("g")
-        .attr("transform","translate(" + axpos.x + "," + +(axpos.y -config.plot.height) + "  )")
-        .attr("class",styles.yaxis)
-        .call(rAxis)
-        
-
     // axes labels
 
-    controls.append("text").text(config.plot.xaxis.label).attr("class",styles.axis_label)
-        .attr("transform","translate(" + (axpos.x+config.plot.xaxis.position.x)+ "," + (axpos.y+config.plot.xaxis.position.y) + ")")
+    plot.append("text").text(config.plot.xaxis.label).attr("class",styles.axis_label)
+        .attr("transform","translate(" + (T(config.plot.xaxis.position.x) + config.plot.xaxis.offset.x) + "," + (R(config.plot.xaxis.position.y) + config.plot.xaxis.offset.y) + ")")
 
-    controls.append("text").text(config.plot.yaxis.label).attr("class",styles.axis_label)
-        .attr("transform","translate(" + (axpos.x+config.plot.yaxis.position.x) + "," + (axpos.x+config.plot.yaxis.position.y) + ")")
+    plot.append("text").text(config.plot.yaxis.label).attr("class",styles.axis_label)
+        .attr("transform","translate(" + (T(config.plot.yaxis.position.x) + config.plot.yaxis.offset.x) + "," + (R(config.plot.yaxis.position.y) + config.plot.yaxis.offset.y) + ")")
+
         
 
+    setup();
 
 
 

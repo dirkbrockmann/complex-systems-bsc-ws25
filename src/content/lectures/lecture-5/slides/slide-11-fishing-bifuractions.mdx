@@ -1,0 +1,17 @@
+---
+title: Hysteresis and Bifurcations in Fishing Models
+publishDate: 2025-09-01
+order: 11
+hidden: false
+---
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/critical-phenomena/figure7';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# Hysteresis and Irreversibility
+
+<Eq expr="\dot{x}=\alpha (1-x)x^2 - \beta x-H x" size="xl" />
+
+<Explorable id="fofx_sis" class="max-w-[80%]" captionClass=''>    
+    <Fig slot="figure" client:load id="fofx_sis"/>
+</Explorable>

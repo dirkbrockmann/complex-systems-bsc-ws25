@@ -2,7 +2,7 @@
 
 import * as d3 from 'd3';
 import * as widgets from 'd3-widgets';
-import {each,map,maxBy,range} from "lodash-es";
+import {each,map,range} from "lodash-es";
 import {useEffect,useRef} from 'react';
 import config from './config.js';
 import styles from './styles.module.css';

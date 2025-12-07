@@ -1,6 +1,6 @@
 export default {
     container: {
-        class: "flex flex-col",
+        class: "explorable flex flex-col",
     },
     display: {
         width: 300,
@@ -9,15 +9,14 @@ export default {
     },
     controls: {
         width: 300,
-        height: 100,
+        height: 120,
         class: "d3-widgets p-0  mb-0 w-full h-auto",
         grid: {x: 12,y: 6}
     },
     widgets: {
         slider_size: 250,
-        slider_girth: 8,
-        slider_knob: 9,
-        slider_gap: 1,
+        slider_girth: 10,
+        slider_knob: 12,
         slider_fontsize: 24,
         sliders: [
             {
@@ -25,7 +24,7 @@ export default {
                 label: "\u03BC",
                 range: [-5,5],
                 value: 0,
-                position: {x: 1,y: 2}
+                position: {x: 1,y: 2.5}
             },
             {
                 id: "sigma",

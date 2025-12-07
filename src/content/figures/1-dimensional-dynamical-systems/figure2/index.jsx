@@ -2,7 +2,7 @@
 
 import * as d3 from 'd3';
 import * as widgets from 'd3-widgets';
-import {each,map,maxBy,range} from "lodash-es";
+import {each,map,range} from "lodash-es";
 import {useEffect,useRef} from 'react';
 import config from './config.js';
 import styles from './styles.module.css';
@@ -73,6 +73,7 @@ const loadExplorable = (displayContainer,controlsContainer) => {
                 .range(v.range)
                 .value(v.value)
                 .fontsize(config.widgets.slider_fontsize)
+                .labelpadding(0)
                 .size(config.widgets.slider_size)
                 .girth(config.widgets.slider_girth)
                 .knob(config.widgets.slider_knob)

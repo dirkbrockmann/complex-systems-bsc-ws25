@@ -1,0 +1,76 @@
+.xaxis {
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+   font-size: 14px;
+}
+
+.yaxis {
+   font-family: var(--axis-font-family, var(--font-serif, serif));
+   font-size: 14px;
+}
+
+.axis_label {
+   font-size: 20px;
+   font-style: italic;
+}
+
+.agent {
+    fill: none;
+    stroke:black;
+    stroke-width:1px;
+    opacity:0.1;
+}
+
+.agent.singular {
+    fill: none;
+    stroke:darkred;
+    stroke-width:2px;
+    opacity:1;
+}
+
+.visible {
+    opacity: 0;
+}
+
+.dot {
+    fill: darkred;
+    stroke: darkred;
+    stroke-width: 1px;
+}
+
+.timeseries {
+
+}
+
+.branch {
+    fill: none;
+    stroke-width: 5px;
+}
+
+.stable {
+    stroke: blue;
+}
+
+.unstable {
+    stroke: red;
+}
+
+@media (prefers-color-scheme: dark) {
+    .agent {
+        stroke: white;
+    }
+    .agent.singular {
+        stroke: white;
+        opacity: 1;
+    }
+
+.axis_label {
+   fill:white
+}
+
+.dot {
+    fill: white;
+    stroke: white;
+    stroke-width: 1px;
+}
+}
+

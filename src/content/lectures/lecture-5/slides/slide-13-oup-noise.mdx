@@ -1,0 +1,22 @@
+---
+title: The simplest system + Noise
+publishDate: 2025-09-01
+order: 13
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/critical-phenomena/figure5';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# The simplest system + Noise
+
+<Eq expr="\dot{x}=- \alpha x + \text{Noise}" size="xl" />
+
+
+<Explorable id="fofx_sis" class="max-w-[70%]" captionClass=''>    
+    <Fig slot="figure" client:load id="fofx_sis"/>
+</Explorable>
+
+
+For more information how to do this stuff mathematically see the
+Tutorial [**Random Walks & Stochastic Processes**](/tutorials/stochastic-processes)

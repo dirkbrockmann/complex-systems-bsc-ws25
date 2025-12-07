@@ -44,7 +44,7 @@ const loadExplorable = (displayContainer,controlsContainer) => {
             .label(v.label)
             .range(v.range)
             .value(v.value)
-            .fontsize(config.widgets.slider_fontsize)
+            //.fontsize(config.widgets.slider_fontsize)
             .size(config.widgets.slider_size)
             .girth(config.widgets.slider_girth)
             .knob(config.widgets.slider_knob)

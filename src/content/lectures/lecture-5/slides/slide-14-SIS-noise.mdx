@@ -1,0 +1,16 @@
+---
+title: Huysgens Quote
+publishDate: 2025-09-01
+order: 14
+---
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/critical-phenomena/figure6';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# SIS Model + Noise
+
+<Eq expr="\dot{x}=\left[\alpha+\text{Noise}\right] x(1-x)-\beta x" size="xl" />
+
+<Explorable id="fofx_sis" class="max-w-[80%]" captionClass=''>    
+    <Fig slot="figure" client:load id="fofx_sis"/>
+</Explorable>
