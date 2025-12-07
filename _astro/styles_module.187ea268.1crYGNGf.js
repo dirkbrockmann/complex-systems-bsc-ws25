@@ -1,0 +1,1 @@
+const s="_xaxis_1l4dp_1",_="_yaxis_1l4dp_6",e="_axis_label_1l4dp_11",l="_agent_1l4dp_16",t="_infected_1l4dp_20",i="_susceptible_1l4dp_24",n="_plotline_1l4dp_28",a={xaxis:s,yaxis:_,axis_label:e,agent:l,infected:t,susceptible:i,plotline:n};export{a as s};

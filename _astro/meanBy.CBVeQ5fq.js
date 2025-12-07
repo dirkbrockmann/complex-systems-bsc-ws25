@@ -1,0 +1,1 @@
+import{d as a}from"./map.DzjKMYce.js";function f(e,t){for(var n,u=-1,l=e.length;++u<l;){var i=t(e[u]);i!==void 0&&(n=n===void 0?i:n+i)}return n}var s=NaN;function d(e,t){var n=e==null?0:e.length;return n?f(e,t)/n:s}function h(e,t){return d(e,a(t))}export{f as b,h as m};
