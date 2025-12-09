@@ -1,1 +1,0 @@
-import{s as f,c as s,v as u}from"./square_simple.Di_3mSCo.js";import{m as e}from"./toString.CnMD2-aq.js";function n(r){return f(s(r))}function t(r){return f(u(r))}function m(r){var a=e(r)?n:t;return a(r)}export{m as s};
