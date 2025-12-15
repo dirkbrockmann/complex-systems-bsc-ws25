@@ -1,0 +1,40 @@
+---
+title: Fruitfly Development   
+publishDate: 2025-09-01
+order: 24
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import gene1 from '../../../../assets/gene1.png';
+import gene2 from '../../../../assets/gene2.png';
+
+# Fruitfly Development
+
+<Grid rows={1} cols={2} gapClass="gap-4" class="px-12 max-w-full py-10 mx-auto">
+  <div>
+    The way this is accomplished? In morphogenesis genes 
+    that are play a role in the process regulate each other 
+    and eventually are expressed in a spatially inhomogeneous pattern. 
+    For example in the embryo of the fruitfly different genes are expressed 
+    in stripes across the embryo which eventually leads to the segmentation of the embryo.
+  </div>
+
+  <div className="flex flex-row items-center gap-4">
+    <Figure
+      src={gene1}
+      alt="Snail Patterns"
+      boxed={true}
+      fit="cover"
+      class="w-1/2 max-w-[80%]"
+    />
+    <Figure
+      src={gene2}
+      alt="Shell Book"
+      boxed={true}
+      fit="cover"
+      class="w-1/2 max-w-[80%]"
+    />
+  </div>
+</Grid>
+

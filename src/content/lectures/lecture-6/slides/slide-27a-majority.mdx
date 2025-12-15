@@ -1,0 +1,25 @@
+---
+title: The Majority Model   
+publishDate: 2025-09-01
+order: 27.2
+---
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# Postive Lateral interactions
+
+## The Majority Model
+
+This is similar to the Voter Model. 
+But instead of adopting the "opinion" of a randomly chosen neighbor, 
+a site adopts the majority opinion of the neighbors. 
+When no majority is there, the site picks a random state.
+ 
+
+## These are the rules for the majority model
+
+
+0. The system (square lattice) is initialized in some configuation.
+1. Pick a random lattice site. 
+2. Compute the majority opinion of the neighborbood
+3. The chosen site adopts the state of the majority if it exists, when opinions are tied, the site picks the opinion of a randomly chose neighbor
+4. Go back to step 1

@@ -1,0 +1,26 @@
+---
+title: Fractal Patterns
+publishDate: 2025-09-01
+order: 13
+---
+
+
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import river from '../../../../assets/river.png';
+import romanesco from '../../../../assets/romanesco.png';
+
+# Fractal Patterns
+<Grid rows={1} cols={2} gapClass="gap-6" class="px-12 max-w-[100%] mx-auto">  
+
+<Figure src={river} alt="River Fractal Pattern" boxed={true} fit="cover" class="max-w-[80%]">
+    This sattelite image of a river system exhibits fractal / self-similar geometry.
+</Figure>
+
+
+<Figure src={romanesco} alt="Romanesco Fractal Pattern" boxed={true} fit="cover" class="max-w-[60%]">
+    The romanesco broccoli shows fractal patterns in its vegetable structure.
+</Figure>
+
+</Grid>
+

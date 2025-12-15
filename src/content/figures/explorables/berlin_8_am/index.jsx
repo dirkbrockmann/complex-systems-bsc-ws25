@@ -14,13 +14,32 @@ const forced = {
     display:   "border-1 border-black dark:border-white w-1/2 mb-0 h-auto",
     controls:  "w-1/2 mb-0 h-auto"
 };
+// NEW: always column, display on top, controls below
+const stacked = {
+    container: "flex flex-col items-start gap-4",
+    display:   "w-full border-1 border-black dark:border-white mb-0 h-auto",
+    controls:  "w-full mb-0 h-auto"
+};
 
-export default ({id, forceRowOnSmall = false}) => {
+export default ({
+    id,
+    forceRowOnSmall = false,
+    layout = "responsive" // "responsive" | "row" | "column"
+}) => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        // Choose class set per instance, optionally forcing a single row on small screens
-        const classes = forceRowOnSmall ? forced : responsive;
+        // Choose preset:
+        //  - explicit layout wins if provided
+        //  - else fall back to old boolean behaviour via forceRowOnSmall
+        let classes;
+        if (layout === "column") {
+            classes = stacked;
+        } else if (layout === "row" || forceRowOnSmall) {
+            classes = forced;
+        } else {
+            classes = responsive;
+        }
 
         if (containerRef.current) {
             // Apply classes just-in-time for this instance
@@ -33,7 +52,7 @@ export default ({id, forceRowOnSmall = false}) => {
         return () => {
             d3.select('#' + containerRef.current.id).selectAll('*').remove(); // Clean up the container
         };
-    },[id, forceRowOnSmall]);
+    },[id, forceRowOnSmall, layout]);
 
     return <div ref={containerRef} id={id} />;
 }

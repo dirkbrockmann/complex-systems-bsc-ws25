@@ -1,0 +1,28 @@
+---
+title: Lateral interaction models   
+publishDate: 2025-09-01
+order: 27
+---
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# Postive Lateral interactions
+
+## The Voter Model
+
+The original voter model is a discrete time model 
+on a square lattice. Each lattice point has one of $M$ states:
+ 
+
+<Eq expr="u_{ij} = m\qquad\text{with}\qquad m \in \{1, \ldots, M\}" size="xl" />
+
+
+## These are the rules for the voter model
+
+
+1. The system (square lattice) is initialized in some random configuration.
+2. Pick a random lattice site
+3. Pick one of its 8 neighbors at random
+4. The chosen site adopts the state of the chosen neighbor
+5. Go back to step 1
+
+

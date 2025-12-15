@@ -1,0 +1,31 @@
+---
+title: Ocular Dominance Columns
+publishDate: 2025-09-01
+order: 15
+---
+
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import ocular from '../../../../assets/ocular2.png';
+
+# Ocular Dominance Columns
+
+<TwoCol class="mb-6 max-w-full mx-auto p-20" align="center">
+<div slot="left">
+Cells in the visual cortex exhibit an **ocular dominance**. 
+They exhibit the tendency to respond to stimuli presented to 
+one eye more than those presented to the other eye. 
+As a function of location on the visual cortex the ocular 
+dominance patterns consists of stripes of a specific wave-length.
+</div>
+  <Figure
+    slot="right"
+    src={ocular}
+    alt="Brain"
+    fit="cover"
+    class="w-full max-w-full mx-auto"
+  />
+
+</TwoCol>
+

@@ -1,0 +1,29 @@
+---
+title: Pattern formation in the Brain
+publishDate: 2025-09-01
+order: 14
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import brain from '../../../../assets/brain.jpg';
+
+# Pattern formation in the Brain
+
+<TwoCol class="mb-6" align="center">
+<div slot="left">
+**Optical pathways in the brain:** Each eye splits the visual 
+field into left/right hemispheres. The axonal fibers from each 
+of the two eyes and two hemispheres get distributed to the 
+left/right visual cortices in the back of the brain, such that 
+the left visual cortex receives information from the left visual 
+field (from both eyes) and the right visual cortex from the right visual field.
+</div>
+  <Figure
+    slot="right"
+    src={brain}
+    alt="Brain"
+    class="max-w-[80%] mx-auto"
+  ></Figure>
+
+</TwoCol>

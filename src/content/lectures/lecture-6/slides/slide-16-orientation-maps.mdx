@@ -1,0 +1,33 @@
+---
+title: Orientation Maps in Visual Cortex
+publishDate: 2025-09-01
+order: 16
+---
+
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import orientation from '../../../../assets/orientation.png';
+
+# Orientation Maps in Visual Cortex
+
+<TwoCol class="mb-6 max-w-full mx-auto p-20" align="center">
+<div slot="left">
+Some cells in the visual cortex exhibit an **orientation preference**, 
+they respond primarily to visual stimuli on the retina that are 
+oriented in a specific direction. When the entire visual 
+cortex is mapped and the orientation preference mapped 
+in color for many species we see an orientation map. 
+This map exhibits characteristic pinwheels, singularities 
+in the orientation preference.
+</div>
+  <Figure
+    slot="right"
+    src={orientation}
+    alt="Brain"
+    fit="cover"
+    class="w-full max-w-full mx-auto"
+  />
+
+</TwoCol>
+

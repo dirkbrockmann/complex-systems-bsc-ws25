@@ -1,0 +1,41 @@
+---
+title: Different Types of Patterns 
+publishDate: 2025-09-01
+order: 9
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Yt from '../../../../components/Youtube.astro';
+
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import bat from '../../../../assets/bat_embryo.png';
+
+
+# Different Types of Patterns
+
+<Grid rows={1} cols={2} gapClass="gap-6" class="px-12 max-w-full mx-auto">  
+    <div>
+    ## (Quasi-)Static
+    <Figure
+        src={bat}
+        alt="Bat Embryo"
+        boxed={true}
+        fit="cover"
+        class="max-w-[80%]"
+    />
+    </div>
+    <div>
+    ## Dynamic
+
+<Yt
+  videoId="8bNKU8GRYmU"
+  caption="The Solar System"
+  autoplay={true}
+  loop={true}
+  class="max-w-[80%] mx-auto max-h-[80%]"
+/>
+
+    </div>
+    
+</Grid>
+

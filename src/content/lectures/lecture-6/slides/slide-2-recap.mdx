@@ -1,0 +1,30 @@
+---
+title: Patterns at Criticality 
+publishDate: 2025-09-01
+order: 2
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Baristas from '../../../figures/explorables/baristas_secret';
+import Ising from '../../../figures/pattern-formation/ising';
+import BD from '../../../figures/pattern-formation/birthdeath';
+
+# Patterns at Criticality
+<Grid rows={1} cols={3} gapClass="gap-6" class="px-12 max-w-[70%] mx-auto">  
+    <div>
+    <Explorable id="baristas_secret" class="max-w-full" captionClass=''>    
+        <Baristas slot="figure" client:load id="baristas_secret" layout="column" forceRowOnSmall={false} />
+    </Explorable>
+    </div>
+    <div>
+    <Explorable id="ising" class="max-w-full pt-4" captionClass=''>    
+        <Ising slot="figure" client:load id="ising"/>
+    </Explorable>
+    </div>
+    <div>
+    <Explorable id="ising" class="max-w-full pt-4" captionClass=''>    
+        <BD slot="figure" client:load id="ising"/>
+    </Explorable>
+    </div>
+</Grid>

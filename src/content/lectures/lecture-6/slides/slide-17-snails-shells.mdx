@@ -1,0 +1,30 @@
+---
+title: Patterns on Snails and Shells    
+publishDate: 2025-09-01
+order: 17
+---
+
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import snails from '../../../../assets/snails.png';
+import book from '../../../../assets/shellbook.png';
+
+
+# Patterns on Snails and Shells
+
+<Grid rows={1} cols={3} gapClass="gap-6" class="px-12 max-w-full py-10 mx-auto">  
+
+
+<Figure src={snails} alt="Snail Patterns" boxed={true} fit="cover" class="max-w-[80%]">
+    Various snails exhibiting complex surface patterns.
+</Figure>   
+
+Some species of snails and sea shells exhibit 
+complex patterns on their surface. How these emerge 
+and can be classified is discussed in a great 
+book by [**Hans Meinhardt**](https://de.wikipedia.org/wiki/Hans_Meinhardt_(Naturwissenschaftler)#cite_note-tib-15020-6): The Algorithmic Beauty of Sea Shells.
+
+<Figure src={book} alt="Shell Book" boxed={true} fit="cover" class="max-w-[80%]"/>
+
+</Grid>

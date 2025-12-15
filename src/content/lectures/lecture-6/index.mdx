@@ -1,0 +1,56 @@
+---
+title: Pattern Formation
+description: This lecture is all about how patterns emergen naturally and all by themselves in nature, particularly in biological systems. We will talk about mechanisms that are behind stripes and patches on animal coats, large and famous clouds and what Turing hat to offer to explain patterns in nature.
+publishDate: 'Dec 15 2025'
+draft: false
+tags:
+  - Lecture
+---
+
+import Yt from '../../../components/Youtube.astro';
+import Figure from '../../../components/Figure.astro';
+import * as Margin from '../../../components/MarginNote';
+
+import embryoDark from '../../../assets/generated/embryo_dark.png';
+import embryo from '../../../assets/generated/embryo_transparent.png';
+
+<Figure src={embryo} srcDark={embryoDark} margin={true} alt="embryo model">
+**Embryogenenis:** A beautiful and convoluted example of pattern formation in nature.
+</Figure>
+
+This lecture is about patterns in nature and how they come about, how they
+naturally emerge by mechanisms that will be discussed in this lecture.
+The lecture will provide many examples of patterns. Mostly we will be discussing
+two-dimensional patterns, so two-dimensional structures that vary in some quantity,
+e.g. color in animal coats that possess some sort of order, or patterns of
+selectivity in the cortex of brains. We will learn about static patterns
+that spontaneously emerge from more or less uniform initial conditions and
+we will learn about the Turing mechanism, a counterintuitive example of how diffusion can destabilize
+uniform states and lead to the emergence of stable patterns. We will see how spiral patterns,
+like those we saw in a lattice of pulse coupled oscillators emerge and how generic these patterns are.
+
+>[**Lecture 6 - Slidedeck - Pattern Formation**](slides/slide-1-intro/)
+
+## Teasers
+
+Here's a bit of a teaser for this lecture, a documentary of one of the most beautiful patterns
+nature provides, an Australian cloud known as a [**Morning Glory Cloud**](https://en.wikipedia.org/wiki/Morning_glory_cloud):
+
+
+<Yt
+  videoId="RzurOLMD1BM"
+  caption="Morning Glory Cloud over Australia"
+  autoplay={false}
+  loop={false}
+  class="max-w-[90%] mx-auto max-h-[90%]"
+/>
+
+Here's another great time-lapse video that shows the development of a fruitfly embryo in toto.
+
+<Yt
+  videoId="jRi3kklhb8I"
+  caption="Development of a Fruitfly Embryo in Toto"
+  autoplay={false}
+  loop={false}
+  class="max-w-[90%] mx-auto max-h-[90%]"
+/>  
