@@ -1,0 +1,16 @@
+---
+title: Schnakenberg Model
+publishDate: 2025-09-01
+order: 12.5
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/pattern-formation/fisher';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# The Schnakenberg Model
+
+<Eq expr="\partial_t u =  \alpha - u + u^2 w + D_u \partial_x^2 u" size="xl" />
+<Eq expr="\partial_t w =  \beta - u^2 w + D_w \partial_x^2 w" size="xl" />
+
+<Eq expr="D_w\gg D_u" size="xl" />

@@ -1,0 +1,35 @@
+---
+title: Schnakenberg Model
+publishDate: 2025-09-01
+order: 12
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/pattern-formation/fisher';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro'
+
+
+# The Schnakenberg Model
+
+<TwoCol class="mb-6 max-w-full w-full mx-auto" align="center">
+<div slot="left">
+<Eq expr="\partial_t u =  \alpha - u + u^2 w" size="lg" />
+<Eq expr="\partial_t w =  \beta - u^2 w" size="lg" />
+
+- species $U$ decays spontaneously
+- and self-activtates regulated by species $V$
+- Species $V$ gets removed by $U$
+- both species are supplied (parameters $\alpha,\beta$) 
+</div> 
+<div slot="right">
+
+One can show that this system has a stable equilibrium:
+
+<Eq expr="u^\star =  \alpha + \beta" size="lg" />
+<Eq expr="w^\star =  \frac{\beta}{(\alpha + \beta)^2}" size="lg" />
+
+This euilibrium is usually approached by damped oscillations.
+
+</div>
+</TwoCol>

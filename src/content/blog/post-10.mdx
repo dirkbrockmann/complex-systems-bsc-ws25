@@ -1,0 +1,69 @@
+---
+title: Homework Assignment 5 (due Dec 16, 2025)
+description: The Gray-Scott Model & Turing Mechanism
+publishDate: 'Dec 17 2025'
+tags:
+  - Assignment
+---
+
+
+import siteConfig from '../../data/site-config.ts';
+
+import Explorable from '../../components/Explorable.astro';
+import * as Margin from '../../components/MarginNote';
+import GrayScott from '../../content/figures/explorables/hopfed_turingles';
+
+## The Gray-Scott Model
+
+In the [second lecture](/lectures/lecture-7) on pattern formation we discussed the Turing Mechanism and gave a few
+examples of reaction diffusion systems that generated interesting spatio-temporal patterns.
+In [the last slide](/lectures/lecture-7/slides/slide-14-gray-scott) I showed you the famous Gray-Scott model, defined by these equations for
+the two chemical species $U$ and $V$:
+$$
+\partial_t u =  -uv^2 + F(1-u) + D_u \partial_x^2 u
+$$
+$$
+\partial_t v =  uv^2 -(F+k)v + D_v \partial_x^2 v
+$$
+
+The reaction part was derived from the basic reactions of the Gray-Scott model:
+
+$$
+U+2V\rightarrow 3V \qquad V\rightarrow \emptyset.
+$$
+
+We discussed that this is similar to a simple infection process, the only difference is that
+in the Gray-Scott model **two** "infected" individuals $V$ infect a susceptible individual $U$.
+
+
+<Explorable id="lifedeath" margin={false} layout="responsive">    
+    <GrayScott slot="figure" client:load id="lifedeath"/>
+    **The Gray-Scott Model:** Two chemicals $U$ and $V$ react and diffuse in space. The chemicals
+    are supplied and removed at rates defined by the parameters $F$ and $k$. The secret ingredient
+    is the nonlinear reaction term $uv^2$ that leads to interesting patterns.
+</Explorable>
+
+
+Here's the explorable again, so you can explore different patterns, either by using
+the presets for the parameters $F$ and $k$ or by trying out your own values.
+
+1. Try identifying a new parameters set that generates an interesting pattern, and
+write down the parameter combination.
+2. Explain why you find that pattern expecially interesting or beautiful.
+3. There's a great and well aged website on the Gray Scott model, set up by 
+[**Robert Munafo**](https://www.mrob.com/pub/index.html). Visit the website
+and check it out. This will potentially help you identifying interesting patterns.
+
+>[**Gray-Scott Model by Robert Munafo**](https://www.mrob.com/pub/comp/xmorphia/index.html)
+
+
+## The Turing Mechanism
+
+In class we discussed the Turing Mechanism. Because this is such a weird mechanism discovered by 
+such a brilliant mind you are supposed to do the following also in an effort to prepare you well
+for the final exam:
+
+1. Explain the Turing Mechanism in plain words, supplemented by drawings of concentrations of
+particles involved.
+2. Educate yourself online about the life and discoveries of Alan Turing and memorize **three** interesting facts about him.
+

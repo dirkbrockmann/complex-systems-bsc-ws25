@@ -1,0 +1,18 @@
+---
+title: Spreading Waves - Fisher equation   
+publishDate: 2025-09-01
+order: 7
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/pattern-formation/fisher';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# Spreading Waves - Fisher equation
+
+<Eq expr="\partial_t u = \lambda u(1-u)+D\partial_x^2 u" size="xl" />
+
+<Explorable id="figure_4" margin={false} class="max-w-[60%] w-full" captionClass=''>    
+    <Fig slot="figure" client:load id="ride_my_kuramoto_cycle"/>
+</Explorable>
+

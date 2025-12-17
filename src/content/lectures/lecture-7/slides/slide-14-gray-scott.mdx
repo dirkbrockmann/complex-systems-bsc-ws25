@@ -1,0 +1,21 @@
+---
+title: Gray-Scott Model   
+publishDate: 2025-09-01
+order: 14
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/explorables/hopfed_turingles';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+
+# The Gray-Scott Model
+
+<Eq expr="U+2V\rightarrow 3V \qquad V\rightarrow \emptyset" size="lg" />
+
+<Eq expr="\partial_t u =  -uv^2 + F(1-u) + D_u \partial_x^2 u" size="lg" />
+<Eq expr="\partial_t v =  uv^2 -(F+k)v + D_v \partial_x^2 v" size="lg" />
+
+<Explorable id="figure_4" margin={false} class="max-w-[50%] w-full" captionClass=''>    
+    <Fig slot="figure" client:load id="ride_my_kuramoto_cycle"/>
+</Explorable>
+

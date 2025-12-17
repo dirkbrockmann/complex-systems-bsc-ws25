@@ -1,0 +1,48 @@
+---
+title: Reaction Diffusion Systems
+publishDate: 2025-09-01
+order: 10
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/explorables/lotka_martini';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro'
+
+# Reaction Diffusion Systems
+
+
+<TwoCol class="mb-6 max-w-full w-full mx-auto" align="center">
+<div slot="left">
+
+the variables are fields
+
+<Eq expr="u=u(x,t)\qquad w=w(x,t)" size="xl" />
+
+the particles at/around location $x$ interact 
+nonlinearly and change the concentrations
+
+<Eq expr="\partial_t u = f(u,w)" size="xl" />
+<Eq expr="\partial_t w = g(u,w)" size="xl" />
+
+</div>
+
+<div slot="right">
+
+The concentrations of each type of species/particle change
+because of diffusion:
+
+
+<Eq expr="\partial_t u = D_u \partial_x^2 u" size="xl" />
+<Eq expr="\partial_t w = D_w \partial_x^2 w" size="xl" />
+
+putting things together we get:
+
+
+<Eq expr="\partial_t u = D_u \partial_x^2 u + f(u,w)" size="xl" />
+<Eq expr="\partial_t w = D_w \partial_x^2 w + g(u,w)" size="xl" />
+
+
+</div>
+</TwoCol>
+

@@ -1,0 +1,28 @@
+---
+title: Reaction Diffusion Systems
+publishDate: 2025-09-01
+order: 11
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/explorables/cycledelic';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro'
+
+# Reaction Diffusion Systems with Rock Paper Scissors Species
+
+<TwoCol ratio="1:2">
+<div slot="left">
+<Eq expr="\partial_t u = f(u,v,w) + D \partial_x^2 u" size="xl" />
+<Eq expr="\partial_t v = f(v,w,u) + D \partial_x^2 v" size="xl" />
+<Eq expr="\partial_t w = f(w,u,v) + D \partial_x^2 w" size="xl" />
+
+<Eq expr="f(u,v,w) = \\ u (\sigma (v - w) + u (1-u) - \mu (v+w) )" size="lg" />
+
+</div>
+<div slot="right">
+<Explorable id="figure_4" margin={false} class="max-w-[70%]" captionClass=''>    
+    <Fig slot="figure" client:load id="ride_my_kuramoto_cycle"/>
+</Explorable>
+</div>
+</TwoCol>
