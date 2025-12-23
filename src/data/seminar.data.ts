@@ -17,6 +17,10 @@ function isRecord(v: unknown): v is Record<string, unknown> {
 }
 
 function normalize(row: any): SeminarItem {
+  // "normalize" = validate + coerce types + clean a single JSON row into a SeminarItem
+  // - ensures required fields exist
+  // - converts values to strings
+  // - trims and turns missing/empty values into undefined
   if (!isRecord(row)) throw new Error('Invalid seminar row: not an object');
   const explorable = String(row.explorable ?? '');
   const topic = String(row.topic ?? '');
@@ -33,5 +37,7 @@ function normalize(row: any): SeminarItem {
 if (!Array.isArray(raw)) {
   throw new Error('seminar.json must export an array');
 }
-
+console.log("Loaded seminar data:", raw.map(normalize));
+// raw.map(normalize) = take the raw JSON array and run normalize(row) for each element,
+// producing a new array of SeminarItem objects (same length, cleaned/validated).
 export const seminar: SeminarItem[] = raw.map(normalize);

@@ -35,7 +35,9 @@ const { rows = seminar, class: className = '' } = Astro.props as Props;
           <td class="py-2 pr-3">{row.date}</td>
           <td class="py-2 pr-3">
             {row.presentation ? (
-              <a href={row.presentation} target="_blank" rel="noreferrer" class="underline hover:no-underline">Slides</a>
+              <a href={row.presentation} target="_blank" rel="noreferrer" class="underline hover:no-underline">
+                Slides
+              </a>
             ) : <span class="text-neutral-400">—</span>}
           </td>
         </tr>

@@ -5,11 +5,11 @@ order: 28
 ---
 
 import Explorable from '../../../../components/slide-kit/Explorable.astro';
-import Fig from '../../../../content/figures/pattern-formation/keith-haring';
+import Fig from '../../../../content/figures/explorables/keith_harings_mexican_hat';
 
 
 # Local Excitation, Long Range Inhibition
 
 <Explorable id="figure_4" margin={false} class="max-w-[70%]" captionClass=''>    
-    <Fig slot="figure" client:load id="ride_my_kuramoto_cycle"/>
+    <Fig slot="figure" client:load id="ride_my_kuramoto_cycle" forceRowOnSmall={true}/>
 </Explorable>

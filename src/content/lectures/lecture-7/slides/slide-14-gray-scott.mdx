@@ -16,6 +16,6 @@ import Eq from '../../../../components/slide-kit/Eq.astro';
 <Eq expr="\partial_t v =  uv^2 -(F+k)v + D_v \partial_x^2 v" size="lg" />
 
 <Explorable id="figure_4" margin={false} class="max-w-[50%] w-full" captionClass=''>    
-    <Fig slot="figure" client:load id="ride_my_kuramoto_cycle"/>
+    <Fig slot="figure" client:load id="ride_my_kuramoto_cycle" forceRowOnSmall={true}/>
 </Explorable>
 

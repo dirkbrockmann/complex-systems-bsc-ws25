@@ -4,7 +4,7 @@
     "topic": "The Vicsek-Model",
     "link": "https://www.complexity-explorables.org/explorables/horde-of-the-flies/",
     "student": "Daniela Avila Delgado",
-    "date": "Thu. - 18.12.2025",
+    "date": "TBA",
     "presentation": ""
   },
   {
@@ -12,7 +12,7 @@
     "topic": "The spatial hypercycle model",
     "link": "https://www.complexity-explorables.org/explorables/eigenartig/",
     "student": "Vivienne Steglich",
-    "date": "Wed. - 17.12.2025",
+    "date": "TBA",
     "presentation": ""
   },
   {
@@ -29,14 +29,14 @@
     "link": "https://www.complexity-explorables.org/explorables/critically-inflammatory/",
     "student": "Nicolas Bassin",
     "date": "Wed. - 10.12.2025",
-    "presentation": ""
+    "presentation": "seminar/presentations/Nicolas_Bassin.pdf"
   },
   {
     "explorable": "A Patchwork Darwinge",
     "topic": "Evolution: Variation and Selection",
     "link": "https://www.complexity-explorables.org/explorables/a-patchwork-darwinge/",
     "student": "Jacinta Jonetzki",
-    "date": "Wed. - 17.12.2025",
+    "date": "Thu. - 18.12.2025",
     "presentation": ""
   },
   {
@@ -44,8 +44,8 @@
     "topic": "The Lotka-Volterra model",
     "link": "https://www.complexity-explorables.org/explorables/lotka-martini/",
     "student": "Erik Erfurt",
-   "date": "Thu. - 11.12.2025",
-    "presentation": ""
+    "date": "Thu. - 11.12.2025",
+    "presentation": "seminar/presentations/Erik_Erfurt.pdf"
   },
   {
     "explorable": "Critical HexSIRSize",
@@ -61,6 +61,6 @@
     "link": "https://www.complexity-explorables.org/explorables/cycledelic/",
     "student": "Justin Pfeiffer",
     "date": "Thu. - 11.12.2025",
-    "presentation": ""
+    "presentation": "seminar/presentations/Justin_Pfeiffer.pdf"
   }
 ]

@@ -37,14 +37,14 @@ export default {
                 id: "diff_u",
                 label: "Diffusion Activator",
                 range: [1,3],
-                value: 1,
+                value: 2,
                 position: {x: 1,y: 9}
             },
             {
                 id: "diff_v",
                 label: "Diffusion Inhibitor",
-                range: [0,50],
-                value: 30,
+                range: [0,60],
+                value: 40,
                 position: {x: 1,y: 11},
                 show:true
             }

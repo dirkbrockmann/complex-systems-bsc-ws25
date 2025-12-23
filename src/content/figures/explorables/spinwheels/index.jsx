@@ -1,22 +1,22 @@
-import {config,load} from '@explorables/hopfed_turingles';
+import {config,load} from '@explorables/spinwheels';
 import * as d3 from 'd3';
 import {useEffect,useRef} from 'react';
 
 // Static class presets if the explorable remain in a row of display and controls panel
 
 const responsive = {
-    container: "explorable flex flex-col sm:flex-row items-start gap-8",
+    container: "flex flex-col sm:flex-row items-start gap-8",
     display:   "w-full border-1 border-black dark:border-white sm:w-1/2 mb-0 h-auto",
     controls:  "w-full sm:w-1/2 mb-0 h-auto"
 };
 const forced = {
-    container: "explorable flex flex-row items-start gap-8",
+    container: "flex flex-row items-start gap-8",
     display:   "border-1 border-black dark:border-white w-1/2 mb-0 h-auto",
     controls:  "w-1/2 mb-0 h-auto"
 };
 // always column: display on top, controls below
 const stacked = {
-    container: "explorable flex flex-col items-start gap-4",
+    container: "flex flex-col items-start gap-4",
     display:   "w-full border-1 border-black dark:border-white mb-0 h-auto",
     controls:  "w-full mb-0 h-auto"
 };

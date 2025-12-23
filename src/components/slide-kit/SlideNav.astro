@@ -15,25 +15,28 @@ export interface Props {
 }
 const { lectureHref, startHref, prevHref, nextHref, class: className = '', slideNumber, totalSlides, isDraft = false, isHidden = false } = Astro.props;
 ---
-<nav id="slide-nav" class={`shrink-0 flex items-center justify-center gap-3 ${className}`} aria-label="Slide controls">
+<nav
+  id="slide-nav"
+  class={`slide-nav shrink-0 flex items-center justify-center gap-3 ${className}`}
+  aria-label="Slide controls"
+>
   {isDraft && import.meta.env.DEV ? (
-    <span class="px-3 py-2 rounded-lg bg-red-600 text-white font-semibold uppercase tracking-wide">Draft</span>
+    <span class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg bg-red-600 text-white font-semibold uppercase tracking-wide">Draft</span>
   ) : null}
   {isHidden && import.meta.env.DEV ? (
-    <span class="px-3 py-2 rounded-lg bg-pink-600 text-white font-semibold uppercase tracking-wide">Hidden</span>
+    <span class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg bg-pink-600 text-white font-semibold uppercase tracking-wide">Hidden</span>
   ) : null}
   <a
     id="lecture-link"
     href={lectureHref}
-    class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline"
+    class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline"
   >Lecture</a>
-<SlideCounter slideNumber={slideNumber} totalSlides={totalSlides} />
- 
+  <SlideCounter slideNumber={slideNumber} totalSlides={totalSlides} />
   <a
     id="start-link"
     rel="start"
     href={startHref}
-    class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline"
+    class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline"
   >Start</a>
 
   <a
@@ -42,7 +45,7 @@ const { lectureHref, startHref, prevHref, nextHref, class: className = '', slide
     href={prevHref ?? '#'}
     aria-disabled={prevHref ? 'false' : 'true'}
     tabindex={prevHref ? undefined : -1}
-    class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline aria-disabled:opacity-40 aria-disabled:pointer-events-none"
+    class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline aria-disabled:opacity-40 aria-disabled:pointer-events-none"
   >Prev</a>
 
   <a
@@ -51,7 +54,7 @@ const { lectureHref, startHref, prevHref, nextHref, class: className = '', slide
     href={nextHref ?? '#'}
     aria-disabled={nextHref ? 'false' : 'true'}
     tabindex={nextHref ? undefined : -1}
-    class="px-3 py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline aria-disabled:opacity-40 aria-disabled:pointer-events-none"
+    class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline aria-disabled:opacity-40 aria-disabled:pointer-events-none"
   >Next</a>
 </nav>
 
