@@ -1,0 +1,29 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import Link from '../../components/Link.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+import { sortItemsByDateDesc } from '../../utils/data-utils';
+
+export async function getStaticPaths() {
+    const posts = (await getCollection('lab')).sort(sortItemsByDateDesc);
+
+    return posts.map((post) => ({
+        params: { id: post.id },
+        props: {
+            post
+        }
+    }));
+}
+
+type Props = {
+    post: CollectionEntry<'lab'>;
+};
+
+const { post } = Astro.props;
+const { title, seo } = post.data;
+const { Content } = await render(post);
+---
+
+<PageLayout title={title} seo={seo} showHeader={false}>
+    <Content components={{ a: Link }} />
+</PageLayout>

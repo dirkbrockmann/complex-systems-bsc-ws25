@@ -5,6 +5,11 @@ export function sortItemsByDateDesc(itemA: CollectionEntry<'blog' | 'projects'>,
     return new Date(itemB.data.publishDate).getTime() - new Date(itemA.data.publishDate).getTime();
 }
 
+export function sortItemsBySequence(itemA: CollectionEntry<'lab'>, itemB: CollectionEntry<'lab'>) {
+    return itemA.data.sequence - itemB.data.sequence;
+}
+
+
 export function getAllTags(posts: CollectionEntry<'blog'>[]) {
     const tags: string[] = [...new Set(posts.flatMap((post) => post.data.tags || []).filter(Boolean))];
     return tags

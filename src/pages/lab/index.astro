@@ -1,0 +1,28 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Link from '../../components/Link.astro';
+import LabPreview from '../../components/LabPreview.astro';
+import ListLayout from '../../layouts/ListLayout.astro';
+import { sortItemsBySequence } from '../../utils/data-utils';
+import postcssPluginWarning from 'tailwindcss';
+
+const labPosts = (await getCollection('lab')).filter((post) => !post.data.draft).sort(sortItemsBySequence);
+const preamble = await getEntry('pages', 'lab');
+// Safe accessors for preamble metadata (avoid TypeScript complaints if entry missing)
+const title = preamble?.data?.title ?? 'Lab';
+const image = (preamble?.data as any)?.image;
+const showHeader = preamble?.data?.showHeader ?? false;
+const { Content } = preamble ? await render(preamble) : { Content: () => '' };
+---
+
+<ListLayout title={title} image={image} showHeader={showHeader}>
+    <div slot="preamble">
+        <Content components={{ a: Link }} />
+    </div>
+    
+    <div slot="list">
+        {labPosts.map((post) => <LabPreview post={post} sequence={post.data.sequence} class="mb-10 sm:mb-12" />)}
+    </div>
+</ListLayout>
+
+
