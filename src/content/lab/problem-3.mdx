@@ -7,11 +7,22 @@ tags:
   - Lab
 ---
 
+import Explorable from '../../components/Explorable.astro';
+import VotMaj from '../../content/figures/pattern-formation/voter-majority';
+
 In this problem we will implement the **Voter** and **Majority** models discussed
 in class. [Revisit the corresponding slides](/lectures/lecture-6/slides/slide-27-voter/)
- I presented in class, if you want.
+I presented in class, if you want.
 
-Both models are lattice models, in which lattice sites are in one of $M$ states and change
+Here's the explorable on the spatial voter model again:
+
+<Explorable id="voter_model" class="max-w-[80%]" captionClass=''>    
+    <VotMaj slot="figure" client:load id="voter_model" forceRowOnSmall={false} />
+    The **Voter & Majority Model** on a square lattice as discussed in the lecture on Pattern Formation.
+</Explorable>
+
+
+Let's recall: Both models are lattice models, in which lattice sites are in one of $M$ states and change
 their state according to the states of their neighbors.
 
 1. **Voter Model:** A randomly chosen lattice site, picks a random neighbor and adopts that neighbors state
@@ -76,3 +87,32 @@ Now write the part of the 'go' function that implements the voter model. The go 
 The line `let target one-of neighbors` picks a random neighbor patch and assigns it to the variable `target`. 
 
 The line `set state [state] of target` sets the state of the current patch to the state of the target patch.
+
+### Majority Model
+
+Now in the majority model the reference patch adopts the state of the majority of its neighbors, not just that
+of a randomly chose neighbor. But how to we find out what the majority state is?
+
+First we have to realize that essentially we only need to change one code block of the voter model:
+
+```
+  let target one-of neighbors
+  set state [state] of target
+```
+
+Instead of picking a random target neighbor (first line) and then setting the patches state to the state
+of that neighbor we need to find out what the majority is in the neighborhood and set the state to that.
+
+It turns out, that netlogo has a built-in function called `modes` that does it. When we say:
+
+`[state] of neighbors` the statement returns a list of the states of the eight neighbors of a patch. 
+
+When we wrap this statement in the `modes` function like this:
+`modes [state] of neighbors` the statement returns a list of the most frequently occurring 
+states in the neighborhood. Sometimes, there's a tie, so we can get more than one state back. So we pick one of them:
+`one-of modes [state] of neighbors` and finally set the state of the reference patch to that:
+```
+set state one-of modes [state] of neighbors
+```
+
+That should do it. Now you have implemented the majority model.

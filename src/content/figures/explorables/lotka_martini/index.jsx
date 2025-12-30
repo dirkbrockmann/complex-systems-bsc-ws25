@@ -6,18 +6,18 @@ import {useEffect,useRef} from 'react';
 
 const responsive = {
     container: "flex flex-col sm:flex-row items-start gap-8",
-    display:   "w-full border-1 border-black dark:border-white sm:w-1/2 mb-0 h-auto",
+    display:   "w-full  sm:w-1/2 mb-0 h-auto",
     controls:  "w-full sm:w-1/2 mb-0 h-auto"
 };
 const forced = {
     container: "flex flex-row items-start gap-8",
-    display:   "border-1 border-black dark:border-white w-1/2 mb-0 h-auto",
+    display:   "  w-1/2 mb-0 h-auto",
     controls:  "w-1/2 mb-0 h-auto"
 };
 // always column: display on top, controls below
 const stacked = {
     container: "flex flex-col items-start gap-4",
-    display:   "w-full border-1 border-black dark:border-white mb-0 h-auto",
+    display:   "w-full  dark:border-white mb-0 h-auto",
     controls:  "w-full mb-0 h-auto"
 };
 

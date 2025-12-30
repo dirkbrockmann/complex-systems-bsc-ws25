@@ -1,0 +1,177 @@
+---
+title: Predator-Prey Dynamics
+publishDate: 'Jan 15 2026'
+sequence: 3
+tags:
+  - Excercise
+  - Lab
+---
+
+
+import Explorable from '../../components/Explorable.astro';
+import LotkaVolterra from '../../content/figures/explorables/lotka_martini';
+
+In class we discussed predator prey dynamics and we had a presentation in the seminar
+on a lattice version of the Lotka-Volterra equations. Here's that lattice version again,
+the explorable "Lotka-Martini":
+
+
+<Explorable id="lotka_martini" class="max-w-[80%]" captionClass=''>    
+    <LotkaVolterra slot="figure" client:load id="lotka_martini" forceRowOnSmall={false} />
+    The **Lotka-Volterra Model** on a square lattice as discussed in the lecture on Predator-Prey Dynamics.
+</Explorable>
+
+In this excersize we will implement a variant of predator-prey dynamics with a slightly different setup and
+als not on a lattice but rather with predator and prey agents that move around and interact according to rules
+similar to the ones discussed in class.
+
+### Moving predators and prey 
+
+Before you get into interactions, like predators eating prey, prey and predators reproducing etc. you should
+implement a simulation in which an initial number of predators and prey agents move around randomly.
+
+- each population (predators and prey) should have its own movement parameters, like speed and wiggle.
+- the initial number of predators and prey should be say 50
+- each individual of each population should be placed randomly in the setup function
+- the background of the world should be painted white
+- the predators and prey should be circles of different colors
+- the world should be 129 pixels in each dimensional
+- the size of the agents should be 2 or 3 for good visibility
+
+Prepare the usual `setup` and `go` functions with buttons to control them.
+
+### breeds
+
+Before you get into it, here's something new that will help you. Because both, predators and prey, will be turtles,
+it would be helpful to have a functionality that allows us to distinguish between the two types of turtles.
+This is done by the ```breed``` concept. In the beginning of the code you can define breeds using this:
+
+```
+breed [preys prey]
+breed [predators predator]
+``` 
+
+This way, if you want to loop over all prey individuals, you can use commands like ```ask preys [...]``` or ```create-predators 100```.   
+
+So now create 50 predators and 50 prey individuals in the setup 
+function and make them move around randomly in the go function. Because each species
+should have their own movement parameters, define two sliders in the interface.
+
+If you want to place the agents randomly you can use the commands:
+
+```
+setxy random-xcor random-ycor
+``` 
+You can change the size of agent with `set size 2` for example and the color with `set color red` for example.
+
+Once you have implemented the code for the setup and go functions, test the simulation and whether both populations move around randomly,
+and whether you can change the movement parameters for each population separately.
+
+### Basic reactions
+
+Now we will come to the interactions. First we will take care of the prey species.
+
+We would like the prey to hatch babies, so if we label the prey with the letter $A$, we would like to implement
+the reaction:
+
+$$
+A\xrightarrow{\alpha}2A
+$$
+
+In netlogo this is simple, you loop over all prey by with:
+```
+ask preys [
+  ... 
+]
+```
+and then you can use the `hatch` command to create a baby prey with a certain probability:
+
+```
+  ask preys [
+    if random-float 1 < reproduction-rate [
+      hatch 1
+    ]     
+  ]
+```
+
+**Before you do this:** Make sure to limit the total number of prey individuals, otherwise netlogo will freeze!!!
+
+The way you can limit the reproduction rate, is just like we discussed in class, you modify the
+reproduction rate by a factor:
+$$
+\alpha\left(1-\frac{A}{K}\right)
+$$
+
+where K is the maximum number of prey, the carrying capacity of the environment. Set this to say 1000. So implement this
+with:
+```
+ask preys [
+    if random-float 1 < reproduction-rate * (1 - (count preys / 1000)) [
+      hatch 1
+    ]     
+  ]
+``` 
+
+the `count preys` returns the number of preys that exits. The parameter `reproduction-rate` should be an additional
+slider.
+
+When you run the simulation now, the number of preys should increase exponentially and then saturate at 1000.
+
+You can monitor that my adding a plot that plots the number of preys over time. 
+You will figure out how that can be done (the plot is a widget that you can add).
+
+
+### Adding predator behavior
+
+The predators can die spontaneously and reproduce when they encounter a prey individual (which then also dies).
+
+$$
+B\xrightarrow{\gamma}\emptyset\qquad A+B\xrightarrow{\delta}2B
+$$
+
+Both reactions occur with a probability that should be controlled with a slider. Make them.
+
+The First reaction is simple. You can just loop over all predators and let them die with a certain probability:
+
+```
+ask predators [
+    if random-float 1 < death-rate [
+      die
+    ]     
+  ]
+``` 
+It is just that simple. Test the simulation to see if that works. The death-rate should not be too large,
+otherwise the predators will disappear too quickly. A good rule of thumb. If the death-rate is say 0.01, a predator
+will live on average 100 time steps.
+
+The interaction is more tricky. We have to define and implement what "encounter" means. Here we will define
+"encounter" as being within a certain interaction radius R. So if a predator is within a distance R of a prey,
+it can eat it and reproduce with a certain probability.
+
+We setup a loop over all predators. For each predator we check whether there is a prey within a radius R.
+```
+ask predators [
+  ask one-of preys in-radius R [
+    ...
+  ]
+]
+``` 
+But what if there nobody in the radius R? Then the `ask one-of preys in-radius R` will 
+return `nobody` and nothing will happen.
+
+So we will do it differently:
+```
+ask predators [
+    let victim one-of preys in-radius 1
+    if victim != nobody and random-float 1 < feeding-rate [
+      ask victim [ die ]
+      hatch 1
+    ]
+  ]
+```
+
+Make sure you understand what is going on here.
+
+
+Now you are done and can play with your simulation. Try to find interesting parameter regimes. E.g. play
+with different speed and wiggle parameters, e.g. compare fast prey / slow predators with slow prey / fast predators.
