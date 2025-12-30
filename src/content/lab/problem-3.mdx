@@ -1,0 +1,78 @@
+---
+title: Voter & Majority Models
+publishDate: 'Jan 15 2026'
+sequence: 3
+tags:
+  - Excercise
+  - Lab
+---
+
+In this problem we will implement the **Voter** and **Majority** models discussed
+in class. [Revisit the corresponding slides](/lectures/lecture-6/slides/slide-27-voter/)
+ I presented in class, if you want.
+
+Both models are lattice models, in which lattice sites are in one of $M$ states and change
+their state according to the states of their neighbors.
+
+1. **Voter Model:** A randomly chosen lattice site, picks a random neighbor and adopts that neighbors state
+2. **Majority Model:** A randomly chosen lattice site, adopts the state of the majority of its neighbors. In case of a tie, it picks one of the majority states at random.
+
+## Voter Model
+Start by writing the usual template for the `go` and the `setup` function, not 
+forgetting the commands `ca` and `reset-ticks` in the `setup` function and the `tick` command in the `go` function. 
+
+Add buttons for the `go` and `setup` function in the interface. Also add a **slider** for controlling the number $M$ of states.
+In the beginning of your code use the code snippet below to define a patch specific variable called `state`:	
+    ```
+      patches-own [state]
+    ```
+
+Write a setup function that initializes the lattice in a random configuration using
+   statements like `set state random M` for example.
+
+Write a function that paints patches according to their state. 
+This function should be called at the end of the setup routine and the go routine.
+  ```
+  to paint
+  ...
+  end
+  ```
+    Make sure this function is called in the `go`function, so every time it is executed the patches are colored according to their state. 
+    Here's an idea of how you could implement this function:
+    ```
+    to paint
+      ask patches [
+        if state = 0 [set pcolor red]
+        if state = 1 [set pcolor blue]
+        if state = 2 [set pcolor green]
+        ...
+      ]
+    end
+    ```
+    However, we would like to do it differently here. We define a color palette as a global variable:
+    ```
+    globals [color-palette] 
+    ```
+    and initialize it in the setup function like this:
+    ```
+    set color-palette [red blue green yellow orange cyan magenta]
+    ```
+    Now we can use this color palette in the paint function like this:
+    ```
+    to paint
+      ask patches [
+        set pcolor item state color-palette
+      ]
+    end
+    ```
+The line `set pcolor item state color-palette` picks the color at index `state` from the list `color-palette` and sets the patch color to that. 
+
+Now write the part of the 'go' function that implements the voter model. The go function should loop over all the patches. For each patch the current patch should pick a random neighbor and adopt its state. Remember you can check this out by
+  ```
+  let target one-of neighbors
+  set state [state] of target
+  ``` 
+
+The line `let target one-of neighbors` picks a random neighbor patch and assigns it to the variable `target`. 
+
+The line `set state [state] of target` sets the state of the current patch to the state of the target patch.
