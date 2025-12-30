@@ -1,88 +1,375 @@
 ---
-title: Rock-Paper-Scissors Simulation
+title: First Steps - Diffusing Particles & Infection on a Lattice
 publishDate: 'Jan 15 2026'
 sequence: 1
+draft: false
 tags:
   - Excercise
   - Lab
 ---
 
-In this problem we will implement a simulation in which agents of three different 
-types: **A**, **B**, and **C** move around randomly and interact 
-in the **rock-paper-scissor** fashion we discussed in class:
+import * as Margin from '../../components/MarginNote';
 
-$$
-A+B\xrightarrow{\alpha}2B\quad B+C\xrightarrow{\alpha}2C\qquad C+A\xrightarrow{\alpha}2A
-$$
-
-So when for example a turtle of type **A** encounters a turtle of type **B** the latter will convert to an **A** turtle.
-
-## Simulation 1
-
-1. Start by writing the usual template for the `go` and the `setup` function, not 
-forgetting the commands `ca` and `reset-ticks` in the `setup` function and the `tick` command in the `go` function.
-
-2. add buttons for the `go` and `setup` function in the interface. Also add **four sliders** for controlling 4 parameters
-	
-	- the **speed** of the agents
-	- the **wiggle** (randomness) of the movements
-	- the **interaction radius**
-	- the **number** $N$ of agents of each type. So for instance when $N=100$ the system should be 
-    initialized with 100 agents of each type.
-
-4. In the beginning of your code use the code snippet below to define a turtle specific variable called `typ`:	
-    ```
-	    turtles-own [typ]
-    ```
-12. Write a setup function that creates $N$ turtles of each type using 
-    statements like `create-turtles N [set typ "A"]` for example. The turtles shoud 
-    be placed at randon positions 
-    ```
-        ask turtles [setxy random-xcor random-ycor]
-    ```
-5. Write a function that paints turtles according to their type. This function should be called at the end of the setup routine and the go routine.
-
-	```
-	to paint
-	...
-	end
-	```
-    Make sure this function is called in the `go`function, so every time it is executed the turtles are colored according to their type.
-
-6. Now write the part of the 'go' function that makes turtles move around randomly, like we discussed and implemented earlier:
-
-    ```
-    to move
-      ask turtles [
-        forward speed
-        set heading heading + random-float wiggle - (wiggle / 2)
-      ]
-    end
-    ```
-
-6. Write a go function that does the interaction. The go function should loop over all the turtles. For each interaction the current turtle should pick a random target in an interaction radius $R$. Remember you can check this out by
-
-	```
-	let target one-of other turtles in-radius R
-	if target != nobody [
-	...
-	]
-	```
-
-7. then you should compare the type of the current turtle with the type of the target and implementing the rock-paper-scissors rules update their state
-
-8. If you want, you can setup a **switch** on the interface that sets a boolean variable. You can call this variable `trace` and add the following code to your turtle update loop
-
-	```
-	ifelse trace = True [pen-down][pen-up]
-	```
-8. You can also add a button that deletes all the traces. This is something you can find in the user manual of netlogo.
+This is the first 'hands-on' exercise of the lab course. It has two parts and
+we will realize the netlogo model simultaneously in class. The first part is about
+diffusing particles or random-walks.
 
 
-## Simulation 2
+## Part 1 - Diffusing Particles
 
-Write a patch based simulation in which patches are either **A**, **B** or **C**. As in the turtle simulation initialize the system fairly.
+At the beginning of (almost) every netlogo simulation you need to do a few
+preparatory steps. Almost each simulation needs to buttons:
 
-At each type step a pache react with a randomly chose neighbor (`ask one-of neighbors [...]`) and changes its state according to the above reactions.
+- a setup button
+- a go button 
+
+In the netlogo interface press `add widget` and then select `button`. A dialog
+will open in which you can enter the name of the function that should be called
+when the button is pressed. For the setup button enter `setup` and 
+for the go button enter `go`.
+
+Remember to check the `forever` checkbox for the go button, so that it will
+be executed repeatedly when pressed.
+
+**Also:** In the netlogo window on the right, check **On ticks** instead of continuous.
+
+Now we need to define the two functions `setup` and `go` in the code area of netlogo.
+The following steps are also quite generic. In the code area enter the following code:
+``` 
+to setup
+  ca
+  reset-ticks
+end
+```
+
+This is the function that will be called when the setup button is pressed. Two
+commands are already included:
+- `ca` clears the entire world
+- `reset-ticks` resets the internal clock of netlogo to zero.
+
+Now add the go function like so:
+```   
+to go
+  tick
+end
+```
+At the moment, when `go` is executed, only the command `tick` is executed, which
+advances the internal clock of netlogo by one unit.
+
+
+### Creating a bunch of turtles
+
+Now we would like to create a bunch of turtles<Margin.Cite id="turtles"/> that will represent our 
+diffusing particles. To do so, we will use the `create-turtles` command.
+Add the following line to the setup function, so that it looks like this now:
+```
+to setup
+  ca
+  reset-ticks
+  create-turtles 100
+end
+``` 
+
+
+
+<Margin.Note>
+<Margin.Ref id="turtles"/>Agents in netlogo are called turtles. Agents have a bunch of in-built properties
+like position, heading, color, shape, size, etc. When you create turtles
+using the `create-turtles` command, they are created at the orgin of the world,
+so by default in the middle of the world.
+</Margin.Note>
+
+### Making turtles move
+
+Now we add some stuff to the go function, like so:
+``` 
+to go
+  tick
+  ask turtles [
+    forward 0.1
+  ]
+end
+``` 
+
+The command `ask turtles [...]` makes all turtles execute the commands
+inside the square brackets. Here, each turtle moves forward by 0.1 units
+in the direction it is currently heading<Margin.Cite id="heading"/>.
+
+<Margin.Note>
+<Margin.Ref id="heading"/>The heading of a turtle is the direction in which it is facing. 
+It is measured in degrees, with 0 degrees pointing to the right (east),
+90 degrees pointing up (north), 180 degrees pointing to the left (west),
+and 270 degrees pointing down (south). You can change the heading of a turtle
+using the `set heading` command. When turtles are created their heading is random.
+
+</Margin.Note>
+
+Let's change the turtles shape, add this line to the setup function: 
+```
+   ask turtles [
+     set shape "circle"
+   ]
+```
+
+You can also use another shape if you want. Now the setup function looks like this:
+```
+to setup
+  ca
+  reset-ticks 
+  create-turtles 100
+  ask turtles [
+    set shape "circle"
+  ]
+end
+``` 
+
+Let's also make the world a bit larger. In the netlogo menu go to `Settings` and
+change the `World Width` and `World Height` to 64. Also make sure the pixel size
+is set to 3 or 4, so the world fits on your screen.
+
+### Adding randomness to the movement
+
+Let's first modify the go function like this:
+```   
+to go
+  tick
+  ask turtles [
+    forward 0.5
+    set heading heading + 1
+  ]
+end
+``` 
+
+The last command in the `ask turtles [...]` block makes each turtle turn by 1 degree
+at each time step. Now run the simulation by pressing the setup button and then the go button.
+You should see the turtles moving in circles.
+
+Now we'd like to add randomness to the movement. We want to add a random angle to 
+the heading at each time step. Modify the go function like this:
+```
+to go
+  tick
+  ask turtles [
+    forward 0.5
+    set heading heading + random-float 60 - 30
+  ]
+end
+``` 
+
+Here's what the line `set heading heading + random-float 60 - 30` does:
+- `random-float 60` generates a random floating point number between 0 and 60.
+- subtracting 30 shifts this number to be between -30 and +30.
+- adding this to the current heading makes the turtle turn by a random angle
+  between -30 and +30 degrees at each time step.
+
+
+Now, we want to add something a bit artistic. Let's make the turtles leave a trace
+when they move. To do so, we need to use the `pen-down` command. Modify the go function 
+like this:
+```   
+to go
+  tick
+  ask turtles [
+    pen-down
+    forward 0.5
+    set heading heading + random-float 60 - 30
+  ]
+end
+```
+
+Now run the simulation again. You should see that the turtles leave a trace
+when they move around.
+
+
+## Making things adjustable via the interface
+
+Now we want to make some parameters adjustable via the interface. 
+To do so, we will add some sliders
+to the interface. Add three sliders to the interface:  
+- `speed` (speed of turtles)
+- `wiggle` (degree of randomness in movement)
+- `N` (number of turtles)
+
+For each slider you need to choose a range, e.g. the lower bound, upper bound and 
+a default value. 
+
+Now each of the sliders corresponds to a variable in the code area.
+Modify the setup function to use the `N` variable like so:
+```   
+to setup
+  ca
+  reset-ticks
+  create-turtles N
+  ask turtles [
+    set shape "circle"
+  ]
+end
+``` 
+
+and the go function to use the `speed` and `wiggle` variable like so:
+```   
+to go
+  tick
+  ask turtles [
+    pen-down
+    forward speed
+    set heading heading + random-float wiggle - (wiggle / 2)
+  ]
+end
+```   
+
+Now we are done. You can play with your simulation. Oh wait, no. Let's add a toggle
+for the traces. Add a switch to the interface called `trace`.
+  Now modify the go function like so:
+  ```
+to go
+  tick
+  ask turtles [
+    ifelse trace = True [pen-down][pen-up]    
+    forward speed
+    set heading heading + random-float wiggle - (wiggle / 2)
+  ]
+end
+  ```
+
+## Part 2 - SIR Dynamics on a Lattice
+
+In netlogo there are multiple types of agents. In part 1 we used turtles.
+In part 2 we will use patches. Patches are the grid cells that make up the world.
+You can see the lattice when you open the settings menu in netlogo. Choose a World
+with 64 pixels in each direction and a pixel size of 3 or so.
+
+Now we start again with our basic template of a `setup` and a `go` function:
+```   
+to setup
+  ca
+  reset-ticks   
+end
+```
+and
+```
+to go
+  tick
+end
+``` 
+
+Now we wish to assign a state to each patch. Each patch can be in one of three states:
+- Susceptible (S)
+- Infected (I)
+- Recovered (R)   
+
+To do so, we need to define a patch specific variable. Add the following line
+at the beginning of your code area:
+```
+patches-own [state]
+``` 
+Now we can use this variable to assign states to each patch.
+Now modify the setup function like so:
+```   
+to setup
+  ca
+  reset-ticks
+  ask patches [
+    set state "S"
+  ]
+end
+```
+
+Now each of the patches has the state "S". Next, we want to infect a few patches in the
+center of the world. Modify the setup function like so:
+```   
+to setup
+  ca
+  reset-ticks
+  ask patches [
+    set state "S"
+  ]
+  ask patches with [abs pxcor < 5 and abs pycor < 5] [
+    set state "I"
+  ]
+end
+``` 
+
+The line `ask patches with [abs pxcor < 5 and abs pycor < 5] [...]` selects all patches
+in the center of the world (i.e. those patches whose x and y coordinates are between -5 and +5)
+and makes them execute the commands inside the square brackets. Here, we set their state to "I".  
+
+Now we want to color the patches according to their state. Add the following function
+```   
+to paint
+  ask patches [ 
+    if state = "S" [set pcolor green]
+    if state = "I" [set pcolor red]
+    if state = "R" [set pcolor gray]
+  ]
+end
+```
+Now call this function at the end of the setup function, so that it looks like this now:
+```   
+to setup
+  ca
+  reset-ticks
+  ask patches [
+    set state "S"
+  ]
+  ask patches with [abs pxcor < 5 and abs pycor < 5] [
+    set state "I"
+  ]
+  paint
+end
+``` 
+
+This will color the patches according to their state when the setup function is executed.
+
+Now we need to implement the SIR dynamics in the go function. 
+First we go back to the interface and add a slider called `infection_rate`
+with a range from 0 to 1 and a default value of 0.2.
+
+Modify the go function in the code area like so:
+```   
+to go
+  tick
+  ask patches with [state = "I"] [
+    ask one-of neighbors [
+      if state = "S" and random-float 1 < infection_rate [set state "I"]
+    ]
+  ]
+  paint
+end
+```
+
+The line `ask patches with [state = "I"] [...]` makes all infected patches
+execute the commands inside the square brackets. Here, each infected patch
+selects one random neighbor patch using `ask one-of neighbors [...]` and makes
+it execute the commands inside the square brackets. If the selected neighbor
+is susceptible (i.e. its state is "S") it gets infected with a probability
+given by the `infection_rate` variable.
+
+Finally, we call the `paint` function at the end of the go function, so that the patches are colored
+according to their state at each time step.
+
+Try the simulation now. You can adjust the infection rate via the slider.
+
+We still need to implement the recovery process. To do so, add another slider
+called `recovery_rate` with a range from 0 to 1 and a default value of 0. 
+Now modify the go function like so:
+```   
+to go
+  tick
+  ask patches with [state = "I"] [
+    ask one-of neighbors [
+      if state = "S" and random-float 1 < infection_rate [set state "I"]
+    ]
+    if random-float 1 < recovery_rate [set state "R"]
+  ]
+  paint
+end
+``` 
+
+The last line inside the `ask patches with [state = "I"] [...]` block makes each infected patch recover
+with a probability given by the `recovery_rate` variable.
+
+Now you can run the program to see the spreading SIR model on a lattice.
+
 
 

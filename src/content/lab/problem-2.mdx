@@ -1,0 +1,88 @@
+---
+title: Rock-Paper-Scissors Simulation
+publishDate: 'Jan 15 2026'
+sequence: 2
+tags:
+  - Excercise
+  - Lab
+---
+
+In this problem we will implement a simulation in which agents of three different 
+types: **A**, **B**, and **C** move around randomly and interact 
+in the **rock-paper-scissor** fashion we discussed in class:
+
+$$
+A+B\xrightarrow{\alpha}2B\quad B+C\xrightarrow{\alpha}2C\qquad C+A\xrightarrow{\alpha}2A
+$$
+
+So when for example a turtle of type **A** encounters a turtle of type **B** the latter will convert to an **A** turtle.
+
+## Simulation 1
+
+1. Start by writing the usual template for the `go` and the `setup` function, not 
+forgetting the commands `ca` and `reset-ticks` in the `setup` function and the `tick` command in the `go` function.
+
+2. add buttons for the `go` and `setup` function in the interface. Also add **four sliders** for controlling 4 parameters
+	
+	- the **speed** of the agents
+	- the **wiggle** (randomness) of the movements
+	- the **interaction radius**
+	- the **number** $N$ of agents of each type. So for instance when $N=100$ the system should be 
+    initialized with 100 agents of each type.
+
+4. In the beginning of your code use the code snippet below to define a turtle specific variable called `typ`:	
+    ```
+	    turtles-own [typ]
+    ```
+12. Write a setup function that creates $N$ turtles of each type using 
+    statements like `create-turtles N [set typ "A"]` for example. The turtles shoud 
+    be placed at randon positions 
+    ```
+        ask turtles [setxy random-xcor random-ycor]
+    ```
+5. Write a function that paints turtles according to their type. This function should be called at the end of the setup routine and the go routine.
+
+	```
+	to paint
+	...
+	end
+	```
+    Make sure this function is called in the `go`function, so every time it is executed the turtles are colored according to their type.
+
+6. Now write the part of the 'go' function that makes turtles move around randomly, like we discussed and implemented earlier:
+
+    ```
+    to move
+      ask turtles [
+        forward speed
+        set heading heading + random-float wiggle - (wiggle / 2)
+      ]
+    end
+    ```
+
+6. Write a go function that does the interaction. The go function should loop over all the turtles. For each interaction the current turtle should pick a random target in an interaction radius $R$. Remember you can check this out by
+
+	```
+	let target one-of other turtles in-radius R
+	if target != nobody [
+	...
+	]
+	```
+
+7. then you should compare the type of the current turtle with the type of the target and implementing the rock-paper-scissors rules update their state
+
+8. If you want, you can setup a **switch** on the interface that sets a boolean variable. You can call this variable `trace` and add the following code to your turtle update loop
+
+	```
+	ifelse trace = True [pen-down][pen-up]
+	```
+8. You can also add a button that deletes all the traces. This is something you can find in the user manual of netlogo.
+
+
+## Simulation 2
+
+Write a patch based simulation in which patches are either **A**, **B** or **C**. As in the turtle simulation initialize the system fairly.
+
+At each type step a pache react with a randomly chose neighbor (`ask one-of neighbors [...]`) and changes its state according to the above reactions.
+
+
