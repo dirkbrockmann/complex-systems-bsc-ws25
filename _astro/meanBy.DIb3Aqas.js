@@ -1,0 +1,1 @@
+import{j as r}from"./map.ahxt9moZ.js";import{b as a}from"./_baseSum.Cz9yialR.js";var m=NaN;function o(e,n){var t=e==null?0:e.length;return t?a(e,n)/t:m}function b(e,n){return o(e,r(n))}export{b as m};
