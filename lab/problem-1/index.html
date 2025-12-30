@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="antialiased break-words"> <head><!-- High Priority Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rock-Paper-Scissors Simulation | Introduction to Complex Systems</title><meta name="generator" content="Astro v5.16.0"><!-- Fonts --><link rel="preload" as="font" type="font/woff2" href="/complex-systems-bsc-ws25/_astro/inter-latin-wght-normal.Dx4kXJAl.woff2" crossorigin="anonymous"><link rel="preload" as="font" type="font/woff2" href="/complex-systems-bsc-ws25/_astro/newsreader-latin-wght-normal.CCVVNp6i.woff2" crossorigin="anonymous"><!-- Low Priority Global Metadata --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS"><!-- Page Metadata --><link rel="canonical" href="https://dirkbrockmann.github.io/complex-systems-bsc-ws25/lab/problem-1/"><meta name="description" content><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://dirkbrockmann.github.io/complex-systems-bsc-ws25/lab/problem-1/"><meta property="og:title" content="Rock-Paper-Scissors Simulation | Introduction to Complex Systems"><meta property="og:description" content><meta property="og:image" content="https://dirkbrockmann.github.io/complex-systems-bsc-ws25/complex-systems-bsc-ws25/_astro/complexity.Dme4R24f.png"><meta property="og:image:alt" content="Complex Systems in Biology"><!-- X/Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://dirkbrockmann.github.io/complex-systems-bsc-ws25/lab/problem-1/"><meta property="twitter:title" content="Rock-Paper-Scissors Simulation | Introduction to Complex Systems"><meta property="twitter:description" content><meta property="twitter:image" content="https://dirkbrockmann.github.io/complex-systems-bsc-ws25/complex-systems-bsc-ws25/_astro/complexity.Dme4R24f.png"><meta name="twitter:image:alt" content="Complex Systems in Biology"><script>
+<!DOCTYPE html><html lang="en" class="antialiased break-words"> <head><!-- High Priority Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>First Steps - Diffusing Particles &amp; Infection on a Lattice | Introduction to Complex Systems</title><meta name="generator" content="Astro v5.16.0"><!-- Fonts --><link rel="preload" as="font" type="font/woff2" href="/complex-systems-bsc-ws25/_astro/inter-latin-wght-normal.Dx4kXJAl.woff2" crossorigin="anonymous"><link rel="preload" as="font" type="font/woff2" href="/complex-systems-bsc-ws25/_astro/newsreader-latin-wght-normal.CCVVNp6i.woff2" crossorigin="anonymous"><!-- Low Priority Global Metadata --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS"><!-- Page Metadata --><link rel="canonical" href="https://dirkbrockmann.github.io/complex-systems-bsc-ws25/lab/problem-1/"><meta name="description" content><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://dirkbrockmann.github.io/complex-systems-bsc-ws25/lab/problem-1/"><meta property="og:title" content="First Steps - Diffusing Particles &#38; Infection on a Lattice | Introduction to Complex Systems"><meta property="og:description" content><meta property="og:image" content="https://dirkbrockmann.github.io/complex-systems-bsc-ws25/complex-systems-bsc-ws25/_astro/complexity.Dme4R24f.png"><meta property="og:image:alt" content="Complex Systems in Biology"><!-- X/Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://dirkbrockmann.github.io/complex-systems-bsc-ws25/lab/problem-1/"><meta property="twitter:title" content="First Steps - Diffusing Particles &#38; Infection on a Lattice | Introduction to Complex Systems"><meta property="twitter:description" content><meta property="twitter:image" content="https://dirkbrockmann.github.io/complex-systems-bsc-ws25/complex-systems-bsc-ws25/_astro/complexity.Dme4R24f.png"><meta name="twitter:image:alt" content="Complex Systems in Biology"><script>
   (function () {
     try {
       const mql = window.matchMedia('(prefers-color-scheme: dark)');
@@ -45,92 +45,274 @@
             <img src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} class="max-h-12 block dark:hidden" />
             <img src={siteConfig.logoDark.src} alt={siteConfig.logoDark.alt || ''} class="max-h-12 hidden dark:block" />
         </a>
-    </div> --> </nav>  <script type="module">function n(){const s=document.querySelector(".menu"),e=document.querySelector(".menu-toggle");e?.addEventListener("click",()=>{const t=e.getAttribute("aria-expanded")==="true";e.classList.toggle("is-active"),e.setAttribute("aria-expanded",t?"false":"true"),e.setAttribute("aria-label",t?"Open Menu":"Close Menu"),s?.classList.toggle("is-visible")})}n();document.addEventListener("astro:after-swap",n);</script>  <main class="grow w-full max-w-5xl mx-auto ">  <article class="mb-16 sm:mb-24"> <header class="mb-8"> <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">Rock-Paper-Scissors Simulation</h1>  </header> <div class="max-w-none prose sm:prose-lg">  <p>In this problem we will implement a simulation in which agents of three different
-types: <strong>A</strong>, <strong>B</strong>, and <strong>C</strong> move around randomly and interact
-in the <strong>rock-paper-scissor</strong> fashion we discussed in class:</p>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>A</mi><mo>+</mo><mi>B</mi><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mi>α</mi></mpadded></mover><mn>2</mn><mi>B</mi><mspace width="1em"></mspace><mi>B</mi><mo>+</mo><mi>C</mi><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mi>α</mi></mpadded></mover><mn>2</mn><mi>C</mi><mspace width="2em"></mspace><mi>C</mi><mo>+</mo><mi>A</mi><mover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mi>α</mi></mpadded></mover><mn>2</mn><mi>A</mi></mrow><annotation encoding="application/x-tex">A+B\xrightarrow{\alpha}2B\quad B+C\xrightarrow{\alpha}2C\qquad C+A\xrightarrow{\alpha}2A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.9344em;vertical-align:-0.011em"></span><span class="mord mathnormal" style="margin-right:0.05017em">B</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9234em"><span style="top:-3.322em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em">α</span></span></span></span><span class="svg-align" style="top:-2.689em"><span class="pstrut" style="height:2.7em"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
--16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
- 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
- 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
--40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
--12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
- 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.05017em">B</span><span class="mspace" style="margin-right:1em"></span><span class="mord mathnormal" style="margin-right:0.05017em">B</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.9344em;vertical-align:-0.011em"></span><span class="mord mathnormal" style="margin-right:0.07153em">C</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9234em"><span style="top:-3.322em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em">α</span></span></span></span><span class="svg-align" style="top:-2.689em"><span class="pstrut" style="height:2.7em"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
--16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
- 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
- 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
--40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
--12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
- 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.07153em">C</span><span class="mspace" style="margin-right:2em"></span><span class="mord mathnormal" style="margin-right:0.07153em">C</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.9344em;vertical-align:-0.011em"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9234em"><span style="top:-3.322em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em">α</span></span></span></span><span class="svg-align" style="top:-2.689em"><span class="pstrut" style="height:2.7em"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
--16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
- 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
- 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
--40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
--12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
- 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord">2</span><span class="mord mathnormal">A</span></span></span></span></span>
-<p>So when for example a turtle of type <strong>A</strong> encounters a turtle of type <strong>B</strong> the latter will convert to an <strong>A</strong> turtle.</p>
-<h2 id="simulation-1">Simulation 1</h2>
-<ol>
-<li>
-<p>Start by writing the usual template for the <code>go</code> and the <code>setup</code> function, not
-forgetting the commands <code>ca</code> and <code>reset-ticks</code> in the <code>setup</code> function and the <code>tick</code> command in the <code>go</code> function.</p>
-</li>
-<li>
-<p>add buttons for the <code>go</code> and <code>setup</code> function in the interface. Also add <strong>four sliders</strong> for controlling 4 parameters</p>
+    </div> --> </nav>  <script type="module">function n(){const s=document.querySelector(".menu"),e=document.querySelector(".menu-toggle");e?.addEventListener("click",()=>{const t=e.getAttribute("aria-expanded")==="true";e.classList.toggle("is-active"),e.setAttribute("aria-expanded",t?"false":"true"),e.setAttribute("aria-label",t?"Open Menu":"Close Menu"),s?.classList.toggle("is-visible")})}n();document.addEventListener("astro:after-swap",n);</script>  <main class="grow w-full max-w-5xl mx-auto ">  <article class="mb-16 sm:mb-24"> <header class="mb-8"> <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">First Steps - Diffusing Particles &amp; Infection on a Lattice</h1>  </header> <div class="max-w-none prose sm:prose-lg">  <p>This is the first ‘hands-on’ exercise of the lab course. It has two parts and
+we will realize the netlogo model simultaneously in class. The first part is about
+diffusing particles or random-walks.</p>
+<h2 id="part-1---diffusing-particles">Part 1 - Diffusing Particles</h2>
+<p>At the beginning of (almost) every netlogo simulation you need to do a few
+preparatory steps. Almost each simulation needs to buttons:</p>
 <ul>
-<li>the <strong>speed</strong> of the agents</li>
-<li>the <strong>wiggle</strong> (randomness) of the movements</li>
-<li>the <strong>interaction radius</strong></li>
-<li>the <strong>number</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.10903em">N</span></span></span></span> of agents of each type. So for instance when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">N=100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.10903em">N</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">100</span></span></span></span> the system should be
-initialized with 100 agents of each type.</li>
+<li>a setup button</li>
+<li>a go button</li>
 </ul>
-</li>
-<li>
-<p>In the beginning of your code use the code snippet below to define a turtle specific variable called <code>typ</code>:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>    turtles-own [typ]</span></span></code></pre>
-</li>
-<li>
-<p>Write a setup function that creates <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.10903em">N</span></span></span></span> turtles of each type using
-statements like <code>create-turtles N [set typ &quot;A&quot;]</code> for example. The turtles shoud
-be placed at randon positions</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>    ask turtles [setxy random-xcor random-ycor]</span></span></code></pre>
-</li>
-<li>
-<p>Write a function that paints turtles according to their type. This function should be called at the end of the setup routine and the go routine.</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to paint</span></span>
-<span class="line"><span>...</span></span>
+<p>In the netlogo interface press <code>add widget</code> and then select <code>button</code>. A dialog
+will open in which you can enter the name of the function that should be called
+when the button is pressed. For the setup button enter <code>setup</code> and
+for the go button enter <code>go</code>.</p>
+<p>Remember to check the <code>forever</code> checkbox for the go button, so that it will
+be executed repeatedly when pressed.</p>
+<p><strong>Also:</strong> In the netlogo window on the right, check <strong>On ticks</strong> instead of continuous.</p>
+<p>Now we need to define the two functions <code>setup</code> and <code>go</code> in the code area of netlogo.
+The following steps are also quite generic. In the code area enter the following code:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to setup</span></span>
+<span class="line"><span>  ca</span></span>
+<span class="line"><span>  reset-ticks</span></span>
 <span class="line"><span>end</span></span></code></pre>
-<p>Make sure this function is called in the <code>go</code>function, so every time it is executed the turtles are colored according to their type.</p>
-</li>
-<li>
-<p>Now write the part of the ‘go’ function that makes turtles move around randomly, like we discussed and implemented earlier:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to move</span></span>
+<p>This is the function that will be called when the setup button is pressed. Two
+commands are already included:</p>
+<ul>
+<li><code>ca</code> clears the entire world</li>
+<li><code>reset-ticks</code> resets the internal clock of netlogo to zero.</li>
+</ul>
+<p>Now add the go function like so:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to go</span></span>
+<span class="line"><span>  tick</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>At the moment, when <code>go</code> is executed, only the command <code>tick</code> is executed, which
+advances the internal clock of netlogo by one unit.</p>
+<h3 id="creating-a-bunch-of-turtles">Creating a bunch of turtles</h3>
+<p>Now we would like to create a bunch of turtles<sup> <a href="#marginnote-turtles" class="align-text-top text-xs">1</a> </sup> that will represent our
+diffusing particles. To do so, we will use the <code>create-turtles</code> command.
+Add the following line to the setup function, so that it looks like this now:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to setup</span></span>
+<span class="line"><span>  ca</span></span>
+<span class="line"><span>  reset-ticks</span></span>
+<span class="line"><span>  create-turtles 100</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<div class="marginnote m-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-8 pb-4"> <p><sup id="ref-1" class="align-text-top text-xs -ml-3 mr-1">1</sup>Agents in netlogo are called turtles. Agents have a bunch of in-built properties
+like position, heading, color, shape, size, etc. When you create turtles
+using the <code>create-turtles</code> command, they are created at the orgin of the world,
+so by default in the middle of the world.</p> </div>
+<h3 id="making-turtles-move">Making turtles move</h3>
+<p>Now we add some stuff to the go function, like so:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to go</span></span>
+<span class="line"><span>  tick</span></span>
 <span class="line"><span>  ask turtles [</span></span>
+<span class="line"><span>    forward 0.1</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>The command <code>ask turtles [...]</code> makes all turtles execute the commands
+inside the square brackets. Here, each turtle moves forward by 0.1 units
+in the direction it is currently heading<sup> <a href="#marginnote-heading" class="align-text-top text-xs">2</a> </sup>.</p>
+<div class="marginnote m-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-8 pb-4"> <p><sup id="ref-2" class="align-text-top text-xs -ml-3 mr-1">2</sup>The heading of a turtle is the direction in which it is facing.
+It is measured in degrees, with 0 degrees pointing to the right (east),
+90 degrees pointing up (north), 180 degrees pointing to the left (west),
+and 270 degrees pointing down (south). You can change the heading of a turtle
+using the <code>set heading</code> command. When turtles are created their heading is random.</p> </div>
+<p>Let’s change the turtles shape, add this line to the setup function:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>   ask turtles [</span></span>
+<span class="line"><span>     set shape &quot;circle&quot;</span></span>
+<span class="line"><span>   ]</span></span></code></pre>
+<p>You can also use another shape if you want. Now the setup function looks like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to setup</span></span>
+<span class="line"><span>  ca</span></span>
+<span class="line"><span>  reset-ticks </span></span>
+<span class="line"><span>  create-turtles 100</span></span>
+<span class="line"><span>  ask turtles [</span></span>
+<span class="line"><span>    set shape &quot;circle&quot;</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>Let’s also make the world a bit larger. In the netlogo menu go to <code>Settings</code> and
+change the <code>World Width</code> and <code>World Height</code> to 64. Also make sure the pixel size
+is set to 3 or 4, so the world fits on your screen.</p>
+<h3 id="adding-randomness-to-the-movement">Adding randomness to the movement</h3>
+<p>Let’s first modify the go function like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to go</span></span>
+<span class="line"><span>  tick</span></span>
+<span class="line"><span>  ask turtles [</span></span>
+<span class="line"><span>    forward 0.5</span></span>
+<span class="line"><span>    set heading heading + 1</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>The last command in the <code>ask turtles [...]</code> block makes each turtle turn by 1 degree
+at each time step. Now run the simulation by pressing the setup button and then the go button.
+You should see the turtles moving in circles.</p>
+<p>Now we’d like to add randomness to the movement. We want to add a random angle to
+the heading at each time step. Modify the go function like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to go</span></span>
+<span class="line"><span>  tick</span></span>
+<span class="line"><span>  ask turtles [</span></span>
+<span class="line"><span>    forward 0.5</span></span>
+<span class="line"><span>    set heading heading + random-float 60 - 30</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>Here’s what the line <code>set heading heading + random-float 60 - 30</code> does:</p>
+<ul>
+<li><code>random-float 60</code> generates a random floating point number between 0 and 60.</li>
+<li>subtracting 30 shifts this number to be between -30 and +30.</li>
+<li>adding this to the current heading makes the turtle turn by a random angle
+between -30 and +30 degrees at each time step.</li>
+</ul>
+<p>Now, we want to add something a bit artistic. Let’s make the turtles leave a trace
+when they move. To do so, we need to use the <code>pen-down</code> command. Modify the go function
+like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to go</span></span>
+<span class="line"><span>  tick</span></span>
+<span class="line"><span>  ask turtles [</span></span>
+<span class="line"><span>    pen-down</span></span>
+<span class="line"><span>    forward 0.5</span></span>
+<span class="line"><span>    set heading heading + random-float 60 - 30</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>Now run the simulation again. You should see that the turtles leave a trace
+when they move around.</p>
+<h2 id="making-things-adjustable-via-the-interface">Making things adjustable via the interface</h2>
+<p>Now we want to make some parameters adjustable via the interface.
+To do so, we will add some sliders
+to the interface. Add three sliders to the interface:</p>
+<ul>
+<li><code>speed</code> (speed of turtles)</li>
+<li><code>wiggle</code> (degree of randomness in movement)</li>
+<li><code>N</code> (number of turtles)</li>
+</ul>
+<p>For each slider you need to choose a range, e.g. the lower bound, upper bound and
+a default value.</p>
+<p>Now each of the sliders corresponds to a variable in the code area.
+Modify the setup function to use the <code>N</code> variable like so:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to setup</span></span>
+<span class="line"><span>  ca</span></span>
+<span class="line"><span>  reset-ticks</span></span>
+<span class="line"><span>  create-turtles N</span></span>
+<span class="line"><span>  ask turtles [</span></span>
+<span class="line"><span>    set shape &quot;circle&quot;</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>and the go function to use the <code>speed</code> and <code>wiggle</code> variable like so:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to go</span></span>
+<span class="line"><span>  tick</span></span>
+<span class="line"><span>  ask turtles [</span></span>
+<span class="line"><span>    pen-down</span></span>
 <span class="line"><span>    forward speed</span></span>
 <span class="line"><span>    set heading heading + random-float wiggle - (wiggle / 2)</span></span>
 <span class="line"><span>  ]</span></span>
 <span class="line"><span>end</span></span></code></pre>
-</li>
-<li>
-<p>Write a go function that does the interaction. The go function should loop over all the turtles. For each interaction the current turtle should pick a random target in an interaction radius <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.00773em">R</span></span></span></span>. Remember you can check this out by</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>let target one-of other turtles in-radius R</span></span>
-<span class="line"><span>if target != nobody [</span></span>
-<span class="line"><span>...</span></span>
-<span class="line"><span>]</span></span></code></pre>
-</li>
-<li>
-<p>then you should compare the type of the current turtle with the type of the target and implementing the rock-paper-scissors rules update their state</p>
-</li>
-<li>
-<p>If you want, you can setup a <strong>switch</strong> on the interface that sets a boolean variable. You can call this variable <code>trace</code> and add the following code to your turtle update loop</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>ifelse trace = True [pen-down][pen-up]</span></span></code></pre>
-</li>
-<li>
-<p>You can also add a button that deletes all the traces. This is something you can find in the user manual of netlogo.</p>
-</li>
-</ol>
-<h2 id="simulation-2">Simulation 2</h2>
-<p>Write a patch based simulation in which patches are either <strong>A</strong>, <strong>B</strong> or <strong>C</strong>. As in the turtle simulation initialize the system fairly.</p>
-<p>At each type step a pache react with a randomly chose neighbor (<code>ask one-of neighbors [...]</code>) and changes its state according to the above reactions.</p>  </div> </article>  </main> <footer class="w-full max-w-5xl mx-auto pt-12 pb-10 sm:pt-24 sm:pb-14"> <div class="mb-4 flex flex-wrap gap-x-6 gap-y-1"> <a class="font-serif hover:underline hover:underline-offset-2" href="/complex-systems-bsc-ws25/contact">Contact</a><a class="font-serif hover:underline hover:underline-offset-2" href="/complex-systems-bsc-ws25/terms">Terms</a> </div> <div class="pt-6 flex flex-col gap-4 border-t border-dashed border-main sm:flex-row-reverse sm:justify-between sm:items-center"> <div class="flex flex-wrap gap-x-4 gap-y-1"> <a class="inline-flex items-center justify-center text-sm hover:underline hover:underline-offset-2" href="https://synosys.github.io" target="_blank" rel="noopener noreferer">Center Synergy of Systems</a><a class="inline-flex items-center justify-center text-sm hover:underline hover:underline-offset-2" href="https://tu-dresden.de" target="_blank" rel="noopener noreferer">TU Dresden</a> </div> <p class="text-sm">
+<p>Now we are done. You can play with your simulation. Oh wait, no. Let’s add a toggle
+for the traces. Add a switch to the interface called <code>trace</code>.
+Now modify the go function like so:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to go</span></span>
+<span class="line"><span>tick</span></span>
+<span class="line"><span>ask turtles [</span></span>
+<span class="line"><span>  ifelse trace = True [pen-down][pen-up]    </span></span>
+<span class="line"><span>  forward speed</span></span>
+<span class="line"><span>  set heading heading + random-float wiggle - (wiggle / 2)</span></span>
+<span class="line"><span>]</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<h2 id="part-2---sir-dynamics-on-a-lattice">Part 2 - SIR Dynamics on a Lattice</h2>
+<p>In netlogo there are multiple types of agents. In part 1 we used turtles.
+In part 2 we will use patches. Patches are the grid cells that make up the world.
+You can see the lattice when you open the settings menu in netlogo. Choose a World
+with 64 pixels in each direction and a pixel size of 3 or so.</p>
+<p>Now we start again with our basic template of a <code>setup</code> and a <code>go</code> function:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to setup</span></span>
+<span class="line"><span>  ca</span></span>
+<span class="line"><span>  reset-ticks   </span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>and</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to go</span></span>
+<span class="line"><span>  tick</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>Now we wish to assign a state to each patch. Each patch can be in one of three states:</p>
+<ul>
+<li>Susceptible (S)</li>
+<li>Infected (I)</li>
+<li>Recovered (R)</li>
+</ul>
+<p>To do so, we need to define a patch specific variable. Add the following line
+at the beginning of your code area:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>patches-own [state]</span></span></code></pre>
+<p>Now we can use this variable to assign states to each patch.
+Now modify the setup function like so:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to setup</span></span>
+<span class="line"><span>  ca</span></span>
+<span class="line"><span>  reset-ticks</span></span>
+<span class="line"><span>  ask patches [</span></span>
+<span class="line"><span>    set state &quot;S&quot;</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>Now each of the patches has the state “S”. Next, we want to infect a few patches in the
+center of the world. Modify the setup function like so:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to setup</span></span>
+<span class="line"><span>  ca</span></span>
+<span class="line"><span>  reset-ticks</span></span>
+<span class="line"><span>  ask patches [</span></span>
+<span class="line"><span>    set state &quot;S&quot;</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>  ask patches with [abs pxcor &lt; 5 and abs pycor &lt; 5] [</span></span>
+<span class="line"><span>    set state &quot;I&quot;</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>The line <code>ask patches with [abs pxcor &lt; 5 and abs pycor &lt; 5] [...]</code> selects all patches
+in the center of the world (i.e. those patches whose x and y coordinates are between -5 and +5)
+and makes them execute the commands inside the square brackets. Here, we set their state to “I”.</p>
+<p>Now we want to color the patches according to their state. Add the following function</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to paint</span></span>
+<span class="line"><span>  ask patches [ </span></span>
+<span class="line"><span>    if state = &quot;S&quot; [set pcolor green]</span></span>
+<span class="line"><span>    if state = &quot;I&quot; [set pcolor red]</span></span>
+<span class="line"><span>    if state = &quot;R&quot; [set pcolor gray]</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>Now call this function at the end of the setup function, so that it looks like this now:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to setup</span></span>
+<span class="line"><span>  ca</span></span>
+<span class="line"><span>  reset-ticks</span></span>
+<span class="line"><span>  ask patches [</span></span>
+<span class="line"><span>    set state &quot;S&quot;</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>  ask patches with [abs pxcor &lt; 5 and abs pycor &lt; 5] [</span></span>
+<span class="line"><span>    set state &quot;I&quot;</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>  paint</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>This will color the patches according to their state when the setup function is executed.</p>
+<p>Now we need to implement the SIR dynamics in the go function.
+First we go back to the interface and add a slider called <code>infection_rate</code>
+with a range from 0 to 1 and a default value of 0.2.</p>
+<p>Modify the go function in the code area like so:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to go</span></span>
+<span class="line"><span>  tick</span></span>
+<span class="line"><span>  ask patches with [state = &quot;I&quot;] [</span></span>
+<span class="line"><span>    ask one-of neighbors [</span></span>
+<span class="line"><span>      if state = &quot;S&quot; and random-float 1 &lt; infection_rate [set state &quot;I&quot;]</span></span>
+<span class="line"><span>    ]</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>  paint</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>The line <code>ask patches with [state = &quot;I&quot;] [...]</code> makes all infected patches
+execute the commands inside the square brackets. Here, each infected patch
+selects one random neighbor patch using <code>ask one-of neighbors [...]</code> and makes
+it execute the commands inside the square brackets. If the selected neighbor
+is susceptible (i.e. its state is “S”) it gets infected with a probability
+given by the <code>infection_rate</code> variable.</p>
+<p>Finally, we call the <code>paint</code> function at the end of the go function, so that the patches are colored
+according to their state at each time step.</p>
+<p>Try the simulation now. You can adjust the infection rate via the slider.</p>
+<p>We still need to implement the recovery process. To do so, add another slider
+called <code>recovery_rate</code> with a range from 0 to 1 and a default value of 0.
+Now modify the go function like so:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>to go</span></span>
+<span class="line"><span>  tick</span></span>
+<span class="line"><span>  ask patches with [state = &quot;I&quot;] [</span></span>
+<span class="line"><span>    ask one-of neighbors [</span></span>
+<span class="line"><span>      if state = &quot;S&quot; and random-float 1 &lt; infection_rate [set state &quot;I&quot;]</span></span>
+<span class="line"><span>    ]</span></span>
+<span class="line"><span>    if random-float 1 &lt; recovery_rate [set state &quot;R&quot;]</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>  paint</span></span>
+<span class="line"><span>end</span></span></code></pre>
+<p>The last line inside the <code>ask patches with [state = &quot;I&quot;] [...]</code> block makes each infected patch recover
+with a probability given by the <code>recovery_rate</code> variable.</p>
+<p>Now you can run the program to see the spreading SIR model on a lattice.</p>  </div> </article>  </main> <footer class="w-full max-w-5xl mx-auto pt-12 pb-10 sm:pt-24 sm:pb-14"> <div class="mb-4 flex flex-wrap gap-x-6 gap-y-1"> <a class="font-serif hover:underline hover:underline-offset-2" href="/complex-systems-bsc-ws25/contact">Contact</a><a class="font-serif hover:underline hover:underline-offset-2" href="/complex-systems-bsc-ws25/terms">Terms</a> </div> <div class="pt-6 flex flex-col gap-4 border-t border-dashed border-main sm:flex-row-reverse sm:justify-between sm:items-center"> <div class="flex flex-wrap gap-x-4 gap-y-1"> <a class="inline-flex items-center justify-center text-sm hover:underline hover:underline-offset-2" href="https://synosys.github.io" target="_blank" rel="noopener noreferer">Center Synergy of Systems</a><a class="inline-flex items-center justify-center text-sm hover:underline hover:underline-offset-2" href="https://tu-dresden.de" target="_blank" rel="noopener noreferer">TU Dresden</a> </div> <p class="text-sm">
 &copy; 2025&nbsp;<a class="hover:underline hover:underline-offset-2" href="/">Dirk Brockmann</a>. All rights
             reserved.
 </p> </div> </footer> </div> </body></html>
