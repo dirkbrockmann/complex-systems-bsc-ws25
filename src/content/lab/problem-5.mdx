@@ -3,7 +3,7 @@ title: The Schelling Model of Segregation
 publishDate: 'Jan 15 2026'
 sequence: 5
 tags:
-  - Excercise
+  - Exercise
   - Lab
 ---
 
@@ -12,7 +12,7 @@ import Explorable from '../../components/Explorable.astro';
 import LotkaVolterra from '../../content/figures/explorables/lotka_martini';
 
 
-In this excercise you will implement the Schelling Model of Segregation. It's an interesting model
+In this exercise you will implement the Schelling Model of Segregation. It's an interesting model
 that shows how even mild preferences for neighbors of the same type can lead to strong segregation
 patterns. Before you start implementing it, have a look at the Complexity Explorable:
 [**T. Schelling plays Go**](https://www.complexity-explorables.org/explorables/t-schelling-plays-go/), which
@@ -43,8 +43,8 @@ patches-own [state]
 
 ### setup
 
-Write a setup function that initialized the patches such that the a fraction $C$ of patches are nonempty. 
-Of those non-empty site 50% should be of type **A** and 50% should be of type *B*.
+Write a setup function that initializes the patches such that a fraction $C$ of patches are nonempty. 
+Of those non-empty sites 50% should be of type **A** and 50% should be of type *B*.
 
 
 ## simulation
@@ -53,7 +53,7 @@ At every simulation tick iterate over all patches (`ask all patches [...]`) and
 implement the rule that defines the Schelling Model.
 
 - count how many neighbors of the calling patch have a type different from the calling type. You could try this
-wirh a construction that compares the state of the calling patch with the states of the neighboring patches:
+with a construction that compares the state of the calling patch with the states of the neighboring patches:
 
 ```
 let different count neighbors with [state != [state] of myself and state != "empty"]
@@ -68,7 +68,7 @@ ask patches [
 ``` 
 
 Now the variable `different` can be anything between 0 and 8, because each patch has 8 neighbors.
-So when you devide it by 8, you get the fraction. And that should be compared to the tolerance parameter.
+So when you divide it by 8, you get the fraction. And that should be compared to the tolerance parameter.
 
 If that fraction is larger than the *tolerance* parameter do the following
 	

@@ -3,7 +3,7 @@ title: Rock-Paper-Scissors Simulation
 publishDate: 'Jan 15 2026'
 sequence: 2
 tags:
-  - Excercise
+  - Exercise
   - Lab
 ---
 
@@ -35,8 +35,8 @@ forgetting the commands `ca` and `reset-ticks` in the `setup` function and the `
 	    turtles-own [typ]
     ```
 12. Write a setup function that creates $N$ turtles of each type using 
-    statements like `create-turtles N [set typ "A"]` for example. The turtles shoud 
-    be placed at randon positions 
+    statements like `create-turtles N [set typ "A"]` for example. The turtles should 
+    be placed at random positions 
     ```
         ask turtles [setxy random-xcor random-ycor]
     ```
@@ -83,6 +83,6 @@ forgetting the commands `ca` and `reset-ticks` in the `setup` function and the `
 
 Write a patch based simulation in which patches are either **A**, **B** or **C**. As in the turtle simulation initialize the system fairly.
 
-At each type step a pache react with a randomly chose neighbor (`ask one-of neighbors [...]`) and changes its state according to the above reactions.
+At each time step a patch reacts with a randomly chosen neighbor (`ask one-of neighbors [...]`) and changes its state according to the above reactions.
 
 
