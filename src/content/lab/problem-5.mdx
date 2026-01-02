@@ -1,0 +1,84 @@
+---
+title: The Schelling Model of Segregation
+publishDate: 'Jan 15 2026'
+sequence: 5
+tags:
+  - Excercise
+  - Lab
+---
+
+
+import Explorable from '../../components/Explorable.astro';
+import LotkaVolterra from '../../content/figures/explorables/lotka_martini';
+
+
+In this excercise you will implement the Schelling Model of Segregation. It's an interesting model
+that shows how even mild preferences for neighbors of the same type can lead to strong segregation
+patterns. Before you start implementing it, have a look at the Complexity Explorable:
+[**T. Schelling plays Go**](https://www.complexity-explorables.org/explorables/t-schelling-plays-go/), which
+illustrates the model.
+
+Now it's time to implement a version in netlogo yourself! We will stick with a version in which
+we have only two types of populations, let's call them **A** and **B**.
+
+This version, just like the original, will be a lattice model, so you'll work with patches.
+Make the world size 129x129 pixels for good visibility.
+
+1. Write the usual `setup` and `go` functions with buttons to control them.
+2. The Schelling model has two parameters
+  - the initial density of agents 
+  - the tolerance parameter
+
+Each of these should be a slider with a range between 0 and 1.
+
+Each patch in the model can have three different states
+1. "A"
+2. "B"
+3. "empty"
+
+You can use the `patches-own` command to define a patch specific variable `state` like so:
+```
+patches-own [state]
+```
+
+### setup
+
+Write a setup function that initialized the patches such that the a fraction $C$ of patches are nonempty. 
+Of those non-empty site 50% should be of type **A** and 50% should be of type *B*.
+
+
+## simulation
+
+At every simulation tick iterate over all patches (`ask all patches [...]`) and 
+implement the rule that defines the Schelling Model.
+
+- count how many neighbors of the calling patch have a type different from the calling type. You could try this
+wirh a construction that compares the state of the calling patch with the states of the neighboring patches:
+
+```
+let different count neighbors with [state != [state] of myself and state != "empty"]
+```
+That's a very netlogo clever construction but difficult to read and the logic of the command `myself` is sometimes
+difficult to grasp. A more readable approach is this:
+```
+ask patches [
+  let state_of_self state
+  let different count neighbors with [state != state_of_self and state != "empty"]
+]
+``` 
+
+Now the variable `different` can be anything between 0 and 8, because each patch has 8 neighbors.
+So when you devide it by 8, you get the fraction. And that should be compared to the tolerance parameter.
+
+If that fraction is larger than the *tolerance* parameter do the following
+	
+1. turn a randomly chosen empty site into a type identical to the type of the calling patch
+2. set the type of the calling patch to "empty"
+
+That "simulates" the owner of the patch moving to a new location.
+ 	
+## Intolerably Lonely
+
+Write a new version of the Schelling model in which patches "move" also 
+if the neighboring sites are either of a different type or empty. That's an interesting variation
+that exhibits a new type of behavior that you don't see in the original Schelling model.
