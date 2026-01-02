@@ -45,7 +45,7 @@
             <img src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} class="max-h-12 block dark:hidden" />
             <img src={siteConfig.logoDark.src} alt={siteConfig.logoDark.alt || ''} class="max-h-12 hidden dark:block" />
         </a>
-    </div> --> </nav>  <script type="module">function n(){const s=document.querySelector(".menu"),e=document.querySelector(".menu-toggle");e?.addEventListener("click",()=>{const t=e.getAttribute("aria-expanded")==="true";e.classList.toggle("is-active"),e.setAttribute("aria-expanded",t?"false":"true"),e.setAttribute("aria-label",t?"Open Menu":"Close Menu"),s?.classList.toggle("is-visible")})}n();document.addEventListener("astro:after-swap",n);</script>  <main class="grow w-full max-w-5xl mx-auto ">  <article class="mb-16 sm:mb-24"> <header class="mb-8"> <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">The Schelling Model of Segregation</h1>  </header> <div class="max-w-none prose sm:prose-lg">  <p>In this excercise you will implement the Schelling Model of Segregation. It’s an interesting model
+    </div> --> </nav>  <script type="module">function n(){const s=document.querySelector(".menu"),e=document.querySelector(".menu-toggle");e?.addEventListener("click",()=>{const t=e.getAttribute("aria-expanded")==="true";e.classList.toggle("is-active"),e.setAttribute("aria-expanded",t?"false":"true"),e.setAttribute("aria-label",t?"Open Menu":"Close Menu"),s?.classList.toggle("is-visible")})}n();document.addEventListener("astro:after-swap",n);</script>  <main class="grow w-full max-w-5xl mx-auto ">  <article class="mb-16 sm:mb-24"> <header class="mb-8"> <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">The Schelling Model of Segregation</h1>  </header> <div class="max-w-none prose sm:prose-lg">  <p>In this exercise you will implement the Schelling Model of Segregation. It’s an interesting model
 that shows how even mild preferences for neighbors of the same type can lead to strong segregation
 patterns. Before you start implementing it, have a look at the Complexity Explorable:
 <a href="https://www.complexity-explorables.org/explorables/t-schelling-plays-go/"><strong>T. Schelling plays Go</strong></a>, which
@@ -72,14 +72,14 @@ Make the world size 129x129 pixels for good visibility.</p>
 <p>You can use the <code>patches-own</code> command to define a patch specific variable <code>state</code> like so:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>patches-own [state]</span></span></code></pre>
 <h3 id="setup">setup</h3>
-<p>Write a setup function that initialized the patches such that the a fraction <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.07153em">C</span></span></span></span> of patches are nonempty.
-Of those non-empty site 50% should be of type <strong>A</strong> and 50% should be of type <em>B</em>.</p>
+<p>Write a setup function that initializes the patches such that a fraction <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal" style="margin-right:0.07153em">C</span></span></span></span> of patches are nonempty.
+Of those non-empty sites 50% should be of type <strong>A</strong> and 50% should be of type <em>B</em>.</p>
 <h2 id="simulation">simulation</h2>
 <p>At every simulation tick iterate over all patches (<code>ask all patches [...]</code>) and
 implement the rule that defines the Schelling Model.</p>
 <ul>
 <li>count how many neighbors of the calling patch have a type different from the calling type. You could try this
-wirh a construction that compares the state of the calling patch with the states of the neighboring patches:</li>
+with a construction that compares the state of the calling patch with the states of the neighboring patches:</li>
 </ul>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>let different count neighbors with [state != [state] of myself and state != &quot;empty&quot;]</span></span></code></pre>
 <p>That’s a very netlogo clever construction but difficult to read and the logic of the command <code>myself</code> is sometimes
@@ -89,7 +89,7 @@ difficult to grasp. A more readable approach is this:</p>
 <span class="line"><span>  let different count neighbors with [state != state_of_self and state != &quot;empty&quot;]</span></span>
 <span class="line"><span>]</span></span></code></pre>
 <p>Now the variable <code>different</code> can be anything between 0 and 8, because each patch has 8 neighbors.
-So when you devide it by 8, you get the fraction. And that should be compared to the tolerance parameter.</p>
+So when you divide it by 8, you get the fraction. And that should be compared to the tolerance parameter.</p>
 <p>If that fraction is larger than the <em>tolerance</em> parameter do the following</p>
 <ol>
 <li>turn a randomly chosen empty site into a type identical to the type of the calling patch</li>
