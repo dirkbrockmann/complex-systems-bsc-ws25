@@ -1,0 +1,58 @@
+---
+title: Percolation
+publishDate: 'Jan 6 2026'
+sequence: 6
+tags:
+  - Exercise
+  - Lab
+---
+
+import Explorable from '../../components/Explorable.astro';
+import Percolation from '../../content/figures/explorables/baristas_secret';
+
+In this exercise you will implement a simulation of percolation, a fundamental concept
+in statistical physics and complex systems. Here's the Complexity Explorable
+**Barista's Secret**, which illustrates the model:
+
+<Explorable id="baristas_secret" class="max-w-[80%]" captionClass=''>    
+    <Percolation slot="figure" client:load id="baristas_secret" forceRowOnSmall={false} />
+    The **Barista's Secret** explorable illustrating percolation as discussed in the lecture on critical phenomena.
+</Explorable>
+
+The idea is simple: Imagine water flowing through a porous medium like coffee grounds. 
+Whether the water can percolate through depends on how tightly the medium is packed. 
+
+
+## States and Setup
+
+
+This is a lattice model, so you'll work with patches again. Make the world 64x64 pixels.
+
+Each patch can be in one of three states:
+- **coffee** (brown)
+- **empty** (white)
+- **water** (blue)
+
+Define a patch-specific variable `state` and write a `paint` function that colors patches according to their state.
+
+In the `setup` function:
+1. Initialize patches randomly as either "empty" or "coffee". The fraction of coffee patches should be controlled by a slider (range 0 to 1).
+2. Create a small disk of "water" patches in the center of the world. You can filter patches by their coordinates (`pxcor`/`pycor`) or use `distancexy 0 0` to get the distance from the origin.
+
+## Simulation
+
+The dynamics are straightforward: at each tick, every water patch turns its neighboring 
+**empty** patches into water.
+
+You can structure this with:
+```
+ask patches with [state = "water"] [
+  ask neighbors with [state = "empty"] [
+    ...
+  ]
+]
+```
+
+## Observations
+
+Run simulations with different coffee fractions. Try to find the critical concentration just sufficient for the water to reach the boundaries of the system.
