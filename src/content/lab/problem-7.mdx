@@ -1,0 +1,55 @@
+---
+title: Diffusion Limited Aggregation
+publishDate: 'Jan 6 2026'
+sequence: 7
+tags:
+  - Exercise
+  - Lab
+---
+
+import Explorable from '../../components/Explorable.astro';
+import DLA from '../../content/figures/explorables/particularly_stuck';
+
+In this exercise you will implement a simplified version of the explorable 
+**Particularly Stuck**, a model of diffusion limited aggregation (DLA). DLA produces 
+beautiful fractal structures that appear in many natural phenomena, from snowflakes 
+to mineral deposits.
+
+<Explorable id="particularly_stuck" class="max-w-[80%]" captionClass=''>    
+    <DLA slot="figure" client:load id="particularly_stuck" forceRowOnSmall={false} />
+    The **Particularly Stuck** explorable illustrating diffusion limited aggregation. We will implement a simpler version in NetLogo. 
+</Explorable>
+
+## Setup
+
+Create a simulation in which $N=1000$ (you can have a slider for $N$) turtles shaped like `circle`s move around randomly in the netlogo world. Make sure you have sliders for `speed` and `wiggle`, like in the other simulations.
+
+All the patches should be made `white` **except for the central patch** which should be `red`, or some other color. Make sure you make you world large enough, e.g. 64x64 patches.
+
+The turtles should start on a circle at the boundary of the world. 
+
+**Tip:** you can create the turtle in the center of the world and just use the command `fd RADIUS` where RADIUS is half the size of the world. Because when created turtles have a random heading, this should do the job.
+
+## Dynamics
+
+1. Turtles move randomly, as in previous simulations
+2. When a turtle is on a patch that has a red neighbor, two things happen:
+   - The patch underneath turns red
+   - The turtle dies
+3. New turtles are spawned on the same boundary circle to maintain a constant population of $N$
+
+**Tip:** When you're inside a turtle context, you can access the patch underneach with `patch-here`. But you can also call patch commands directly and they 
+apply to the patch underneath. So instead of writing `ask patch-here [set pcolor red]`, 
+you can simply write `set pcolor red`. Similarly, `neighbors` refers to the neighbors of 
+the current patch when called from a turtle.
+
+To check if any neighboring patch is red:
+```
+if any? neighbors with [pcolor = red] [
+  ...
+]
+```
+
+## Observations
+
+Watch the aggregate grow. How does changing the speed and wiggle parameters affect the shape of the aggregate?
