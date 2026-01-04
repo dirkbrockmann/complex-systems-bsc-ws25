@@ -1,0 +1,84 @@
+---
+title: The Vicsek Model of Swarming
+publishDate: 'Jan 6 2026'
+sequence: 8
+tags:
+  - Exercise
+  - Lab
+---
+
+import Explorable from '../../components/Explorable.astro';
+import Flocking from '../../content/figures/explorables/flockn_roll';
+
+In this problem, we will implemement a simple model for collective motion of bird flocks or animal swarms. Here's the Complexity Explorable
+**Flock'n Roll**, illustrating it:
+
+<Explorable id="flockn_roll" class="max-w-[80%]" captionClass=''>    
+    <Flocking slot="figure" client:load id="flockn_roll" forceRowOnSmall={false} />
+    The **Flock'n Roll** explorable illustrating collective motion and swarming behavior.
+</Explorable>
+
+This is going to be a `turtles`-only simulation. 
+The model works like this: At each iteration turtles move forward at a predefined **speed** and they should randomly change their heading within a predefined **wiggle angle** much like in some of the other models you have implemented to far.
+
+However, At each step, a turtle interacts with other turtles within an interaction radius $R$:
+
+**The turtle tries to align its heading to the **average heading** of the other turtles in the radius.**
+
+## Setup
+
+Create 100-200 turtles with a shape of your choice. The `setup` function should place them 
+randomly in the world. Add sliders for:
+
+1. the initial number of turtles
+2. the speed
+3. the wiggle angle
+4. the interaction radius
+5. the interaction strength
+
+## Dynamics
+
+First, code the system without interactions, so the turtles just move around randomly.
+
+Then implement the interaction. The difficulty here is computing the average of the headings 
+of the neighbors. It's tempting to write:
+
+```
+ask turtles [
+  set heading mean [heading] of turtles in-radius R
+]
+```
+
+But this doesn't work. Why not?
+
+As discussed in the lecture on the Kuramoto model, `heading` is an angle variable and we have 
+to apply the rules for averaging angles. A simple arithmetic mean fails because angles 
+wrap around (e.g., the mean of 1° and 359° should be 0°, not 180°).
+
+To compute an average heading correctly, we transform to Cartesian coordinates. You can define 
+a **reporter function** in NetLogo to do this:
+
+```
+to-report mean-heading [ headings ]
+  let mean-x mean map sin headings
+  let mean-y mean map cos headings
+  report atan mean-x mean-y
+end
+```
+
+You can call this function like this:
+
+```
+let avg mean-heading [heading] of turtles
+```
+
+This defines a new variable `avg` that stores the average heading of the nearby turtles as 
+computed by the reporter function `mean-heading`.
+
+You can then combine the original `heading`, the interaction strength and the average heading to compute the new heading of the turtle. The `subtract-headings` built-in function can be used to combine two headings. 
+
+## Optional: Predator-Prey Extension
+
+Now we add a few predators. These are also turtles and we need a way to distinguish the swarming prey fish from the predators. We do this using netlogo **breeds**. Go to the netlogo manual and read about breeds. In a nutshell breeds are types of turtles that you can define in the beginning and the refer to them later.
+
+The predators should first just move around in the world and the prey should avoid them. If a predator is within range of a prey the head should change its direction away from it. In order to make this more realistic the prey should only be able to see a predator in a visual cone ahead of it. You can implement this using the `in-cone` function.
