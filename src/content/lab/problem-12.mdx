@@ -15,7 +15,9 @@ Let's say no more than $M$ individuals can occupy a patch so that $x+y\leq M $. 
 
 We let `x` and `y` be individual patch variables. So every patch has occupancy numbers $x$ and $y$ that can change over time. We can defined the variables as
 
-	patches-own [x y]
+```
+patches-own [x y]
+```
 
 Initially we want $x=y=0$ everywhere except for a region in the center (a circle of radius R, typically like 1/4 of the world-size) where $x$ should be some random discrete number between 0 and $M$ and $y=M-x$.
 
@@ -29,7 +31,9 @@ ask patches [set pcolor rgb (x / M * 255) (y / M * 255) 0]
 
 - ask all patches with $x+y>0$ to pick one random neighboring patch that is not "filled" ($x+y< M$): 
 
-`ask one-of neighbors with [ x + y < M]...`
+```
+ask one-of neighbors with [ x + y < M]...
+```
 
 - with probability $p=x/(x+y)$ the neighboring patch increases its own $x$ variable by 1. with probability $1-p$ the y value is increased. This can be accomplished using the code snippet:
 
