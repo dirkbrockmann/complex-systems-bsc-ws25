@@ -1,0 +1,75 @@
+---
+title : "Pattern Formation"
+publishDate: 'Jan 6 2026'
+sequence: 10 
+tags:
+  - Exercise
+  - Lab
+---
+
+import Explorable from '../../components/Explorable.astro';
+import Flocking from '../figures/explorables/keith_harings_mexican_hat';
+
+In this problem, you will investigate an mechanism for pattern formation that is known as local excitation and long-range inhibition.
+
+This is going to be a patches only simulation.
+
+The idea is that every patch has a patch variable $u$ that can change over time based on the patches interaction with other patches in some radius.
+The variable $u$ is in the range from -1 to +1.
+
+```
+patches-own [u]
+```
+
+For the details on the model see the explorable [Keith Haring's Mexican Hat](https://www.complexity-explorables.org/explorables/keith-harings-mexican-hat/).
+Read the description of the explorable carefully and identify which parameters you need for an implementation in netlogo.
+
+<Explorable id="keith_harings_mexican_hat" class="max-w-[80%]" captionClass=''>    
+    <Flocking slot="figure" client:load id="keith_harings_mexican_hat" forceRowOnSmall={false} />
+    The **Keith Harings Mexican Hat** explorable illustrating pattern formation.
+</Explorable>
+
+Set up a netlogo patch system of size $64\times 64$.
+
+## Setup
+
+Initialize the patches by setting their property `u` to a random value in the range between -0.01 and 0.01, so like this
+
+```
+ask patches [set u random-float 0.02 - 0.01]
+```
+
+
+## Simulation
+
+Write a simulation in which each patch updates its internal variable $u$ based on the sum of the values of $u$ of all other patches in some radius $R_1$ and $R_2$ as described in detail in the documentation of the explorable.
+
+Color the patches in gray-scale from black to white according to their $u$-value, e.g. like so:
+
+```
+ask patches [set pcolor scale-color u white -1 1]
+```
+
+In order to implement the sigmoid function you can define a reporter function like in the previous examples:
+
+```
+to-report sigmoid[h]
+  report (1 - exp( - beta * h)) / (1 + exp( - beta * h)) 
+end
+```
+
+
+you can call the function `sigmoid` just like any other function by saying `sigmoid x`.
+
+## Tips
+
+To compute the sum of the `u` in the respective radii in the ask patches you can do
+
+```
+let x sum [u] of patches in-radius R1
+let y sum [u] of patches in-radius R2
+let h 2 * x - y
+set u sigmoid h
+```
+	
+This also sets the `u` of the calling patch to the sigmoid of h.

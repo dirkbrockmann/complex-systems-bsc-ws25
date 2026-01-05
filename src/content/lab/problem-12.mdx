@@ -1,0 +1,39 @@
+---
+title : "Gene Surfing"
+publishDate: 'Jan 6 2026'
+sequence: 12 
+tags:
+  - Exercise
+  - Lab
+---
+
+This problem is about neutral gene surfing. It is discussed in the explorable [**Surfing a Gene Pool**](https://www.complexity-explorables.org/explorables/surfing-a-gene-pool/). Please have a look at the explorable before you start coding.
+
+The simulation will be patch based. We imagine we have two types of species **X** and **Y** that can inhabit a patch. Let's denote by the discrete variables $x$ and $y$ the number of individuals of **X** and of **Y** at a patch location. 
+
+Let's say no more than $M$ individuals can occupy a patch so that $x+y\leq M $. $M$ should be slider parameter and a good value is say 30.
+
+We let `x` and `y` be individual patch variables. So every patch has occupancy numbers $x$ and $y$ that can change over time. We can defined the variables as
+
+	patches-own [x y]
+
+Initially we want $x=y=0$ everywhere except for a region in the center (a circle of radius R, typically like 1/4 of the world-size) where $x$ should be some random discrete number between 0 and $M$ and $y=M-x$.
+
+You can color the patches like this:
+```
+ask patches [set pcolor rgb (x / M * 255) (y / M * 255) 0]
+```
+
+
+## Simulation
+
+- ask all patches with $x+y>0$ to pick one random neighboring patch that is not "filled" ($x+y< M$): 
+
+`ask one-of neighbors with [ x + y < M]...`
+
+- with probability $p=x/(x+y)$ the neighboring patch increases its own $x$ variable by 1. with probability $1-p$ the y value is increased. This can be accomplished using the code snippet:
+
+```
+let p x / (x + y)
+ifelse random-float 1 < p [set x x + 1][set y y + 1]
+```
