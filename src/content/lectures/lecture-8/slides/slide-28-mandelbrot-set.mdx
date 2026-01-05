@@ -1,0 +1,35 @@
+---
+title: The most famous fractal - The Mandelbrot Set
+publishDate: 2026-01-05
+order: 28
+---
+
+import TwoColumn from '../../../../components/slide-kit/TwoCol.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import EQ from '../../../../components/slide-kit/EQ.astro';
+import mandelbrot_set from '../../../../assets/mandelbrot_set.png';
+
+# The Mandelbrot Set
+
+<TwoColumn ratio="1:2" class="max-w-[100%] mx-auto my-12">
+<div slot="left">
+
+- The Mandelbrot set is defined by the equations:
+$$
+x_{n+1} = x_n^2-y_n^2 + a
+$$
+$$
+y_{n+1} = 2x_ny_n + b
+$$
+for an initial point $(x_0, y_0) = (0, 0)$ and varying parameters (a, b).
+
+- The question: for what combinations of (a, b) does the sequence (xn, yn) remain bounded (i.e., does not diverge to infinity)?
+
+</div>
+<div slot="right">
+  <Figure src={mandelbrot_set} alt="Mandelbrot Set" captionClass="text-center mt-2" class="max-w-[60%] mx-auto">
+    The Mandelbrot Set
+  </Figure>
+</div>
+</TwoColumn>
+

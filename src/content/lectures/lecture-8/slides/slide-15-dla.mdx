@@ -1,0 +1,32 @@
+---
+title: Diffusion Limited Aggregation
+publishDate: 2026-01-05
+order: 15
+---
+
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/explorables/particularly_stuck';
+import Eq from '../../../../components/slide-kit/Eq.astro';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro'
+
+# Diffusion Limited Aggregation revisited
+
+<TwoCol 
+  ratio="1:2"
+  class="w-full p-4"
+>
+<div slot="left">
+ - If a tip forms at the periphery, the tip is more likely to grow.
+ - At the tip the branching probability is also higher.
+ - Since the tip is more exposed to incoming particles, the tip grows faster.
+ - This leads to a "rich get richer" effect, where the tips grow faster and faster.
+ - a structure on the outside casts a "shadow" on the inside, preventing growth there.
+ - This leads to fractal, highly branched structures.
+</div>
+<div slot="right">
+<Explorable id="dla" margin={false}  captionClass=''>    
+    <Fig slot="figure" client:load id="dla" forceRowOnSmall={true}/>
+</Explorable>
+</div>
+</TwoCol>

@@ -1,0 +1,37 @@
+---
+title: Measuring Length
+publishDate: 2026-01-05
+order: 20
+---
+
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import EQ from '../../../../components/slide-kit/EQ.astro';
+
+import line_1 from '../../../../assets/generated/line_1_transparent.png';
+import line_1Dark from '../../../../assets/generated/line_1_dark.png';
+import line_2 from '../../../../assets/generated/line_2_transparent.png';
+import line_2Dark from '../../../../assets/generated/line_2_dark.png';
+import line_3 from '../../../../assets/generated/line_3_transparent.png';
+import line_3Dark from '../../../../assets/generated/line_3_dark.png';
+
+
+
+# Measuring Length of 1-D Objects
+
+<Grid
+  rows={1}
+  cols={3}
+  gapClass="gap-6"
+  class="px-12 max-w-[70%] mx-auto my-12"
+>
+    <Figure  src={line_2} darkSrc={line_2Dark} alt="a line" captionClass="text-center mt-2"/>
+    <Figure  src={line_3}  darkSrc={line_3Dark} alt="A line" captionClass="text-center mt-2"/>
+    <Figure  src={line_1}  darkSrc={line_1Dark} alt="A line" captionClass="text-center mt-2"/>
+  
+  </Grid>
+
+<EQ expr="N \times \Delta x \rightarrow L" size="xl" />
+<EQ expr="N (\Delta x) \approx \frac{L}{\Delta x}" size="xl" />
+  

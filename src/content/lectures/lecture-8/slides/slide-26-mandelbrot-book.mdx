@@ -1,0 +1,27 @@
+---
+title: The fractal geometry of Nature
+publishDate: 2026-01-05
+order: 26
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+
+import mandelbrot from '../../../../assets/mandelbrot.png';
+import mandelbrot_book from '../../../../assets/mandelbrot_book.png';
+
+# The fractal geometry of Nature
+
+<Grid
+  rows={1}
+  cols={2}
+  gapClass="gap-6"
+  class="px-12 max-w-[100%] mx-auto my-12"
+>
+    <Figure  src={mandelbrot} alt="Portrait of Benoit Mandelbrot" captionClass="text-center mt-2" class="max-w-[50%] mx-auto">
+    Benoit Mandelbrot (1924–2010)
+    </Figure>
+    <Figure  src={mandelbrot_book} alt="Cover of Mandelbrot's book 'The Fractal Geometry of Nature'" captionClass="mt-2" class="max-w-[60%] mx-auto">
+    </Figure>
+
+  </Grid>

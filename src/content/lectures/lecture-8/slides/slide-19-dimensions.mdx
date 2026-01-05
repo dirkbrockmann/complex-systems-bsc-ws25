@@ -1,0 +1,53 @@
+---
+title: The concept of Dimensions
+publishDate: 2026-01-05
+order: 19
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+
+import string from '../../../../assets/generated/string_transparent.png';
+import stringDark from '../../../../assets/generated/string_dark.png';
+import sheet from '../../../../assets/generated/sheet_transparent.png';
+import sheetDark from '../../../../assets/generated/sheet_dark.png';
+import bottle from '../../../../assets/generated/bottle_transparent.png';
+import bottleDark from '../../../../assets/generated/bottle_dark.png';
+
+
+
+# Dimensions of Stuff
+
+<Grid
+  rows={1}
+  cols={3}
+  gapClass="gap-6"
+  class="px-12 max-w-[80%] mx-auto my-12"
+>
+  <Figure 
+    src={string} 
+    darkSrc={stringDark}
+    alt="A 1D string represented as a line of small cubes"
+    captionClass="text-center mt-2"
+    
+  >
+    String: One Dimension $D=1$
+  </Figure>
+  <Figure 
+    src={sheet} 
+    darkSrc={sheetDark}
+    alt="A 2D sheet represented as a flat arrangement of small cubes"
+    captionClass="text-center mt-2"
+  >
+    Sheet: Two Dimensions $D=2$
+  </Figure>
+  <Figure 
+    src={bottle} 
+    darkSrc={bottleDark}
+    alt="A 3D bottle represented as a volume of small cubes"
+    captionClass="text-center mt-2"
+  >
+    Bottle: Three Dimensions $D=3$
+  </Figure>
+  
+  </Grid>

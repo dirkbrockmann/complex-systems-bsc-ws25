@@ -1,0 +1,39 @@
+---
+title: Coast of Great Britain
+publishDate: 2026-01-05
+order: 24.5
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import EQ from '../../../../components/slide-kit/EQ.astro';
+import UK from '../../../../assets/UK_coast.png';
+
+# Coast of Great Britain
+
+<Figure
+  class="max-w-[20%] mx-auto my-8"
+  src={UK}
+  captionClass="text-center"
+  alt="Image of Great Britain"/>
+
+
+<Grid
+  rows={1}
+  cols={3}
+  gapClass="gap-6"
+  class="px-12 max-w-[100%] mx-auto my-12"
+>
+<EQ expr="N \times \Delta x \rightarrow \infty" size="xl" />
+<EQ expr="N \times \Delta x^2 \rightarrow 0" size="xl" />
+<EQ expr="N \times \Delta x^D \rightarrow C" size="xl" />
+
+
+    
+  </Grid>
+
+the Coast of Great Britain has a fractal dimension of about
+
+<EQ expr="D \approx 1.25" size="xl" />
+
+  

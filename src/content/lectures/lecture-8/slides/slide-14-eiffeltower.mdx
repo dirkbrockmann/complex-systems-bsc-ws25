@@ -1,0 +1,33 @@
+---
+title: The Eiffel Tower
+publishDate: 2026-01-05
+order: 14
+---
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import eiffel from '../../../../assets/eiffeltower.png';
+import TwoColumn from '../../../../components/slide-kit/TwoCol.astro';
+
+# The Eiffel Tower - Fractals for Structural Efficiency
+
+<TwoColumn
+  
+>
+  <div slot="left">
+  ## The Eiffel Tower
+
+  If you were to condense the Eiffel Tower into a cube of steel, 
+  how large would that block be?
+
+  </div>
+    
+  <div slot="right">
+  
+  <Figure
+    class="max-w-[60%] mx-auto my-8"
+    src={eiffel}
+    alt="Image of the Eiffel Tower"
+  >
+  The Eiffel Tower's design was inspired by the fractal structure of ferns, optimizing strength while minimizing material use.
+  </Figure>  
+  </div>
+</TwoColumn>

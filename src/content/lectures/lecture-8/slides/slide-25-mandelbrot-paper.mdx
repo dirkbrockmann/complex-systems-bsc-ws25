@@ -1,0 +1,26 @@
+---
+title: Benoit Mandelbrot
+publishDate: 2026-01-05
+order: 25
+---
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+
+import mandelbrot from '../../../../assets/mandelbrot.png';
+import mandelbrot_paper from '../../../../assets/mandelbrot_paper.png';
+
+# Benoit Mandelbrot (1924–2010)
+
+<Grid
+  rows={1}
+  cols={2}
+  gapClass="gap-6"
+  class="px-12 max-w-[100%] mx-auto my-12"
+>
+    <Figure  src={mandelbrot} alt="Portrait of Benoit Mandelbrot" captionClass="text-center mt-2" class="max-w-[50%] mx-auto">
+    Benoit Mandelbrot (1924–2010)
+    </Figure>
+    <Figure  src={mandelbrot_paper} alt="Scan of Mandelbrot's paper" captionClass="mt-2" class="max-w-[60%] mx-auto">
+    </Figure>
+
+  </Grid>
