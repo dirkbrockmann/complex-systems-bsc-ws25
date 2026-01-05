@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en" class="antialiased break-words"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fractals &amp; Growth Processes</title><meta name="description" content><script>
+  (function () {
+    try {
+      const mql = window.matchMedia('(prefers-color-scheme: dark)');
+      const getStored = () => localStorage.getItem('theme');
+      const apply = (dark) => {
+        document.documentElement.classList.toggle('dark', !!dark);
+        if (typeof syncWidgetDarkMode === 'function') syncWidgetDarkMode(!!dark);
+      };
+
+      // Persisted preference; default to 'light'
+      const pref = localStorage.getItem('theme') || 'light';
+      document.documentElement.classList.toggle('dark', pref === 'dark');
+
+      // Optional: keep in sync if you add a theme toggle elsewhere
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') {
+          document.documentElement.classList.toggle('dark', e.newValue === 'dark');
+        }
+      });
+
+      // Initial apply: stored preference wins, else system
+      const stored = getStored();
+      apply(stored ? stored === 'dark' : mql.matches);
+
+      // Follow system changes only when no stored preference
+      if (!stored) mql.addEventListener('change', (e) => apply(e.matches));
+
+      // React to changes from other tabs/windows
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') apply(e.newValue === 'dark');
+      });
+
+      // Re-apply after Astro client-side transitions
+      document.addEventListener('astro:after-swap', () => {
+        const s = getStored();
+        apply(s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+      });
+    } catch {}
+  })();
+</script><link rel="stylesheet" href="/complex-systems-bsc-ws25/_astro/index.E9iL9e7d.css">
+<link rel="stylesheet" href="/complex-systems-bsc-ws25/_astro/_slide_.DzFd_imp.css"></head> <body class="bg-main text-main"> <div id="slide-root" class="slide-root bg-main text-main" style="--base-w: 1920; --base-h: 1080;"> <div class="slide-stage"> <div class="h-full min-h-0 grid grid-rows-[1fr_auto] gap-6 p-8"> <div class="h-full min-h-0 overflow-hidden"> <div class="prose max-w-none w-full h-full min-h-0 overflow-auto first:mt-0 last:mb-0">  <article class="not-prose h-full min-h-0 grid place-items-center "> <div class="max-w-[80%] w-full flex flex-col gap-6 text-center items-center bg-white/60 dark:bg-neutral-900/60 rounded-3xl p-12 shadow-xl"> <div class="w-auto mx-auto max-h-24"> <img src="/complex-systems-bsc-ws25/_astro/complexity_transparent.14jM5YzW_RNny4.webp" alt="Logo" loading="lazy" decoding="async" fetchpriority="auto" width="1836" height="1146" class="block dark:hidden max-h-24 w-auto"><img src="/complex-systems-bsc-ws25/_astro/complexity_dark.B0V68DXw_ZaLkfh.webp" alt="Logo" loading="lazy" decoding="async" fetchpriority="auto" width="1836" height="1146" class="hidden dark:block max-h-24 w-auto"> </div> <p class="uppercase tracking-wide text-sm  text-center mx-auto">Prof. Brockmann&#39;s Complexity Course</p> <h1 class=" leading-tight mx-auto text-1xl"> Fractals &amp; Growth Processes </h1> <h2 class="text-5xl font-semibold text-neutral-700 dark:text-neutral-200 leading-snug"> Self-Similarity in Nature and Biological Growth Processes </h2> <p class="text-lg text-neutral-600 dark:text-neutral-300"> Lecture 8 · Jan 5th 2026 </p> <div class="mt-2 flex flex-col items-center gap-2">  <img src="data:image/png;base64,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" alt="QR code" width="150" height="150" class="rounded shadow mt-2" loading="lazy" decoding="async"> </div> </div> </article>  </div> </div> <nav id="slide-nav" class="slide-nav shrink-0 flex items-center justify-center gap-3 " aria-label="Slide controls">   <a id="lecture-link" class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline">Lecture</a> <p class="slide-counter"> / </p> <a id="start-link" rel="start" class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline">Start</a> <a id="prev-link" rel="prev" href="#" aria-disabled="true" tabindex="-1" class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline aria-disabled:opacity-40 aria-disabled:pointer-events-none">Prev</a> <a id="next-link" rel="next" href="./slide-2-river-sattelite/" aria-disabled="false" class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline aria-disabled:opacity-40 aria-disabled:pointer-events-none">Next</a> </nav> <script>
+  (() => {
+    const lecture = document.getElementById('lecture-link');
+    const start = document.getElementById('start-link');
+    const prev = document.getElementById('prev-link');
+    const next = document.getElementById('next-link');
+
+    const isDisabled = (a) =>
+      !a || a.getAttribute('aria-disabled') === 'true' || a.getAttribute('href') === '#';
+
+    const shouldIgnore = (e) => {
+      const t = e.target;
+      if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return true;
+      return t && (
+        t.tagName === 'INPUT' ||
+        t.tagName === 'TEXTAREA' ||
+        t.tagName === 'SELECT' ||
+        t.isContentEditable
+      );
+    };
+
+    window.addEventListener('keydown', (e) => {
+      if (shouldIgnore(e)) return;
+
+      if (e.key === 'ArrowLeft' && !isDisabled(prev)) {
+        e.preventDefault();
+        location.assign(prev.getAttribute('href'));
+      } else if (e.key === 'ArrowRight' && !isDisabled(next)) {
+        e.preventDefault();
+        location.assign(next.getAttribute('href'));
+      } else if (e.key === 'Home' && start) {
+        e.preventDefault();
+        location.assign(start.getAttribute('href'));
+      } else if (e.key === 'Escape' && lecture) {
+        e.preventDefault();
+        location.assign(lecture.getAttribute('href'));
+      }
+    });
+  })();
+</script> </div> </div> </div> <script type="module">(function(){var e=document.getElementById("slide-root");if(e){var t=getComputedStyle(e),a=parseFloat(t.getPropertyValue("--base-w"))||1920,i=parseFloat(t.getPropertyValue("--base-h"))||1080,r=function(){var o=window.innerWidth||document.documentElement.clientWidth||0,d=window.innerHeight||document.documentElement.clientHeight||0,s=Math.min(o/a,d/i),n=document.getElementById("slide-root");n&&n.style.setProperty("--slide-scale",String(s))};r(),window.addEventListener("resize",r,{passive:!0})}})();</script> </body> </html>
