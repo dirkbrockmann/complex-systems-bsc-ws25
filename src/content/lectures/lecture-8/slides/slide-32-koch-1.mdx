@@ -1,0 +1,26 @@
+---
+title: The Coast of Koch Island
+publishDate: 2026-01-05
+order: 32
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import EQ from '../../../../components/slide-kit/EQ.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import koch_length_0 from '../../../../assets/koch_length_0.png';
+import koch_length_1 from '../../../../assets/koch_length_1.png';
+
+
+# The Coast of Koch Island
+
+<Grid
+  rows={1}
+  cols={3}
+  align="center"
+  gapClass="gap-6"
+  class="px-12 max-w-[100%] mx-auto my-12">
+  
+<Figure class="max-w-[100%] mx-auto my-8" src={koch_length_0} captionClass="text-center" alt="Koch Island initial length"/>
+<Figure class="max-w-[100%] mx-auto my-8" src={koch_length_1} captionClass="text-center" alt="Koch Island length after one iteration"/>
+<EQ expr="L \approx 3\times a" size="xl" />
+</Grid>

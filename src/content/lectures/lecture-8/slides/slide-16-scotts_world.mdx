@@ -1,0 +1,38 @@
+---
+title: Coorperative Growth in Bacterial Colonies
+publishDate: 2026-01-05
+order: 16
+---
+
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/explorables/scotts_world';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro'
+
+# Coorperative Growth in Bacterial Colonies
+
+<TwoCol 
+  ratio="1:2"
+  class="w-full p-12"
+  leftClass="text-xl"
+>
+<div slot="left">
+- Microbes in this model are motile particles that move around 
+in a two-dimensional petri dish that contains a substrate with nutrients. 
+- Microbes consume the nutrients. The acquired energy is 
+used for moving around in the substrate and for replication.
+- In the occupied area, microbes can move around relatively easily 
+and slowly deplete the nutrients. 
+- To expand microbes need to push the boundary outwards into regions 
+with more nutrients. The difficulty of this is controlled by the 
+Medium Resistance slider.
+- how efficiently the microbes metabolize the nutrients can also be controlled.
+- When microbes deplete the nutrients and locally run out of food, 
+they will eventually stop moving and enter a resting state.
+</div>
+<div slot="right">
+<Explorable id="dla" margin={false}  captionClass=''>    
+    <Fig slot="figure" client:load id="dla" forceRowOnSmall={true}/>
+</Explorable>
+</div>
+</TwoCol>

@@ -1,0 +1,36 @@
+---
+title: The Coast of Koch Island
+publishDate: 2026-01-05
+order: 34
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import EQ from '../../../../components/slide-kit/EQ.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import koch_length_2 from '../../../../assets/koch_length_1.png';
+import koch_length_3 from '../../../../assets/koch_length_2.png';
+import koch_length_4 from '../../../../assets/koch_length_3.png';
+
+
+# The Coast of Koch Island
+
+<Grid
+  rows={1}
+  cols={3}
+  gapClass="gap-6"
+  class="px-12 max-w-[90%] mx-auto my-12">
+
+ <div> 
+  <Figure class="max-w-[100%] mx-auto my-8" src={koch_length_2} captionClass="text-center" alt="Koch Island initial length"/>
+  <EQ expr="L \approx 3\times a" size="xl" />
+</div>
+<div> 
+  <Figure class="max-w-[100%] mx-auto my-8" src={koch_length_3} captionClass="text-center" alt="Koch Island length after one iteration"/>
+  <EQ expr="L \approx 3\times \left(4 \times \frac{a}{3}\right)" size="xl" />
+</div>
+<div> 
+  <Figure class="max-w-[100%] mx-auto my-8" src={koch_length_4} captionClass="text-center" alt="Koch Island length after two iterations"/>
+  <EQ expr="L \approx 3\times \left(4^2 \times \frac{a}{3^2}\right)" size="xl" />
+</div>
+
+</Grid>

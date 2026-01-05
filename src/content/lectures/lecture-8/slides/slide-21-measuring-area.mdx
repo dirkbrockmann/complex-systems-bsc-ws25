@@ -1,0 +1,35 @@
+---
+title: Measuring Area
+publishDate: 2026-01-05
+order: 21
+---
+
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import EQ from '../../../../components/slide-kit/EQ.astro';
+
+import sheet_1 from '../../../../assets/generated/sheet_1_transparent.png';
+import sheet_1Dark from '../../../../assets/generated/sheet_1_dark.png';
+import sheet_2 from '../../../../assets/generated/sheet_2_transparent.png';
+import sheet_2Dark from '../../../../assets/generated/sheet_2_dark.png';
+
+
+# Measuring Length of 2-D Objects
+
+<Grid
+  rows={1}
+  cols={3}
+  gapClass="gap-6"
+  class="px-12 max-w-[90%] mx-auto my-12"
+>
+    <Figure  src={sheet_1} darkSrc={sheet_1Dark} alt="a sheet" captionClass="text-center mt-2"/>
+    <Figure  src={sheet_2}  darkSrc={sheet_2Dark} alt="A sheet" captionClass="text-center mt-2"/>
+    <div>
+    <EQ expr="N \times \Delta x^2 \rightarrow A" size="xl" />
+    <EQ expr="N (\Delta x) \approx \frac{A}{(\Delta x)^2}" size="xl" />
+    </div>
+
+  </Grid>
+
+  

@@ -1,0 +1,33 @@
+---
+title: Measuring Volume 
+publishDate: 2026-01-05
+order: 22
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import EQ from '../../../../components/slide-kit/EQ.astro';
+
+import bottle_1 from '../../../../assets/generated/bottle_1_transparent.png';
+import bottle_1Dark from '../../../../assets/generated/bottle_1_dark.png';
+import bottle_2 from '../../../../assets/generated/bottle_2_transparent.png';
+import bottle_2Dark from '../../../../assets/generated/bottle_2_dark.png';
+
+# Measuring Length of 3-D Objects
+
+<Grid
+  rows={1}
+  cols={3}
+  gapClass="gap-6"
+  class="px-12 max-w-[70%] mx-auto my-12"
+>
+    <Figure  src={bottle_1} darkSrc={bottle_1Dark} alt="a bottle" captionClass="text-center mt-2"/>
+    <Figure  src={bottle_2}  darkSrc={bottle_2Dark} alt="A bottle" captionClass="text-center mt-2"/>
+    <div>
+    <EQ expr="N \times \Delta x^3 \rightarrow V" size="xl" />
+    <EQ expr="N (\Delta x) \approx \frac{V}{(\Delta x)^3}" size="xl" />
+    </div>
+
+  </Grid>
+
+  

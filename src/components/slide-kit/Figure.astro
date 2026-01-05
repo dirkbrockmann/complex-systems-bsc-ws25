@@ -31,7 +31,7 @@ const {
   class: className = '',
   mediaClass = '',
   imgClass = '',
-  captionClass = '',
+  captionClass = 'text-left',
   sizes = '100vw',
   loading = 'lazy',
   ...rest
@@ -54,7 +54,7 @@ const captionId = hasCaption ? `figcap-${Math.random().toString(36).slice(2)}` :
 ---
 <figure class={`not-prose ${alignClass} ${className}`.trim()} aria-labelledby={captionId} {...rest}>
   <div
-    class={`relative overflow-hidden ${boxed ? '' : 'inline-block'} ${mediaClass}`.trim()}
+    class={`relative overflow-hidden ${boxed ? 'w-full h-full' : 'inline-block'} ${mediaClass}`.trim()}
   >
     {srcDark ? (
       <>
@@ -88,7 +88,7 @@ const captionId = hasCaption ? `figcap-${Math.random().toString(36).slice(2)}` :
   </div>
 
   {hasCaption ? (
-    <figcaption id={captionId} class={`mt-3 text-center ${captionClass}`.trim()}>
+    <figcaption id={captionId} class={`mt-3 ${captionClass}`.trim()}>
       {hasSlotCaption ? <slot /> : caption}
     </figcaption>
   ) : null}
