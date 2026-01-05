@@ -1,0 +1,129 @@
+---
+title : "Reaction Diffusion"
+publishDate: 'Jan 7 2026'
+sequence: 13 
+tags:
+  - Exercise
+  - Lab
+---
+
+The goal of this set of practice problems is solving reaction diffusion systems, so systems in which 
+
+- particles of different types have spatially variable concentrations
+
+- particles of different types interact
+
+- and they diffuse in space
+
+Let's say we have two types of particles and two concentration $u=u(x,t)$ and $w=w(x,t)$ where $x$ is the position and $t$ denotes time, in this case the dynamical equations are defines as
+
+$$
+\partial _t u = f (u,w) + D_u \partial_x^2 u 
+$$
+
+$$
+\partial _t w = g (u,w) + D_w \partial_x^2 w
+$$
+
+The constants $D_u$ and $D_w$ are the diffusion constants and quantify how strong diffusion is for the different types of particles.
+
+## Preparations
+
+Reaction diffusion systems are patch-only models. For all the systems you should define, for each particle concentration a `patches-own`variable. So say you have three particle concentrations $u$, $v$ and $w$ you should have `patches-own [u v w du dv dw]`. The reason for this is that you need to compute the differentials by looping of the patches and then use them later in a second loop to update the states of the patches.
+
+Set up you world to be $64x64$ patches, so things look smooth.
+
+## Simulation 1 : Fisher equation
+
+This is a simulation of a simple propagating wave:
+
+$$
+\partial _t u = \lambda u (1-u) + D_u \partial_x^2 u 
+$$
+
+Set up the concentration $u$ such that it is zero everywhere, except for in the center of the world, where you can set it to some small positive value less than 1.
+The growth parameter $\lambda>0$ and the diffusion constant $0<D_u<1$ should be slider parameters.
+Likewise you need a $dt$ parameter which will be the time increment.
+This should be have a small value like 0.01 or so.
+
+For the simulation you need three loops, one that computes the differential of the reaction part
+ 
+```
+ask patches [
+    set du  dt *  * lambda * u * (1 - u)
+]
+```
+
+then you need to update the state
+
+```
+ask patches [
+    set u u + du
+]
+```
+
+and finally you need to execute the diffusion:
+
+
+```
+diffuse u D
+```
+
+The diffuse command has two arguments, one is the patch variable to diffuse, the other the diffusion constant.
+
+Make sure you write a paint function that colors the patches according to the concentration of u. You can use the `scale-color` command.
+
+
+## Simulation 2: Competition
+
+Let's now turn to a system in which three diffusing species compete, governed by the system
+
+$$
+\partial _t u = f (u,v,w) + D_u \partial_x^2 u 
+$$
+
+$$
+\partial _t v = f (v,w,u) + D_v \partial_x^2 v
+$$
+
+$$
+\partial _t w = f (w,u,v) + D_w \partial_x^2 w
+$$
+
+
+where the function $f=f(u,v,w)=u (1-u - R v - R w)$ and the parameter $R$ quantifies the competition and should be a slider.
+
+Set up the system such that each concentration is random for each patch somewhere between 0 and 1.
+
+You can color the concentrations according to this paint function:
+
+
+```
+to paint
+    ask patches [set pcolor rgb (255 * u) (255 * v) (255 * w)]
+end
+```
+
+
+Write a go function that computes the differentials for u, v, and w. updates the states and diffuses each concentration.
+
+## Simulation 3: Spiral Waves
+
+The deterministic equations for the rock paper scissors game have the shape
+$$
+\dot u = f(u,v,w)\quad \dot v = g(u,v,w)\quad \dot w = h(u,v,w)
+$$
+as in the problem in the test. Here we now consider a variant that looks like this
+$$
+\dot u = u (\sigma (v-w) + u - u^2 -\mu (v+w) )
+$$
+$$
+\dot v = v (\sigma (w-u) + v - v^2 -\mu (w+u) )
+$$
+$$
+\dot w = w (\sigma (u-v) + w - w^2 -\mu (u+v) )
+$$
+
+The first term is the RPC interaction (the impact governed by parameter $\sigma$), the second and third term is normal logistic growth and the last term is competition (quantified by parameter $\mu$).
+
+Now implement this system and include the diffusion of the three types of reactants.
