@@ -53,7 +53,8 @@ So we define something like this</p>
 <p>and set this phase variable to a random number between 0 and 360</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>ask patches [set phase random-float 360]</span></span></code></pre>
 <h3 id="simulation">Simulation</h3>
-<p>Now we want to run a model that sets a patches phase to the average phase of its neighbors at every <code>tick</code>.</p>
+<p>Now we want to run a model that sets a patches phase to the average phase of its neighbors at every <code>tick</code>.
+Note that averaging angles is a bit tricky because of the periodic boundary conditions of angles.</p>
 <h3 id="colors">Colors</h3>
 <p>When you deal with phase variables its good to use rainbow colors for visualization. The easiest way to do this in netlogo is using the <code>hsb</code> function, you can look at the netlogo manual for instructions. Here you can do this:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>ask patches [set pcolor hsb phase 100 100]</span></span></code></pre>

@@ -1,0 +1,1 @@
+import{i as e,c as r}from"./map.DeCCF95b.js";import{a as o}from"./toString.BXRHmg21.js";function c(n,i){for(var t=-1,f=n==null?0:n.length;++t<f&&i(n[t],t,n)!==!1;);return n}function u(n){return typeof n=="function"?n:e}function h(n,i){var t=o(n)?c:r;return t(n,u(i))}export{h as f};
