@@ -1,0 +1,24 @@
+---
+title: Linked
+description: A popular book on Network Science
+publishDate: 2026-01-06
+order: 4
+---
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import linked_book from '../../../../assets/linked.png';
+import laszlo from '../../../../assets/laszlo.png';
+
+# A Good Read
+<TwoCol ratio="1:1" gapClass="gap-8" class="my-8" align="center" >
+
+<div slot="left">
+<Figure class="max-w-[40%]" src={laszlo} alt="Newmans book" boxed={true} fit="contain" caption="Laszlo Barabasi" />
+</div>
+<div slot="right">
+<Figure class="max-w-[40%] border-1" src={linked_book} alt="Netsci Conference" boxed={true} fit="contain" />
+</div>
+
+
+
+</TwoCol>
