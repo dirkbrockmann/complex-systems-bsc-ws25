@@ -1,0 +1,50 @@
+---
+title : "Pulse Coupled Oscillators"
+publishDate: 'Jan 7 2026'
+sequence: 15 
+tags:
+  - Exercise
+  - Lab
+---
+
+This problem is very similar to the last one.
+However, here the oscillators are coupled by pulses,
+short interactions that occur when an oscillators `phase` reaches a threshold,
+sends pulses to neighboring oscillators and then experiences a `phase` reset.
+
+
+Like in the last problem patches should have two properties `phase` and `dphase`. However, the phase variable is defined on the range 0 to 1.
+
+Each oscillator is governed by the equation
+
+$$
+\dot\theta = I - \theta
+$$
+
+where the input $I$ should be a slider variable and have a value $>1$. A good value is $1.2$.
+
+The phases should be initialized (`setup`) randomly in a range 0 to 1.
+
+
+## independent oscillators
+
+As such the dynamical system above will have each oscillator approach the asymptotic value $I$, so $\theta\rightarrow I$.
+
+However, we will modify the dynamics such that when $\theta$ reaches 1, it will
+
+1. emit a spike
+2. be reset to 0
+
+First code the dynamics of independent oscillators
+
+```
+ask patches [
+  set dtheta dt * ( I - theta )
+  set theta theta + dtheta
+  if theta > 1 [
+    set theta 0
+  ]
+]
+```
+	
+Now write a function that emits a spike to the neighbors with the effect that for those neighbors `dtheta` will be increased by a positive number $s$. That number should be a slider, also.
