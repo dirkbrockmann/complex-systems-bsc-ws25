@@ -7,6 +7,9 @@ tags:
   - Lab
 ---
 
+import Explorable from '../../components/Explorable.astro';
+import Flocking from '../figures/explorables/cycledelic';
+
 The goal of this set of practice problems is solving reaction diffusion systems, so systems in which 
 
 - particles of different types have spatially variable concentrations
@@ -73,6 +76,8 @@ The diffuse command has two arguments, one is the patch variable to diffuse, the
 
 Make sure you write a paint function that colors the patches according to the concentration of u. You can use the `scale-color` command.
 
+Note: For 1 species, the first 2 loops can be combined, but we keep them separate for the following simulations.
+
 
 ## Simulation 2: Competition
 
@@ -104,10 +109,16 @@ to paint
 end
 ```
 
-
 Write a go function that computes the differentials for u, v, and w. updates the states and diffuses each concentration.
 
+Goal: You should see pattern formation emerging from the competition of the three species.
+
 ## Simulation 3: Spiral Waves
+
+<Explorable id="cycledelic" class="max-w-[80%]" captionClass=''>    
+    <Flocking slot="figure" client:load id="cycledelic" forceRowOnSmall={false} />
+    The **Cycledelic** explorable illustrating dynamic pattern formation (spatially explicit rock-paper-scissors).
+</Explorable>
 
 The deterministic equations for the rock paper scissors game have the shape
 $$
