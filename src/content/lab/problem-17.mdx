@@ -1,0 +1,117 @@
+---
+title : "Introduction to Networks"
+publishDate: 'Jan 8 2026'
+sequence: 17 
+tags:
+  - Exercise
+  - Lab
+---
+
+In addition to turtles and patches, netlogo features another type of agent called a **link**.
+Links are agents that connect turtles to form turtle networks. 
+
+Networks are very important in the study of complex systems.
+Today, we will start playing with networks in netlogo.
+Netlogo comes with a number of nice, simple commands connected to networks.
+Check out the manual for info on the agent type [**link**](https://docs.netlogo.org/dict/link.html).
+
+## Let's begin
+
+Let us first create a set of $N$ turtles where the number should be between 10 and 300 or so.
+
+```
+crt N [set shape "circle" set color red]
+```
+
+we colored them red, but that's your choice, and made them round.
+
+Let's use a new command that is practical here
+
+```
+layout-circle turtles world-width / 4 - 1
+```
+
+This command arranges all the turtles in a circle.
+
+### A button for the links
+
+Let's now make a button and call it `knut` or something like that. Let's write a function that is executed when the button is pressed:
+
+```
+to knut
+	ask turtles [
+   		create-links-with other turtles
+   	]	
+   	ask links [
+		if random-float 1 < (1 - p)  [die]
+	]
+end
+```
+
+Please understand what's happening here.
+The first ask loop iterates over all the turtles and creates links with all other turtles.
+
+In the second command we ask all links to die with probability $1-p$.
+
+You should see the links when you press the 'knut' button.
+
+### Nice layout
+
+make a new button and call it 'spring'. Make this button into a forever looper. The corresponding function should look like this:
+
+```
+to spring
+	repeat 30 [layout-spring turtles links 0.2 5 .01 ]
+	tick
+end
+```
+
+read the manual on the command [`layout-spring`](https://docs.netlogo.org/dict/layout-spring.html).
+This command takes 5 arguments.
+The first are the nodes of the network (turtles) the second the links.
+These are usually always those arguments.
+The next 3 parameters are _spring-constant_ _spring-length_ _repulsion-constant_ .
+
+What the spring function does is pretend the links are springs that pull the network together. Each spring has a spring constant. a typical length and the nodes are "electrically charged" so the entire thing doesn't collapse.
+
+## Excersise
+
+Extend you program so that the three parameters of the layout-spring function are sliders that you can change.
+
+
+## Dynamic Network
+
+Now let's make this more interesting. Let's make a dynamic network. Write a `go` function that
+
+picks a random turtle that has at least one link:  
+
+```
+ask one-of turtles with [count link-neighbors >0]
+```
+
+removes one of the links
+
+```
+ask one-of my-links [die]`
+```
+
+creates a new link to some other random turtle 
+
+```
+create-link-with one-of other turtles with [link-neighbor? myself = false]
+```
+
+
+## Flockworks
+
+The above dynamic network is mixing.
+Over time every node connects eventually to all other nodes at some point,
+and the number of links remains constant,
+because every time a link is removed another gets added.
+At any time the network is random, without structure.
+Let's change that.
+Modify your network dynamics according to these two rule:
+
+1. pick a random node A, remove **all** the links it has
+2. Make a single link to a randomly chosen node B
+3. Also make links to every link-neighbor of B (B's friends) with probability p (slider variable)
