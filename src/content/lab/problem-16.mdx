@@ -1,0 +1,112 @@
+---
+title : "Evolutionary Dynamics"
+publishDate: 'Jan 7 2026'
+sequence: 16 
+tags:
+  - Exercise
+  - Lab
+---
+
+In this problem we will design models that capture the key elements of evolutionary processes
+
+1. replication
+2. variation (mutation)
+
+The idea is to reimplement models similar to the explorables:
+
+1. [“Maggots in the Wiggle Room”](https://www.complexity-explorables.org/explorables/maggots-in-the-wiggle-room/)
+2. [“A Patchwork Darwinge”](https://www.complexity-explorables.org/explorables/a-patchwork-darwinge/)
+
+## Part 1: The Moran process
+
+This is a turtle based simulation.
+
+Write a model in which turtles move around randomly like we did in many previous simulations.
+
+Each turtle should have a turtle specific property called ```fitness``` which you can implement using the ```turtles-own``` command 
+
+Initially the turtles should have uniform fitness, say a value of $1$. The should also have another variable named `species` that identifies the species label
+
+```
+turtles-own [fitness species]
+```
+
+Intitially all turtles should belong to the same species, so we give them a number 1.
+
+```
+ask turtles [set species 1]
+```
+
+In the `paint` function we can just color them according to the species index:
+
+```
+ask turtles [set color species]
+```
+
+Now two things can happen:
+
+1. Replication
+2. Mutation
+
+
+### Replication
+
+Replication should happen at a higher basic rate than mutation. For each rate you should have a slider parameter, say `replicationrate` and `mutationrate`.
+
+When a turtle replicates it should do this with a rate that is a product of the basic `replicationrate` and the turtles fitness relative to the mean fitness of the entire population:
+
+$$
+r_i = R_0 \times f_i / \overline f
+$$
+
+where $r_i$ is turtle i's replication rate $R_0$ is the overall `replicationrate`, $f_i$ is the fitness parameter and $\overline f$ the mean fitness of the population.
+
+Initially the population has uniform fitness, to the replication is also uniform.
+
+When a turtle replicates 
+
+1. it hatches a baby 
+2. a randomly chosen other turtle is killed
+
+This keeps the number of turtles constant.
+
+### Mutation
+
+Now let the turtles mutate. With a small mutation rate, turtles mutate when replication occurs.
+That means when a baby is hatched, a new species emerges with a fitness different from the parent and a
+species index one larger than the maximum species index in the population
+
+```
+let ms max [species] of turtles
+let parentfitness fitness
+hatch 1 [
+  set species ms + 1 
+  set fitness parentfitness + (random-float df - df / 2)
+] 
+```
+
+In this example the fitness of the mutant is the parent's fitness plus a random increment
+that can be positive or negative and a range of `df`.
+This typical fitness change range should be a parameter.
+
+
+### Plotting fitness
+
+You can add a plot widget to your simulation and plot the mean fitness of the population as a function of time.
+
+## Part 2: Competitive Fitness
+
+
+This is a similar model based on patches.
+
+- Like above we assign a fitness value to a patch using the `patches-own` command and initialize the fitness value of each patch. 
+
+- In this simulation patches can turn neighboring patches into their own type (color and fitness) with a probability function that looks like this 
+
+$$
+P = \frac{1}{1+\exp\left(  - \sigma (f_1 - f_2) \right)}
+$$
+
+- where $f_1$ and $f_2$ are the fitness parameters of the competing patches and $\sigma$ is a steepness parameter (slider), you can start with a value of $1$.
+
+- Implement mutations just like in simulation 1.
