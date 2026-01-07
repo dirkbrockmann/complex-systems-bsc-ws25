@@ -1,0 +1,44 @@
+---
+title: Homo Sapiens & C. Elegans  
+description: Genetic makeup of two species
+publishDate: 2026-01-06
+order: 18
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import homo_sapiens from '../../../../assets/homo_sapiens.png';
+import c_elegans from '../../../../assets/c_elegans.png';
+
+# Homo Sapiens & C. Elegans  
+
+<Grid cols={2} rows={1} gapClass="gap-12" class="px-12">
+
+<div class=" bg-amber-100/60 rounded-xl shadow-md">
+<Figure
+  class="max-w-[50%] p-12"
+  src={homo_sapiens}
+  boxed={true}
+  fit="contain"
+  alt="Homo Sapiens"
+  captionClass=" mt-2"
+/>
+- 23000 coding Genes
+- 3 billion base bairs
+- 100 billion cells
+</div>
+<div class=" min-h-0 overflow-auto bg-sky-100/60 p-1 rounded-xl shadow-md">
+<Figure
+  class="max-w-[70%] p-12"
+  src={c_elegans}
+  boxed={true}
+  fit="contain"
+  alt="C. Elegans"
+  captionClass=" mt-2"
+/>
+- 20000 coding Genes
+- 100 million base bairs
+- 1000 cells
+</div>
+</Grid>
+

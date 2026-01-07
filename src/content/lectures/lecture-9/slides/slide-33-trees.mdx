@@ -1,0 +1,35 @@
+---
+title: Types of Networks
+description: We deal with different types of networks usually.
+publishDate: 2026-01-06
+order: 33
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import tree from '../../../../assets/tree_network.png';
+import acyclic from '../../../../assets/acyclic_network.png';
+
+
+# Network without Loops
+
+<Grid class="gap-8 md:gap-12" cols={2} rows={1}>
+
+<Figure
+  class="max-w-[70%]"
+  src={tree}
+  boxed={true}
+  fit="contain"
+  captionClass="text-center"
+  alt="Tree Network"
+/>
+
+<Figure
+  class="max-w-[70%]"
+  src={acyclic}
+  boxed={true}
+  fit="contain"
+  alt="Acyclic Network"
+  captionClass="text-center"
+/>  
+</Grid>

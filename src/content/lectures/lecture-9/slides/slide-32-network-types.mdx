@@ -1,0 +1,47 @@
+---
+title: Types of Networks
+description: We deal with different types of networks usually.
+publishDate: 2026-01-06
+order: 32
+---
+
+import Grid from '../../../../components/slide-kit/Grid.astro';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import symnet from '../../../../assets/symmetric_network.png';
+import directed from '../../../../assets/directed_network.png';
+import weighted from '../../../../assets/weighted_network.png';
+
+
+# Different Types of networks
+
+<Grid class="gap-8 md:gap-12" cols={3} rows={1}>
+
+<Figure
+  class="max-w-[100%]"
+  src={symnet}
+  boxed={true}
+  fit="contain"
+  captionClass="text-center"
+  alt="Symmetric Network"
+  caption="Symmetric Network"
+/>
+
+<Figure
+  class="max-w-[100%]"
+  src={directed}
+  boxed={true}
+  fit="contain"
+  alt="Directed Network"
+  caption="Directed Network"
+  captionClass="text-center"
+/>  
+<Figure
+  class="max-w-[100%]"
+  src={weighted}
+  boxed={true}
+  fit="contain"
+  alt="Weighted Network"
+  caption="Weighted Network"
+  captionClass="text-center"
+/>
+</Grid>
