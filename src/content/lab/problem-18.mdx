@@ -1,0 +1,34 @@
+---
+title : "Network Epidemic"
+publishDate: 'Jan 8 2026'
+sequence: 18 
+tags:
+  - Exercise
+  - Lab
+---
+
+Now that you know how to deal with networks, the point here is to simulate an epidemic on a network.
+
+## Simulation 1
+
+Create a system of $N$ turtles that form a network based on the explanation in the last practical problem.
+
+Now define an epidemic process on the network in such a way: Nodes can be in one of three states:
+**Susceptible**, **Infected**, and **Immune**.
+You can distinguish their state by color.
+The following events can occur:
+
+- An infected picks a random neighbor (a neighbor in a network has a link to the referring node)
+and with probability $\alpha$ transmits the infection if the neighbor is susceptible
+
+- An infected becomes immune with probability $\beta$
+
+- An immune becomes susceptible again with probability $\gamma$
+
+Initially all nodes should be susceptible except for small fraction of nodes that are infected.
+
+## Simulation 2
+
+Now let's make this more interesting. Let's say that nodes avoid infected individuals, or at least they try to. Let's say that at every step a node looks at a neighbor and with probability $\delta$ cuts the link that connects to that neighbor if the neighbor is infected. To conserve the links and to compensate for the lost link the node links randomly to another node that is susceptible or immune.
+
+Read the manual to find out how to cut links and make new links.
