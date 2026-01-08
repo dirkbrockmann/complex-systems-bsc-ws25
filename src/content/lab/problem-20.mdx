@@ -1,0 +1,51 @@
+---
+title : "Network Vaccination"
+publishDate: 'Jan 8 2026'
+sequence: 20 
+tags:
+  - Exercise
+  - Lab
+---
+
+This model is straightforward to code up but exhibits quite counterintuitive results.
+It's about the impact of contact network structure on vaccination.
+
+## Preparation
+
+In order to see interesting behavior you have to grow two types of networks
+
+1. A random network
+2. A scale-free network
+
+Both networks should be grown by adding nodes to a seed network of three nodes.
+Incoming nodes should have a number $k$ of incoming "link-stubs" 
+which should be a random-integer number between 1 and 3.
+The networks should be grown to a size of 500 nodes.
+Make sure you add an `if` statement to stop the growth process.
+Also use spring layout algorithm to display the network nicely just like we did in the last few problems.
+
+### Random network
+
+In this case the incoming $k$ links of incoming nodes are connected to randomly chose nodes.
+
+### Scale-free network
+
+In this case the incoming links connect proportionally to the degree of the target nodes, like in the network growth problem on preferential attachment.
+
+When you display the network scale their size according to their degree and observe the distribution of degrees and the topological differences of the networks
+
+## Vaccination
+
+### Random Vaccination
+
+Add a slider variable for a variabl $Q$ that determines the fraction of nodes to vaccinate. Add a button for the vaccination. When that button is pressed, chose a fraction of $Q$ nodes and remove all their links. This should dilute the networks. Find a value for which you still have a giant component of the network.
+
+### Targeted Vaccination
+
+Now, instead of removing random nodes, remove the fraction of nodes with highest degrees. This should, of course, dilute the network more efficiently, because you are removing nodes with lots of links.
+
+### Neighbor Vaccination
+
+Now do this: Chose random nodes randomly again, but instead of vaccinating them, vaccinate one of their neighbors (randomly)
+
+What do you observe? 
