@@ -6,16 +6,14 @@ order: 9
 ---
 
 
-import Figure from '../../../../components/slide-kit/Figure.astro';
-import dolphins from '../../../../assets/dolphins.png';
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/networks/dolphins';
+
 
 # Dolphin Social Networks
 
-<Figure
-  class="max-w-[60%]"
-  src={dolphins}
-  boxed={true}
-  fit="contain"
-  alt="A dolphin social network visualization"
-/>
+
+<Explorable id="dolphin_network" margin={false} class="max-w-[60%]" captionClass=''>    
+    <Fig slot="figure" client:load id="dolphins"/>
+</Explorable>
 
