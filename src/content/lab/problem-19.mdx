@@ -1,0 +1,65 @@
+---
+title : "Network Growth"
+publishDate: 'Jan 8 2026'
+sequence: 19 
+tags:
+  - Exercise
+  - Lab
+---
+
+In this practice problem you will implement network growth models. In these models a system is usally initialized with a few nodes, say 2 or 3 and at every simulation step new nodes come in and attach with their incoming "link stubs" to the nodes that already exist in the network according to a set of rules that define the model. In some models the growth does not go on indefinitely, typically, when a certain number of nodes is reached, nodes are removed randomly from the network every time a new node enters.
+
+## Preparations
+
+- Prepare netlogo with the usual `setup` and `go` function templates.
+
+- Create a small network with 3 nodes, that are all connected.
+The nodes should have `circle` shape and `color` black.
+Make sure you paint all the patches white in your setup function, otherwise you won't see the nodes.
+
+- Prepare a function called `spring` that gets called at every call of the `go` function and
+manages the layout, like in the previous example.
+Make sure you provide sliders for the layout parameters, so you can adapt the layout.
+
+## Model 1: Random targets
+
+In this models new nodes come in with a single link and attach to a randomly chose neighbor.
+You can generate new nodes with  `crt 1 [...]` and use the function `create-link-with` to
+connect with existing nodes.
+
+Now try to scale the size of the nodes according to their degree,
+that means the number of connections a node has.
+
+Once your network has reached a size of 500 nodes, start removing a random node for every node that comes in.
+
+Now generalize the model such that an incoming node either comes in with 1 or with 2 links,
+each with a 50% chance.
+
+## Model 2: Random neighbors
+
+This model is identical to the previous one with one important difference:
+
+- An incoming node picks a random target
+
+- It connects with probability $Q$ to the target and with probability $1-Q$ **to a random link neighbor of the target**.
+
+When you are done with it, make sure you see what the difference in outcome is to **Model 1**.
+
+
+## Model 3: Preferential Attachment
+
+This model is very famous and also controversial. It is based on the "rich get richer" effect. This is how it works: Incoming nodes attach to existing nodes with a probability that is proportional to the degree of the network node. Like: Friends with a lot of friends are more attractive to be befriended.
+
+How can this be done?
+
+First you need to add what is known as a **netlogo extension**. The extension we need here is called **Rnd**. Read the manual to learn how to use extensions.
+
+When the extension is loaded you can use the function `rnd:weighted-one-of` to pick nodes according to their degree.
+
+## Model 4: Preferential attachment to clustering coefficient
+
+This is a variant of Model 3, only that incoming nodes connect preferentially to nodes with a high clustering coefficient. 
+
+For this, another netlogo extension will come in handy: the `Network` extension. In it you will find that for nodes in a network one can compute the **clustering coefficient**. This is a measure that computes how well connected your neighbors are. More precisely it computes the links among the neighbors of a node devided by the maximum number of links possible among the neighbors.
+
+Modify your model so that new links attach to existing nodes proportional to the clustering coefficient.
