@@ -1,0 +1,22 @@
+.link {
+    stroke: black;
+    stroke-opacity: 0.6;
+    stroke-width: 0.5px;
+}
+.node {
+    
+}
+
+.label {
+    pointer-events:none;
+    fill:black
+}
+
+.nodecircle {
+    stroke: black;
+    stroke-width: .5px;
+}
+@media (prefers-color-scheme: dark) {
+    
+}
+

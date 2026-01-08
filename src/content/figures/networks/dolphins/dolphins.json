@@ -1,0 +1,609 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "weighted": false,
+    "directed": false,
+    "name": "Dolphins",
+    "L": 159,
+    "N": 62,
+    "density": 0.08408249603384453
+  },
+  "nodes": [
+    {
+      "degree centrality": 6,
+      "betweenness centrality": 0.01908259621374376,
+      "eigenvector centrality": 0.1285035191108721,
+      "clustering coefficient": 0.3333333333333333,
+      "id": "Beak"
+    },
+    {
+      "degree centrality": 8,
+      "betweenness centrality": 0.21332443553281097,
+      "eigenvector centrality": 0.04209144143572481,
+      "clustering coefficient": 0.14285714285714285,
+      "id": "Beescratch"
+    },
+    {
+      "degree centrality": 4,
+      "betweenness centrality": 0.00907281243346817,
+      "eigenvector centrality": 0.0397571330980105,
+      "clustering coefficient": 0.16666666666666666,
+      "id": "Bumper"
+    },
+    {
+      "degree centrality": 3,
+      "betweenness centrality": 0.0023737965131407756,
+      "eigenvector centrality": 0.07933447607445518,
+      "clustering coefficient": 0.3333333333333333,
+      "id": "CCL"
+    },
+    {
+      "degree centrality": 1,
+      "betweenness centrality": 0.0,
+      "eigenvector centrality": 0.029287057142628192,
+      "clustering coefficient": 0,
+      "id": "Cross"
+    },
+    {
+      "degree centrality": 4,
+      "betweenness centrality": 0.004380300179480508,
+      "eigenvector centrality": 0.006572752164517535,
+      "clustering coefficient": 0.5,
+      "id": "DN16"
+    },
+    {
+      "degree centrality": 6,
+      "betweenness centrality": 0.029372536747686685,
+      "eigenvector centrality": 0.012211980286547347,
+      "clustering coefficient": 0.5333333333333333,
+      "id": "DN21"
+    },
+    {
+      "degree centrality": 5,
+      "betweenness centrality": 0.11823861926938342,
+      "eigenvector centrality": 0.04290802005630266,
+      "clustering coefficient": 0.2,
+      "id": "DN63"
+    },
+    {
+      "degree centrality": 6,
+      "betweenness centrality": 0.022365737598409235,
+      "eigenvector centrality": 0.14310221675120957,
+      "clustering coefficient": 0.26666666666666666,
+      "id": "Double"
+    },
+    {
+      "degree centrality": 7,
+      "betweenness centrality": 0.020894380361593475,
+      "eigenvector centrality": 0.01222016976446843,
+      "clustering coefficient": 0.5238095238095238,
+      "id": "Feather"
+    },
+    {
+      "degree centrality": 5,
+      "betweenness centrality": 0.016092020911693046,
+      "eigenvector centrality": 0.0752534643510351,
+      "clustering coefficient": 0.4,
+      "id": "Fish"
+    },
+    {
+      "degree centrality": 1,
+      "betweenness centrality": 0.0,
+      "eigenvector centrality": 0.029287057142628192,
+      "clustering coefficient": 0,
+      "id": "Five"
+    },
+    {
+      "degree centrality": 1,
+      "betweenness centrality": 0.0,
+      "eigenvector centrality": 0.039075861161635264,
+      "clustering coefficient": 0,
+      "id": "Fork"
+    },
+    {
+      "degree centrality": 8,
+      "betweenness centrality": 0.05284632843869151,
+      "eigenvector centrality": 0.015030415487480686,
+      "clustering coefficient": 0.5,
+      "id": "Gallatin"
+    },
+    {
+      "degree centrality": 12,
+      "betweenness centrality": 0.06197200484885411,
+      "eigenvector centrality": 0.3157810764804675,
+      "clustering coefficient": 0.25757575757575757,
+      "id": "Grin"
+    },
+    {
+      "degree centrality": 7,
+      "betweenness centrality": 0.03329222098223321,
+      "eigenvector centrality": 0.1641749113833966,
+      "clustering coefficient": 0.23809523809523808,
+      "id": "Haecksel"
+    },
+    {
+      "degree centrality": 6,
+      "betweenness centrality": 0.0033047098620869113,
+      "eigenvector centrality": 0.20799316926734226,
+      "clustering coefficient": 0.6,
+      "id": "Hook"
+    },
+    {
+      "degree centrality": 9,
+      "betweenness centrality": 0.11430016291546972,
+      "eigenvector centrality": 0.017534968338682344,
+      "clustering coefficient": 0.2222222222222222,
+      "id": "Jet"
+    },
+    {
+      "degree centrality": 7,
+      "betweenness centrality": 0.014854899716954898,
+      "eigenvector centrality": 0.20249300124247613,
+      "clustering coefficient": 0.5238095238095238,
+      "id": "Jonah"
+    },
+    {
+      "degree centrality": 4,
+      "betweenness centrality": 0.013314394166853183,
+      "eigenvector centrality": 0.020682545955984934,
+      "clustering coefficient": 0.5,
+      "id": "Knit"
+    },
+    {
+      "degree centrality": 9,
+      "betweenness centrality": 0.10264573972090968,
+      "eigenvector centrality": 0.1844778733532397,
+      "clustering coefficient": 0.1388888888888889,
+      "id": "Kringel"
+    },
+    {
+      "degree centrality": 6,
+      "betweenness centrality": 0.012700653930162125,
+      "eigenvector centrality": 0.2073496172237698,
+      "clustering coefficient": 0.5333333333333333,
+      "id": "MN105"
+    },
+    {
+      "degree centrality": 1,
+      "betweenness centrality": 0.0,
+      "eigenvector centrality": 0.0024382375398253435,
+      "clustering coefficient": 0,
+      "id": "MN23"
+    },
+    {
+      "degree centrality": 3,
+      "betweenness centrality": 0.04218278563875618,
+      "eigenvector centrality": 0.08736202260403905,
+      "clustering coefficient": 0.3333333333333333,
+      "id": "MN60"
+    },
+    {
+      "degree centrality": 6,
+      "betweenness centrality": 0.007383043489600868,
+      "eigenvector centrality": 0.19321180983300898,
+      "clustering coefficient": 0.5333333333333333,
+      "id": "MN83"
+    },
+    {
+      "degree centrality": 3,
+      "betweenness centrality": 0.0016441148408361526,
+      "eigenvector centrality": 0.005952326426510384,
+      "clustering coefficient": 0.6666666666666666,
+      "id": "Mus"
+    },
+    {
+      "degree centrality": 3,
+      "betweenness centrality": 0.00436247723132969,
+      "eigenvector centrality": 0.008949192287688038,
+      "clustering coefficient": 0.6666666666666666,
+      "id": "Notch"
+    },
+    {
+      "degree centrality": 5,
+      "betweenness centrality": 0.029236860493157983,
+      "eigenvector centrality": 0.016326687320731028,
+      "clustering coefficient": 0.4,
+      "id": "Number1"
+    },
+    {
+      "degree centrality": 5,
+      "betweenness centrality": 0.06675695466395656,
+      "eigenvector centrality": 0.06822697202643722,
+      "clustering coefficient": 0.3,
+      "id": "Oscar"
+    },
+    {
+      "degree centrality": 9,
+      "betweenness centrality": 0.06552928249649563,
+      "eigenvector centrality": 0.2117610946447421,
+      "clustering coefficient": 0.25,
+      "id": "Patchback"
+    },
+    {
+      "degree centrality": 5,
+      "betweenness centrality": 0.03305046077177225,
+      "eigenvector centrality": 0.04075065098782636,
+      "clustering coefficient": 0.3,
+      "id": "PL"
+    },
+    {
+      "degree centrality": 1,
+      "betweenness centrality": 0.0,
+      "eigenvector centrality": 0.0024382375398253435,
+      "clustering coefficient": 0,
+      "id": "Quasi"
+    },
+    {
+      "degree centrality": 3,
+      "betweenness centrality": 0.03278688524590164,
+      "eigenvector centrality": 0.003864343758966289,
+      "clustering coefficient": 0.3333333333333333,
+      "id": "Ripplefluke"
+    },
+    {
+      "degree centrality": 10,
+      "betweenness centrality": 0.057166440117259784,
+      "eigenvector centrality": 0.2810970171605868,
+      "clustering coefficient": 0.3333333333333333,
+      "id": "Scabs"
+    },
+    {
+      "degree centrality": 5,
+      "betweenness centrality": 0.032694759702956426,
+      "eigenvector centrality": 0.13882725110356864,
+      "clustering coefficient": 0.3,
+      "id": "Shmuddel"
+    },
+    {
+      "degree centrality": 1,
+      "betweenness centrality": 0.0,
+      "eigenvector centrality": 0.02943731400967756,
+      "clustering coefficient": 0,
+      "id": "SMN5"
+    },
+    {
+      "degree centrality": 7,
+      "betweenness centrality": 0.24823719602893804,
+      "eigenvector centrality": 0.13276550630017514,
+      "clustering coefficient": 0.047619047619047616,
+      "id": "SN100"
+    },
+    {
+      "degree centrality": 11,
+      "betweenness centrality": 0.13856978865859435,
+      "eigenvector centrality": 0.30056092847049554,
+      "clustering coefficient": 0.23636363636363636,
+      "id": "SN4"
+    },
+    {
+      "degree centrality": 8,
+      "betweenness centrality": 0.04535223883584539,
+      "eigenvector centrality": 0.19661653892836545,
+      "clustering coefficient": 0.2857142857142857,
+      "id": "SN63"
+    },
+    {
+      "degree centrality": 2,
+      "betweenness centrality": 0.070516778539934,
+      "eigenvector centrality": 0.02087597074555255,
+      "clustering coefficient": 0,
+      "id": "SN89"
+    },
+    {
+      "degree centrality": 8,
+      "betweenness centrality": 0.1431495183426175,
+      "eigenvector centrality": 0.20787263130203704,
+      "clustering coefficient": 0.25,
+      "id": "SN9"
+    },
+    {
+      "degree centrality": 5,
+      "betweenness centrality": 0.023251600670186175,
+      "eigenvector centrality": 0.015262103099078309,
+      "clustering coefficient": 0.6,
+      "id": "SN90"
+    },
+    {
+      "degree centrality": 6,
+      "betweenness centrality": 0.029157951944837193,
+      "eigenvector centrality": 0.08095068341031324,
+      "clustering coefficient": 0.3333333333333333,
+      "id": "SN96"
+    },
+    {
+      "degree centrality": 7,
+      "betweenness centrality": 0.06283060442896508,
+      "eigenvector centrality": 0.1903379603455066,
+      "clustering coefficient": 0.23809523809523808,
+      "id": "Stripes"
+    },
+    {
+      "degree centrality": 4,
+      "betweenness centrality": 0.012037805849281259,
+      "eigenvector centrality": 0.07780212964010046,
+      "clustering coefficient": 0.16666666666666666,
+      "id": "Thumper"
+    },
+    {
+      "degree centrality": 11,
+      "betweenness centrality": 0.04067044059647018,
+      "eigenvector centrality": 0.2850031047324042,
+      "clustering coefficient": 0.3090909090909091,
+      "id": "Topless"
+    },
+    {
+      "degree centrality": 2,
+      "betweenness centrality": 0.0030084669428931724,
+      "eigenvector centrality": 0.029716244849600226,
+      "clustering coefficient": 0,
+      "id": "TR120"
+    },
+    {
+      "degree centrality": 6,
+      "betweenness centrality": 0.0232014761195089,
+      "eigenvector centrality": 0.08037195763313355,
+      "clustering coefficient": 0.4,
+      "id": "TR77"
+    },
+    {
+      "degree centrality": 1,
+      "betweenness centrality": 0.0,
+      "eigenvector centrality": 0.0024198473930088908,
+      "clustering coefficient": 0,
+      "id": "TR82"
+    },
+    {
+      "degree centrality": 2,
+      "betweenness centrality": 0.0009289617486338798,
+      "eigenvector centrality": 0.023429567002119706,
+      "clustering coefficient": 0,
+      "id": "TR88"
+    },
+    {
+      "degree centrality": 7,
+      "betweenness centrality": 0.03341103492742837,
+      "eigenvector centrality": 0.217690513310815,
+      "clustering coefficient": 0.23809523809523808,
+      "id": "TR99"
+    },
+    {
+      "degree centrality": 10,
+      "betweenness centrality": 0.08467725475022557,
+      "eigenvector centrality": 0.210680208920898,
+      "clustering coefficient": 0.24444444444444444,
+      "id": "Trigger"
+    },
+    {
+      "degree centrality": 4,
+      "betweenness centrality": 0.0192343448900826,
+      "eigenvector centrality": 0.12956359101537376,
+      "clustering coefficient": 0.3333333333333333,
+      "id": "TSN103"
+    },
+    {
+      "degree centrality": 2,
+      "betweenness centrality": 0.0011930783242258653,
+      "eigenvector centrality": 0.03368665459890721,
+      "clustering coefficient": 0,
+      "id": "TSN83"
+    },
+    {
+      "degree centrality": 7,
+      "betweenness centrality": 0.0991216467635194,
+      "eigenvector centrality": 0.023022376520473398,
+      "clustering coefficient": 0.38095238095238093,
+      "id": "Upbang"
+    },
+    {
+      "degree centrality": 2,
+      "betweenness centrality": 0.0008774695250105086,
+      "eigenvector centrality": 0.052109343930712836,
+      "clustering coefficient": 0,
+      "id": "Vau"
+    },
+    {
+      "degree centrality": 2,
+      "betweenness centrality": 0.0001366120218579235,
+      "eigenvector centrality": 0.002612314190108687,
+      "clustering coefficient": 0,
+      "id": "Wave"
+    },
+    {
+      "degree centrality": 9,
+      "betweenness centrality": 0.08420468343495603,
+      "eigenvector centrality": 0.017401973681970623,
+      "clustering coefficient": 0.3611111111111111,
+      "id": "Web"
+    },
+    {
+      "degree centrality": 1,
+      "betweenness centrality": 0.0,
+      "eigenvector centrality": 0.02733206208697855,
+      "clustering coefficient": 0,
+      "id": "Whitetip"
+    },
+    {
+      "degree centrality": 5,
+      "betweenness centrality": 0.020332774690384588,
+      "eigenvector centrality": 0.11181865699755929,
+      "clustering coefficient": 0.3,
+      "id": "Zap"
+    },
+    {
+      "degree centrality": 1,
+      "betweenness centrality": 0.0,
+      "eigenvector centrality": 0.0005374384753918985,
+      "clustering coefficient": 0,
+      "id": "Zig"
+    },
+    {
+      "degree centrality": 3,
+      "betweenness centrality": 0.014194982613015397,
+      "eigenvector centrality": 0.05199117201156752,
+      "clustering coefficient": 0,
+      "id": "Zipfel"
+    }
+  ],
+  "links": [
+    { "weight": 1, "source": "Beak", "target": "Fish" },
+    { "weight": 1, "source": "Beak", "target": "Grin" },
+    { "weight": 1, "source": "Beak", "target": "Haecksel" },
+    { "weight": 1, "source": "Beak", "target": "SN9" },
+    { "weight": 1, "source": "Beak", "target": "SN96" },
+    { "weight": 1, "source": "Beak", "target": "TR77" },
+    { "weight": 1, "source": "Beescratch", "target": "Jet" },
+    { "weight": 1, "source": "Beescratch", "target": "Knit" },
+    { "weight": 1, "source": "Beescratch", "target": "Notch" },
+    { "weight": 1, "source": "Beescratch", "target": "Number1" },
+    { "weight": 1, "source": "Beescratch", "target": "Oscar" },
+    { "weight": 1, "source": "Beescratch", "target": "SN100" },
+    { "weight": 1, "source": "Beescratch", "target": "SN90" },
+    { "weight": 1, "source": "Beescratch", "target": "Upbang" },
+    { "weight": 1, "source": "Bumper", "target": "Fish" },
+    { "weight": 1, "source": "Bumper", "target": "SN96" },
+    { "weight": 1, "source": "Bumper", "target": "Thumper" },
+    { "weight": 1, "source": "Bumper", "target": "Zipfel" },
+    { "weight": 1, "source": "CCL", "target": "Double" },
+    { "weight": 1, "source": "CCL", "target": "Grin" },
+    { "weight": 1, "source": "CCL", "target": "Zap" },
+    { "weight": 1, "source": "Cross", "target": "Trigger" },
+    { "weight": 1, "source": "DN16", "target": "Feather" },
+    { "weight": 1, "source": "DN16", "target": "Gallatin" },
+    { "weight": 1, "source": "DN16", "target": "Wave" },
+    { "weight": 1, "source": "DN16", "target": "Web" },
+    { "weight": 1, "source": "DN21", "target": "Feather" },
+    { "weight": 1, "source": "DN21", "target": "Gallatin" },
+    { "weight": 1, "source": "DN21", "target": "Jet" },
+    { "weight": 1, "source": "DN21", "target": "Upbang" },
+    { "weight": 1, "source": "DN21", "target": "Wave" },
+    { "weight": 1, "source": "DN21", "target": "Web" },
+    { "weight": 1, "source": "DN63", "target": "Knit" },
+    { "weight": 1, "source": "DN63", "target": "Number1" },
+    { "weight": 1, "source": "DN63", "target": "PL" },
+    { "weight": 1, "source": "DN63", "target": "SN9" },
+    { "weight": 1, "source": "DN63", "target": "Upbang" },
+    { "weight": 1, "source": "Double", "target": "Kringel" },
+    { "weight": 1, "source": "Double", "target": "Oscar" },
+    { "weight": 1, "source": "Double", "target": "SN4" },
+    { "weight": 1, "source": "Double", "target": "Topless" },
+    { "weight": 1, "source": "Double", "target": "Zap" },
+    { "weight": 1, "source": "Feather", "target": "Gallatin" },
+    { "weight": 1, "source": "Feather", "target": "Jet" },
+    { "weight": 1, "source": "Feather", "target": "Ripplefluke" },
+    { "weight": 1, "source": "Feather", "target": "SN90" },
+    { "weight": 1, "source": "Feather", "target": "Web" },
+    { "weight": 1, "source": "Fish", "target": "Patchback" },
+    { "weight": 1, "source": "Fish", "target": "SN96" },
+    { "weight": 1, "source": "Fish", "target": "TR77" },
+    { "weight": 1, "source": "Five", "target": "Trigger" },
+    { "weight": 1, "source": "Fork", "target": "Scabs" },
+    { "weight": 1, "source": "Gallatin", "target": "Jet" },
+    { "weight": 1, "source": "Gallatin", "target": "Ripplefluke" },
+    { "weight": 1, "source": "Gallatin", "target": "SN90" },
+    { "weight": 1, "source": "Gallatin", "target": "Upbang" },
+    { "weight": 1, "source": "Gallatin", "target": "Web" },
+    { "weight": 1, "source": "Grin", "target": "Hook" },
+    { "weight": 1, "source": "Grin", "target": "MN83" },
+    { "weight": 1, "source": "Grin", "target": "Scabs" },
+    { "weight": 1, "source": "Grin", "target": "Shmuddel" },
+    { "weight": 1, "source": "Grin", "target": "SN4" },
+    { "weight": 1, "source": "Grin", "target": "SN63" },
+    { "weight": 1, "source": "Grin", "target": "SN9" },
+    { "weight": 1, "source": "Grin", "target": "Stripes" },
+    { "weight": 1, "source": "Grin", "target": "TR99" },
+    { "weight": 1, "source": "Grin", "target": "TSN103" },
+    { "weight": 1, "source": "Haecksel", "target": "Jonah" },
+    { "weight": 1, "source": "Haecksel", "target": "MN83" },
+    { "weight": 1, "source": "Haecksel", "target": "SN9" },
+    { "weight": 1, "source": "Haecksel", "target": "Topless" },
+    { "weight": 1, "source": "Haecksel", "target": "Vau" },
+    { "weight": 1, "source": "Haecksel", "target": "Zap" },
+    { "weight": 1, "source": "Hook", "target": "Kringel" },
+    { "weight": 1, "source": "Hook", "target": "Scabs" },
+    { "weight": 1, "source": "Hook", "target": "SN4" },
+    { "weight": 1, "source": "Hook", "target": "SN63" },
+    { "weight": 1, "source": "Hook", "target": "TR99" },
+    { "weight": 1, "source": "Jet", "target": "MN23" },
+    { "weight": 1, "source": "Jet", "target": "Mus" },
+    { "weight": 1, "source": "Jet", "target": "Number1" },
+    { "weight": 1, "source": "Jet", "target": "Quasi" },
+    { "weight": 1, "source": "Jet", "target": "Web" },
+    { "weight": 1, "source": "Jonah", "target": "Kringel" },
+    { "weight": 1, "source": "Jonah", "target": "MN105" },
+    { "weight": 1, "source": "Jonah", "target": "MN83" },
+    { "weight": 1, "source": "Jonah", "target": "Patchback" },
+    { "weight": 1, "source": "Jonah", "target": "Topless" },
+    { "weight": 1, "source": "Jonah", "target": "Trigger" },
+    { "weight": 1, "source": "Knit", "target": "PL" },
+    { "weight": 1, "source": "Knit", "target": "Upbang" },
+    { "weight": 1, "source": "Kringel", "target": "Oscar" },
+    { "weight": 1, "source": "Kringel", "target": "SN100" },
+    { "weight": 1, "source": "Kringel", "target": "SN63" },
+    { "weight": 1, "source": "Kringel", "target": "Thumper" },
+    { "weight": 1, "source": "Kringel", "target": "TR77" },
+    { "weight": 1, "source": "Kringel", "target": "TR99" },
+    { "weight": 1, "source": "MN105", "target": "Patchback" },
+    { "weight": 1, "source": "MN105", "target": "Scabs" },
+    { "weight": 1, "source": "MN105", "target": "SN4" },
+    { "weight": 1, "source": "MN105", "target": "Topless" },
+    { "weight": 1, "source": "MN105", "target": "Trigger" },
+    { "weight": 1, "source": "MN60", "target": "SN100" },
+    { "weight": 1, "source": "MN60", "target": "Topless" },
+    { "weight": 1, "source": "MN60", "target": "Trigger" },
+    { "weight": 1, "source": "MN83", "target": "Patchback" },
+    { "weight": 1, "source": "MN83", "target": "Topless" },
+    { "weight": 1, "source": "MN83", "target": "Trigger" },
+    { "weight": 1, "source": "Mus", "target": "Notch" },
+    { "weight": 1, "source": "Mus", "target": "Number1" },
+    { "weight": 1, "source": "Notch", "target": "Number1" },
+    { "weight": 1, "source": "Oscar", "target": "PL" },
+    { "weight": 1, "source": "Oscar", "target": "TR77" },
+    { "weight": 1, "source": "Patchback", "target": "SMN5" },
+    { "weight": 1, "source": "Patchback", "target": "Stripes" },
+    { "weight": 1, "source": "Patchback", "target": "Topless" },
+    { "weight": 1, "source": "Patchback", "target": "Trigger" },
+    { "weight": 1, "source": "Patchback", "target": "TSN103" },
+    { "weight": 1, "source": "PL", "target": "SN96" },
+    { "weight": 1, "source": "PL", "target": "TR77" },
+    { "weight": 1, "source": "Ripplefluke", "target": "Zig" },
+    { "weight": 1, "source": "Scabs", "target": "Shmuddel" },
+    { "weight": 1, "source": "Scabs", "target": "SN4" },
+    { "weight": 1, "source": "Scabs", "target": "SN63" },
+    { "weight": 1, "source": "Scabs", "target": "SN9" },
+    { "weight": 1, "source": "Scabs", "target": "Stripes" },
+    { "weight": 1, "source": "Scabs", "target": "TR99" },
+    { "weight": 1, "source": "Shmuddel", "target": "SN4" },
+    { "weight": 1, "source": "Shmuddel", "target": "Thumper" },
+    { "weight": 1, "source": "Shmuddel", "target": "TR88" },
+    { "weight": 1, "source": "SN100", "target": "SN4" },
+    { "weight": 1, "source": "SN100", "target": "SN89" },
+    { "weight": 1, "source": "SN100", "target": "SN9" },
+    { "weight": 1, "source": "SN100", "target": "Zap" },
+    { "weight": 1, "source": "SN4", "target": "SN9" },
+    { "weight": 1, "source": "SN4", "target": "Stripes" },
+    { "weight": 1, "source": "SN4", "target": "Topless" },
+    { "weight": 1, "source": "SN4", "target": "Zipfel" },
+    { "weight": 1, "source": "SN63", "target": "Stripes" },
+    { "weight": 1, "source": "SN63", "target": "Thumper" },
+    { "weight": 1, "source": "SN63", "target": "TSN103" },
+    { "weight": 1, "source": "SN63", "target": "Whitetip" },
+    { "weight": 1, "source": "SN89", "target": "Web" },
+    { "weight": 1, "source": "SN9", "target": "TSN103" },
+    { "weight": 1, "source": "SN90", "target": "Upbang" },
+    { "weight": 1, "source": "SN90", "target": "Web" },
+    { "weight": 1, "source": "SN96", "target": "TR77" },
+    { "weight": 1, "source": "SN96", "target": "TR99" },
+    { "weight": 1, "source": "Stripes", "target": "TR120" },
+    { "weight": 1, "source": "Stripes", "target": "TSN83" },
+    { "weight": 1, "source": "Topless", "target": "TR99" },
+    { "weight": 1, "source": "Topless", "target": "Trigger" },
+    { "weight": 1, "source": "Topless", "target": "Zap" },
+    { "weight": 1, "source": "TR120", "target": "TR88" },
+    { "weight": 1, "source": "TR82", "target": "Web" },
+    { "weight": 1, "source": "TR99", "target": "Trigger" },
+    { "weight": 1, "source": "Trigger", "target": "Vau" },
+    { "weight": 1, "source": "TSN83", "target": "Zipfel" },
+    { "weight": 1, "source": "Upbang", "target": "Web" }
+  ]
+}
