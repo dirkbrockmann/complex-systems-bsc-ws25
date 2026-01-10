@@ -5,7 +5,7 @@ import {useEffect,useRef} from 'react';
 import config from './config.js';
 import network  from './dtu.js';
 import styles from './styles.module.css';
-
+import man from './man.ts';
 
 const loadExplorable = (displayContainer,controlsContainer) => {
 
@@ -27,25 +27,23 @@ const loadExplorable = (displayContainer,controlsContainer) => {
     var link, node;
         let simulation;
     
-    const charge = 1.75;
+    const personscale=0.05;
+    const charge = 2;
 	const linklength = 5;
-	const spring = 0.1;
+	const spring = 0.05;
 	const damping = 0.023;
 	const ss = 1;
 	const lw = 1;
 	const  scale = 10;
     const ss_range = [2,8];
     const linewidth = 1.0;
-    const color = d3.interpolatePurples;
-    const sSize = d3.scaleLinear().range(ss_range);
-	const cs	= d3.scaleLinear().range([0,1]);
-	
+    
+    const sSize = d3.scaleLinear().range(ss_range);	
+	const color = d3.scaleOrdinal(d3.schemeCategory10);	
 
     function setup() {
 
         sSize.domain(d3.extent(nodes,function(d){return d["k"]}))
-		cs.domain(d3.extent(nodes,function(d){return d["betweenness centrality"]}))
-		  
 
         simulation = d3.forceSimulation()
 	        .force("link", d3.forceLink().id(function(d) { return d.id; }))
@@ -59,14 +57,12 @@ const loadExplorable = (displayContainer,controlsContainer) => {
 			.strength(spring)
         	
         const origin = display.append("g")
-            //.attr("transform","translate("+X(-50)+","+Y(-50)+")");
         
         link = origin
 		    .selectAll("."+styles.link)
 		    .data(links)
 		    .enter().append("line")
             .attr("class",styles.link)
-	
 				  
 		node = origin.selectAll("."+styles.node)
 		  	.data(nodes).enter()
@@ -78,10 +74,12 @@ const loadExplorable = (displayContainer,controlsContainer) => {
           	.on("drag", dragged)
           	.on("end", dragended));
         
-        node.append("circle").attr("class",styles.nodecircle)		
-		      .attr("r", d=> sSize(d["k"]) )
-		  	  .style("fill",d => color( cs(d["betweenness centrality"]) ))
-
+        node.append("path").attr("class",styles.man)
+		.attr("d",man)
+		.attr("transform",function(d){return "translate(0,0)scale("+personscale+")"})
+		.style("stroke-width",0.5/personscale)
+		.style("fill",function(d){return color(d.group)})
+  	
         simulation.nodes(nodes).on("tick", ticked);
         simulation.force("link").links(links);
 		simulation.alpha(1).restart();

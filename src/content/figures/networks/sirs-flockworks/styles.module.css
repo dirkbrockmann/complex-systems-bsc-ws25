@@ -1,0 +1,28 @@
+.link {
+    stroke: black;
+    stroke-width: .5 px;
+    opacity: 0.2;
+}
+.node {
+    stroke:black;
+}
+
+.infected {
+    fill:coral;
+}
+.susceptible {
+    fill:lightgray;
+}
+.recovered {
+    fill:lightseagreen;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .agent {
+        fill: white;
+    }
+    .plotline {
+        stroke: red
+    }
+}
