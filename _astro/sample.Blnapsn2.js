@@ -1,1 +1,0 @@
-import{b as e,v as s}from"./_shuffleSelf.B6nX9HuZ.js";import{d as t}from"./toString.mwmtGKEg.js";function n(r){var a=r.length;return a?r[e(0,a-1)]:void 0}function u(r){return n(s(r))}function o(r){var a=t(r)?n:u;return a(r)}export{o as s};
