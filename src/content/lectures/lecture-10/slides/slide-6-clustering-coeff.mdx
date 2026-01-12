@@ -1,0 +1,37 @@
+---
+title: The Clustering Coefficient
+description: Understanding the clustering coefficient in networks
+publishDate: 2026-01-06
+order: 6
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/networks/sune';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import EQ from '../../../../components/slide-kit/Eq.astro';
+
+
+# Clustering in Networks
+
+<TwoCol ratio="1:1" gapClass="gap-8" class="my-8" align="center" >
+
+<div slot="left">
+
+<Explorable id="sune_network" margin={false} class="max-w-[80%]" captionClass=''>    
+    <Fig slot="figure" client:load id="sune"/>
+</Explorable>
+
+</div>
+
+<div slot="right">
+
+### clustering coefficient of node i:
+<EQ expr="C_i= \frac{2\,\text{links between neighbors}}{k_i(k_i-1)}" size="lg"/>
+### the clustering coefficient of the network:
+<EQ expr="\left< C \right> = \frac{1}{N} \sum_i C_i" size="lg"/>
+
+</div>
+
+
+
+</TwoCol>

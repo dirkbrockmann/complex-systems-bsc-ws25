@@ -1,0 +1,39 @@
+---
+title: Diameter
+description: Understanding the diameter of a network
+publishDate: 2026-01-06
+order: 8
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/networks/dolphins';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import EQ from '../../../../components/slide-kit/Eq.astro';
+
+
+# The Diameter of a Network
+
+<TwoCol ratio="1:1" gapClass="gap-8" class="my-8" align="center" >
+
+<div slot="left">
+
+
+<Explorable id="dolphin_network" margin={false} class="max-w-[100%]" captionClass=''>    
+    <Fig slot="figure" client:load id="dolphins"/>
+</Explorable>
+
+
+</div>
+
+<div slot="right">
+
+### diameters:
+
+- the **longest** shortest path between any two nodes
+- the **mean** shortest path of a network
+
+</div>
+
+
+
+</TwoCol>

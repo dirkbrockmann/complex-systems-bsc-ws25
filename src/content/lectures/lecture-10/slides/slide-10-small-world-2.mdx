@@ -1,0 +1,48 @@
+---
+title: The Diameter of Facebook Network
+description: Understanding the small-world property in networks
+publishDate: 2026-01-06
+order: 10
+---
+
+import Explorable from '../../../../components/slide-kit/Explorable.astro';
+import Fig from '../../../figures/networks/dolphins';
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import EQ from '../../../../components/slide-kit/Eq.astro';
+import facebook from '../../../../assets/facebook.png';
+import facebook_diameter from '../../../../assets/facebook_diameter.png';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+
+# The diameter of Facebook's Network
+
+<TwoCol ratio="1:1" gapClass="gap-8" class="my-8" align="center" >
+
+<div slot="left">
+
+<Figure
+  class="max-w-[100%]"
+  src={facebook}
+  boxed={true}
+  fit="contain"
+  alt="Facebook social network visualization"
+/>
+
+
+</div>
+
+<div slot="right">
+<Figure
+  class="max-w-[100%]"
+  src={facebook_diameter}
+  boxed={true}
+  fit="contain"
+  alt="Facebook network diameter visualization"
+/>
+</div>
+
+
+
+</TwoCol>
+
+<EQ expr="\left< D_{ij} \right>\approx 4.7" size="xl"/>
+

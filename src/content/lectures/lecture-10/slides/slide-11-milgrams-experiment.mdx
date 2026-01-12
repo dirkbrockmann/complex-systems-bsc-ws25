@@ -1,0 +1,46 @@
+---
+title: Milgrams Experiment
+description: six degrees of separation in social networks
+publishDate: 2026-01-06
+order: 11
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import EQ from '../../../../components/slide-kit/Eq.astro';
+import milgram from '../../../../assets/milgram.png';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+
+# Milgrams Experiment
+
+<TwoCol ratio="1:1" gapClass="gap-8" class="my-8" align="center" >
+
+<div slot="left">
+
+<Figure
+  class="max-w-[80%]"
+  src={milgram}
+  boxed={true}
+  fit="contain"
+  alt="Facebook social network visualization"
+/>
+
+
+</div>
+
+<div slot="right">
+
+- Volunteers were given a packet addressed to a specific target person (a stranger), typically in another city.
+- **Instruction:** They could only send the packet to someone they personally knew (first-name basis).
+- **Rule:** They were not allowed to send it directly to the target unless they knew them personally.
+- **Strategy:** Each sender chose the acquaintance they believed was most likely to be closer to the target.
+- **Tracking:** Each participant added their name before forwarding, creating a chain.
+- **Stopping condition:** The process ended when the packet reached the target (or was dropped).
+- **Outcome:** Successful chains were surprisingly short—about five to six steps.
+
+</div>
+
+
+
+</TwoCol>
+
+

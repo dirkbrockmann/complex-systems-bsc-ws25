@@ -1,0 +1,54 @@
+---
+title: Scale-Free Networks
+description: Scale Free Networks and the Barabási–Albert Model
+publishDate: 2026-01-06
+order: 14
+---
+
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import emergence from '../../../../assets/emergence_scaling_paper.png';
+import scalefreenetworks from '../../../../assets/scalefreenetworks.png';
+import Figure from '../../../../components/slide-kit/Figure.astro';
+import EQ from '../../../../components/slide-kit/Eq.astro';
+
+# Scale-free Networks
+
+<TwoCol ratio="1:1" gapClass="gap-8" class="my-8" align="center" >
+
+<div slot="left">
+
+## The Barabási–Albert Paper
+<Figure
+  class="max-w-[40%]"
+  src={emergence}
+  boxed={true}
+  fit="contain"
+  alt="Barabási–Albert Paper"
+/>
+
+
+</div>
+
+<div slot="right">
+
+## Power-Law Degree Distribution
+<Figure
+  class="max-w-[80%]"
+  src={scalefreenetworks}
+  boxed={true}
+  fit="contain"
+  alt="Treefrog"
+/>
+
+<EQ expr="P(k) \sim k^{-\gamma}" size="xl"/>
+
+</div>
+
+
+
+</TwoCol>
+
+
+
+
