@@ -1,0 +1,45 @@
+---
+title : "Fireflies"
+publishDate: 'Jan 14 2026'
+sequence: 21 
+tags:
+  - Exercise
+  - Lab
+---
+
+Write a model in which a number of $N$ fireflies move around randomly in the netlogo world.
+You can use the methods for random movement that we used in some of the other examples. 
+
+Each turtle (firefly) should have an internal variable `phase` that can change over time, an angle variable between 0 and 360.
+You can color the turtles according to the phase
+
+```
+ask turtles [set color hsb phase 100 100]
+```
+
+
+While the tick goes on the each turtle should advance its own phase by proportional to the `ticks` like so
+
+```
+ask turtles [set phase  phase + omega * dt  ]
+```
+
+here the variable `omega` should be slider.
+
+While the fireflies move around, they should interact with other fireflies in a radius $R$. This radius should be a slider parameter that you can change.
+
+They should interact in a similar way as is defined by the Kuramoto model. 
+
+Here's again, a way to compute the interaction:
+
+
+```
+ask turtles [
+	let F 0
+	let myphase phase
+	ask other turtles in-radius R [
+		set F F + K / N sin ( phase - myphase )
+	]
+... Do something with F
+]
+```

@@ -29,6 +29,11 @@ Initially all nodes should be susceptible except for small fraction of nodes tha
 
 ## Simulation 2
 
-Now let's make this more interesting. Let's say that nodes avoid infected individuals, or at least they try to. Let's say that at every step a node looks at a neighbor and with probability $\delta$ cuts the link that connects to that neighbor if the neighbor is infected. To conserve the links and to compensate for the lost link the node links randomly to another node that is susceptible or immune.
+Now let's make this more interesting.
+Let's say that nodes avoid infected individuals, or at least they try to.
+Let's say that at every step a node looks at each of its neighbors and with probability $\delta$
+cuts the link that connects to it if the neighbor is infected.
+To conserve the links and to compensate for the lost link the
+node links randomly to another node that is susceptible or immune.
 
 Read the manual to find out how to cut links and make new links.
