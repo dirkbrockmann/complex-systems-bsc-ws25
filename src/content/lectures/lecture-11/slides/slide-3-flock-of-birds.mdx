@@ -1,0 +1,22 @@
+---
+title: Flock of Birds
+description: Flock behavior and collective motion
+publishDate: 2026-01-06
+order: 3
+---
+
+
+import Flock from '../../../../assets/videos/flok.mp4';
+import Video from '../../../../components/slide-kit/Video.astro';
+import FullVideoSlide from '../../../../components/slide-kit/templates/FullVideoSlide.astro';
+
+<FullVideoSlide
+  src={Flock}
+  caption="Swarm behavior in action."
+  fit="cover"
+  autoplay={true}
+  loop={true}
+  muted={true}
+  controls={true}
+  class="my-8"
+/>
