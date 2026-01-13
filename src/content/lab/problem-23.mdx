@@ -1,0 +1,27 @@
+---
+title : "Forrest Fire"
+publishDate: 'Jan 14 2026'
+sequence: 23 
+tags:
+  - Exercise
+  - Lab
+---
+
+This problem is related to the explorable [“Critically Inflammatory”](https://www.complexity-explorables.org/explorables/critically-inflammatory/) that simulates the phenomenon of self-organized criticality in the context of forrest fires. 
+
+Write a patch based simulation in which patches can either be 
+
+1. empty (e.g. black)
+2. occupied with a tree (e.g. green)
+3. occupied by a burning tree
+
+Now about the dynamics
+
+1. If a burning tree is neighboring a healthy tree, it can set fire to it with probability $\alpha$
+2. A healthy tree can reproduce by seeding a new tree in a neighboring empty patch with probability $\beta$
+3. With a very tiny probability $\gamma$ lightning strikes anywhere in the world, if it hits a tree, it sets it on fire
+4. A patch on fire can burn out with a probability $\delta$
+
+Add slider variables for the three parameters.
+
+Add a toggle-switch that replaces rule 2. by a new rule in which a tree doesn't seed a new tree at a neighboring empty patch but rather a random empty patch anywhere in the world.
