@@ -1,0 +1,45 @@
+---
+title : "Cooperation"
+publishDate: 'Jan 14 2026'
+sequence: 24 
+tags:
+  - Exercise
+  - Lab
+---
+
+In this problem, we will investigate the emergence and stability of cooperation in a
+population of interacting agents.
+In the population of patches an agent can either be a 
+
+1. cooperator
+2. defector
+
+Patches interact with their neighborhood.
+At each step they receive a `benefit` from the cooperators in their neighborhood
+proportional to the number of of cooperators in it.
+Defectors receive a factor $F$ more of a benefit.
+This factor $F$ should be a slider with a range between $1$ and say $5$.
+
+Agents can also change their state.
+They adopt the state of the neighbor that received the largest `benefit`.
+
+## Setup
+
+Set up the system such that a fraction $p$ of patches are cooperators and a fraction $1-p$ are defectors.
+
+## Simulation
+
+You can color the patches according to their state.
+For a better visualization you can store the "old state" in a patch variable and color
+the four combinations 
+
+1. old state = "D", New state = "D"
+2. old state = "D", New state = "C"
+2. old state = "C", New state = "C"
+2. old state = "C", New state = "D"
+
+in four different colors.
+
+## Extra: State stability
+
+Go to `F` values close to $1$ (e.g. 1.1). Can you explain the outcome (why each pattern exists)?
