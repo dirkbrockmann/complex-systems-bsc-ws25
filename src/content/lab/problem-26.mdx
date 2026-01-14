@@ -1,0 +1,35 @@
+---
+title : "Echo Chambers"
+publishDate: 'Jan 15 2026'
+sequence: 26 
+tags:
+  - Exercise
+  - Lab
+---
+
+This is a classic model for the formation of echo chambers. You will implement a network version of it.
+
+## preparations
+
+Generate a network of say 200 nodes that is sparsely connected. You can use the methods implemented in the first network excersize:
+
+1. generate a fully connected network
+2. remove a fraction of $p$ nodes, where $p$ is of the order of $1/N$
+
+Use a spring layout that get continously updated like in previous examples
+
+Each node in the network can have one of $M$ opinions. $M$ should be a small number like 3, 5 10 or so.
+
+Color the nodes according to their opinion
+
+## Simulation
+
+At each step:
+
+- pick a random node
+- this node compares its opinion to one of the neighbors opinion
+- if they are different, the node can either adopt the neighbors opinion or rewire its link to another, randomly chose node. This should be determined by a rewiring probability $Q$.
+
+## Extra: Echos
+
+Quantify the echo chambers. Try different network types (e.g. scale free, small world, random). 
