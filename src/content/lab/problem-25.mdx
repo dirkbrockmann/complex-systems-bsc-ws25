@@ -1,0 +1,35 @@
+---
+title : "SIRS Model with Peer Pressure"
+publishDate: 'Jan 15 2026'
+sequence: 25 
+tags:
+  - Exercise
+  - Lab
+---
+
+This problem is very simple.
+The main purpose is to code a patch model that describes the SIRS model but with an additional twist:
+Individuals vaccinate with a probability that is proportional to the fraction of infected individuals around them.
+
+The first part of the problem is implementing the model that is described in the complexity explorable:
+
+> [Critical HexSIRSize](https://www.complexity-explorables.org/explorables/critical-hexsirsize/)
+
+only in netlogo you will use a square lattice.
+
+Make sure you have sliders for
+
+- infection rate
+- recovery rate
+- waning immunity
+
+## Additional Twist
+
+In addition to the states **Susceptible**, **Infected** and **Recovered** introduce a new state **Vaccinated**. Here are the rules for vaccinated patches
+
+1. Susceptibles can become vaccinated with a vaccination probability $v$ **only if** the fraction of infected
+in their neighborhood exceeds a predefined value $p$. Both parameters should be sliders.
+2. Vaccinated become susceptible just like the recovered patches.
+
+
+Try to find parameters setting such that the dynamic pattern that emerges appears spatially heterogeneous.
