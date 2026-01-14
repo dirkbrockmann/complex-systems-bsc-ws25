@@ -1,0 +1,66 @@
+---
+title: Stochastic Species Coexistence
+publishDate: 'Jan 15 2026'
+sequence: 27
+tags:
+  - Exercise
+  - Lab
+---
+
+In this exercise you will implement a minimal model of **two competing species**.
+
+The interesting dynamic: One of the two species will switch between two different fitness states: one higher and one lower than its competitor. A global “environment” variable determines which state the species is currently in. 
+The variable species, on average, will have a slight fitness  advantage but the randomness allows the two species to coexist. 
+
+## Setup
+
+We need a sufficiently large world and four sliders: 
+
+- `mortality-rate` (small, magnitude of ~0.01-0.10)
+- `advantage` (small, magnitude of ~0.01)
+- `variability` (from 0 to 1)
+- `env-switch-rate` (from 0 to 1)
+
+Each patch is a “spot” and can be in one of three states:
+
+- `stable` (occupied by the species without variation)
+- `variable` (occupied by the species with variation)
+- `empty`
+
+The environment has two states: 
+
+- `favourable` (variable species uses higher fitness value)
+- `unfavourable` (variable species uses lower fitness value)
+
+## Simulation
+
+1. The environment may switch.
+2. The fitness of the variable species will switch accordingly between: 
+```
+ifelse env-state = "favourable"
+	[ set f_var  1 + advantage + var ]
+	[ set f_var 1 + advantage - var ]
+```
+
+3. Occupied spots die with probability `mortality` (use `random-float`).
+4. Empty spots are recolonized: The probability of each species to colonize the empty spots  will depend on the fitness and the current patch counts: 
+```
+let seeds_stable count patches with [species = "stable"]
+  let seeds_var count patches with [species = "variable"]
+  let f_var_total f_var * seeds_var
+  let f_stable_total  1 * seeds_var
+```
+And then use a random number to determine the sucessful species: 
+```
+ ifelse random-float 1.0 < f_var_total / (f_var_total + f_stable_total) [...][...]
+```
+
+You will want some patch coloring to visualize what is happening and likely a plot! 
+
+## Questions
+
+Which species is favored by 
+	- a low/high mortality rate
+	- slow/fast environment switching? 
+	
+Why is the randomness favoring coexistence? (difficult!)
