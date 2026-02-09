@@ -1,0 +1,171 @@
+---
+title: Past Exam 2022 
+publishDate: 'Feb 09 2026'
+sequence: 3
+draft: false
+tags:
+  - Exam 
+  - Past Exam 
+---
+
+
+## 1.
+Find the fixpoints of these dynamical systems and determine their stability. 
+Tip: where possible, do graphically not analytically.
+
+a) $\dot{x}=x^{2}-1$
+
+b) $\dot{x}=x^{3}$
+
+c) $\dot{x}=-x^{5}$
+
+d) $\dot{x}=-(x-a)(x-b)$ with $a>b>0$
+
+e) $x_{n+1}=2-3x_{n}$ (time discrete map)
+
+## 2.
+The panels below show four different snapshots of a two-dimensional percolation process on a square lattice,
+in which water (blue) percolates from above to the bottom along vacant lattice sites and is blocked by occupied sites.
+Vacant and occupied sites are both shown in black, so you can't distinguish them.               
+
+a) In each run the fraction of vacant sites is A: less than 50% B: exactly 50% C: more than 70% and D: the critical fraction of C %. Connect the corresponding letters A, B, C und D to the panels.
+
+b) Is the critical threshold C larger or smaller than 50%?
+
+c) If you were to plot a graph that shows the probability $P$ of water reaching the bottom on the y-axis vs. the fraction of vacant sites $x$ (on the x-axis), what would it look like? Draw a sketch of such a graph.
+
+d) From a graph like that, how would you determine the critical value of $x$ approximately?
+
+
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+  <img src="/src/content/exam/per3.png" alt="percolation pattern 1" style="height: 150px; object-fit: contain;" />
+  <img src="/src/content/exam/per2.png" alt="percolation pattern 2" style="height: 150px; object-fit: contain;" />
+  <img src="/src/content/exam/per1.png" alt="percolation pattern 3" style="height: 150px; object-fit: contain;" />
+  <img src="/src/content/exam/per4.png" alt="percolation pattern 4" style="height: 150px; object-fit: contain;" />
+</div>
+
+## 3.
+A dynamical system $\dot{x}=f(x;\lambda)$ with control parameter $\lambda$ has
+four saddle node bifurcations at $\lambda_{1}< \lambda_{2}< \lambda_{3}< \lambda_{4}$.
+For $\lambda< \lambda_{1}$ and for $\lambda>\lambda_{4}$ we have $f(x;\lambda)>0$ and the system has no fixpoints.
+For $\lambda_{2}< \lambda< \lambda_{3}$ the system has 4 fixpoints. 
+
+a) Draw a possible bifurcaction diagram for the system.
+
+b) Does the system exhibit hysteresis? If so draw a hystersis loop in your bifurcation diagram.
+
+## 4.
+Assign the following dynamical systems to the qualitative interaction schemes.
+
+a) $\dot{x}=-xy+z\qquad\dot{y}=-xy+z\qquad\dot{z}=-z$
+
+b) $\dot{x}=3-x\qquad\dot{y}=x-y\qquad\dot{z}=y-z$
+
+c) $\dot{x}=x(1-z^{2})\qquad\dot{y}=y(2-x)\qquad\dot{z}=z^{2}(3-y)$
+
+<img src="/src/content/exam/3d-coupling.png" alt="coubling diagram" style="height: 250px; object-fit: contain;" />
+
+## 5.
+The illustration below shows an unweighted, directed network.
+
+a) Write down the adjacency matrix.
+
+b) Make a table of the “in”-degree and the “out”-degree of the nodes,
+the in-degree and out-degree quantify the number of links coming in and going out of a node, respectively.
+
+c) Compute the mean in- and out degree of all nodes? 
+
+d) For the undirected version of the network (the network you get when you remove the direction of the arrows)
+compute the link density of the network.
+
+e) For the un-directed network, what node has the highest degree-centrality?
+
+f) How many links do you have to remove, to turn the undirected network into a tree?
+
+g) By removing a single node, fragment the network into one with as many components as possible.
+What node do you have to remove?
+
+h) For all nodes with degree k>1 (in the undirected network) which have a clustering coefficient of 1.
+
+<img src="/src/content/exam/directed_network.png" alt="illustration of a directed network" style="height: 250px; object-fit: contain;" />
+
+
+## 6.
+Let's assume that we have two populations $n_{1}(t)$ and $n_{2}(t)$ that are independent
+and are governed by $\dot{n}_{1}=\alpha n_{1}$
+$\dot{n}_{2}=\beta n_{2}$ with positive growth rates $\alpha,\beta>0$. 
+
+a) What are the solutions to these differential equations?
+
+b) Now define the population frations $x_{1}(t)=n_{1}(t)/(n_{1}(t)+n_{2}(t))$ and $x_{2}(t)=n_{2}(t)/(n_{1}(t)+n_{2}(t))$. Clearly $x_{1}+x_{2}=1$. Derive differential equations for the fractions, so $\dot{x}_{1}=f_{1}(x_{1},x_{2})$
+$\dot{x}_{2}=f_{2}(x_{1},x_{2})$
+
+c) Because $x_{1}+x_{2}=1$ you can simplify the 2d system to a 1d system by letting $x=x_{1}$ and substituting $x_{2}=1-x$. Derive the dynamical system for $\dot{x}=f(x)$
+
+d) What are the fixpoints of this system and their stability for $\alpha>\beta$?
+
+
+
+## 7.
+Below are three visualizations of a network.
+The nodes are colored according to one of the quantities:
+a: degree, b: betweenness, c: clustering coefficient from light (low) to dark (high).
+
+a) Label the network illustrations according to the centrality measure that is colored.
+
+b) Explain what betweenness centrality quantifies qualitatively. 
+
+c) Explain what the clustering coefficient quantifies qualitatively.
+
+d) Draw a network of 7 nodes with one having a large betweenness and low clustering and 6 having low betweenness and high clustering.
+
+<img src="/src/content/exam/dolphins.png" alt="illustration of a network" style="height: 250px; object-fit: contain;" />
+
+
+## 8.
+Below you see temporal snapshots of a two-dimensional lattice of phase-coupled oscillators governed by the Kuramoto model.
+The color encodes the phase of each pixel's oscillator.
+
+a) We denote each lattice-point by $(n,m)$ and the oscillators phase at that location with $\theta_{nm}(t)$. Write down the equations of motion for the Kuramoto model.
+
+b) Order the temporal snapshots below according to the sequence of time. Explain how you got your answer.                    
+
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+  <img src="/src/content/exam/k1.png" alt="pattern 1" style="height: 170px; object-fit: contain;" />
+  <img src="/src/content/exam/k2.png" alt="pattern 2" style="height: 170px; object-fit: contain;" />
+  <img src="/src/content/exam/k3.png" alt="pattern 3" style="height: 170px; object-fit: contain;" />
+  <img src="/src/content/exam/k4.png" alt="pattern 4" style="height: 170px; object-fit: contain;" />
+  <img src="/src/content/exam/k5.png" alt="pattern 5" style="height: 170px; object-fit: contain;" />
+  <img src="/src/content/exam/k6.png" alt="pattern 6" style="height: 170px; object-fit: contain;" />
+</div>
+
+## 9.
+The images below depict snapshots of four different two-dimensional pattern forming sytems.
+Assign the letter labels a, b, c and d to the patterns where:
+
+a) diffusion limited aggregation
+
+b) the stable pattern of a system with local excitation and long-range inhibition
+
+c) the Game of Life
+
+d) the Voter Model               
+
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+  <img src="/src/content/exam/fig4_2020_c.png" alt="pattern 1" style="height: 150px; object-fit: contain;" />
+  <img src="/src/content/exam/gol.png" alt="pattern 4" style="height: 150px; object-fit: contain;" />
+  <img src="/src/content/exam/ising.png" alt="pattern 5" style="height: 150px; object-fit: contain;" />
+  <img src="/src/content/exam/dla2.png" alt="pattern 6" style="height: 150px; object-fit: contain;" />
+</div>
+
+
+## 10.
+In the diagram below a region of phase space $U$ of a two-dimensional dynamical system is shown. The phase-flow of the dynamical system is going inward everywhere across the boundary of $U$.
+
+a) What are the possible asymptotic states of the dynamical system?
+
+b) Sketch them.
+
+c) What is the name of the mathematical theorem that tells you that there are no other asymptotic states?
+
+<img src="/src/content/exam/poincare-bendixon.png" alt="illustration of a network" style="height: 250px; object-fit: contain;" />
