@@ -8,6 +8,25 @@ tags:
   - Past Exam 
 ---
 
+import per1 from './per1.png';
+import per2 from './per2.png';
+import per3 from './per3.png';
+import per4 from './per4.png';
+import threeDCoupling from './3d-coupling.png';
+import directedNetwork from './directed_network.png';
+import dolphins from './dolphins.png';
+import k1 from './k1.png';
+import k2 from './k2.png';
+import k3 from './k3.png';
+import k4 from './k4.png';
+import k5 from './k5.png';
+import k6 from './k6.png';
+import fig42020c from './fig4_2020_c.png';
+import gol from './gol.png';
+import ising from './ising.png';
+import dla2 from './dla2.png';
+import poincareBendixon from './poincare-bendixon.png';
+
 
 ## 1.
 Find the fixpoints of these dynamical systems and determine their stability. 
@@ -38,10 +57,10 @@ d) From a graph like that, how would you determine the critical value of $x$ app
 
 
 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-  <img src="/src/content/exam/per3.png" alt="percolation pattern 1" style="height: 150px; object-fit: contain;" />
-  <img src="/src/content/exam/per2.png" alt="percolation pattern 2" style="height: 150px; object-fit: contain;" />
-  <img src="/src/content/exam/per1.png" alt="percolation pattern 3" style="height: 150px; object-fit: contain;" />
-  <img src="/src/content/exam/per4.png" alt="percolation pattern 4" style="height: 150px; object-fit: contain;" />
+  <img src={per3.src} alt="percolation pattern 1" style="height: 150px; object-fit: contain;" />
+  <img src={per2.src} alt="percolation pattern 2" style="height: 150px; object-fit: contain;" />
+  <img src={per1.src} alt="percolation pattern 3" style="height: 150px; object-fit: contain;" />
+  <img src={per4.src} alt="percolation pattern 4" style="height: 150px; object-fit: contain;" />
 </div>
 
 ## 3.
@@ -63,7 +82,7 @@ b) $\dot{x}=3-x\qquad\dot{y}=x-y\qquad\dot{z}=y-z$
 
 c) $\dot{x}=x(1-z^{2})\qquad\dot{y}=y(2-x)\qquad\dot{z}=z^{2}(3-y)$
 
-<img src="/src/content/exam/3d-coupling.png" alt="coubling diagram" style="height: 250px; object-fit: contain;" />
+<img src={threeDCoupling.src} alt="coubling diagram" style="height: 250px; object-fit: contain;" />
 
 ## 5.
 The illustration below shows an unweighted, directed network.
@@ -87,7 +106,7 @@ What node do you have to remove?
 
 h) For all nodes with degree k>1 (in the undirected network) which have a clustering coefficient of 1.
 
-<img src="/src/content/exam/directed_network.png" alt="illustration of a directed network" style="height: 250px; object-fit: contain;" />
+<img src={directedNetwork.src} alt="illustration of a directed network" style="height: 250px; object-fit: contain;" />
 
 
 ## 6.
@@ -119,7 +138,7 @@ c) Explain what the clustering coefficient quantifies qualitatively.
 
 d) Draw a network of 7 nodes with one having a large betweenness and low clustering and 6 having low betweenness and high clustering.
 
-<img src="/src/content/exam/dolphins.png" alt="illustration of a network" style="height: 250px; object-fit: contain;" />
+<img src={dolphins.src} alt="illustration of a network" style="height: 250px; object-fit: contain;" />
 
 
 ## 8.
@@ -131,12 +150,12 @@ a) We denote each lattice-point by $(n,m)$ and the oscillators phase at that loc
 b) Order the temporal snapshots below according to the sequence of time. Explain how you got your answer.                    
 
 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-  <img src="/src/content/exam/k1.png" alt="pattern 1" style="height: 170px; object-fit: contain;" />
-  <img src="/src/content/exam/k2.png" alt="pattern 2" style="height: 170px; object-fit: contain;" />
-  <img src="/src/content/exam/k3.png" alt="pattern 3" style="height: 170px; object-fit: contain;" />
-  <img src="/src/content/exam/k4.png" alt="pattern 4" style="height: 170px; object-fit: contain;" />
-  <img src="/src/content/exam/k5.png" alt="pattern 5" style="height: 170px; object-fit: contain;" />
-  <img src="/src/content/exam/k6.png" alt="pattern 6" style="height: 170px; object-fit: contain;" />
+  <img src={k1.src} alt="pattern 1" style="height: 170px; object-fit: contain;" />
+  <img src={k2.src} alt="pattern 2" style="height: 170px; object-fit: contain;" />
+  <img src={k3.src} alt="pattern 3" style="height: 170px; object-fit: contain;" />
+  <img src={k4.src} alt="pattern 4" style="height: 170px; object-fit: contain;" />
+  <img src={k5.src} alt="pattern 5" style="height: 170px; object-fit: contain;" />
+  <img src={k6.src} alt="pattern 6" style="height: 170px; object-fit: contain;" />
 </div>
 
 ## 9.
@@ -152,10 +171,10 @@ c) the Game of Life
 d) the Voter Model               
 
 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-  <img src="/src/content/exam/fig4_2020_c.png" alt="pattern 1" style="height: 150px; object-fit: contain;" />
-  <img src="/src/content/exam/gol.png" alt="pattern 4" style="height: 150px; object-fit: contain;" />
-  <img src="/src/content/exam/ising.png" alt="pattern 5" style="height: 150px; object-fit: contain;" />
-  <img src="/src/content/exam/dla2.png" alt="pattern 6" style="height: 150px; object-fit: contain;" />
+  <img src={fig42020c.src} alt="pattern 1" style="height: 150px; object-fit: contain;" />
+  <img src={gol.src} alt="pattern 4" style="height: 150px; object-fit: contain;" />
+  <img src={ising.src} alt="pattern 5" style="height: 150px; object-fit: contain;" />
+  <img src={dla2.src} alt="pattern 6" style="height: 150px; object-fit: contain;" />
 </div>
 
 
@@ -168,4 +187,4 @@ b) Sketch them.
 
 c) What is the name of the mathematical theorem that tells you that there are no other asymptotic states?
 
-<img src="/src/content/exam/poincare-bendixon.png" alt="illustration of a network" style="height: 250px; object-fit: contain;" />
+<img src={poincareBendixon.src} alt="illustration of a network" style="height: 250px; object-fit: contain;" />

@@ -8,6 +8,20 @@ tags:
   - Past Exam 
 ---
 
+import network from './network.png';
+import fig52020 from './fig5_2020.png';
+import k1 from './k1.png';
+import k2 from './k2.png';
+import k3 from './k3.png';
+import k4 from './k4.png';
+import k5 from './k5.png';
+import k6 from './k6.png';
+import p1 from './p1.png';
+import dla3 from './dla3.png';
+import p3 from './p3.png';
+import kelp from './kelp.png';
+import coupling from './coupling.jpeg';
+
 ## 1.
 Find the fixpoints of these dynamical systems and determine their stability.
 
@@ -40,7 +54,7 @@ g) By removing a single node, fragment the network into one with as many compone
 
 h) For all nodes with degree k>1 which have a clustering coefficient of 1.
 
-<img src="/src/content/exam/network.png" alt="illustration of a network" style="height: 250px; object-fit: contain;" />
+<img src={network.src} alt="illustration of a network" style="height: 250px; object-fit: contain;" />
 
 
 
@@ -62,7 +76,7 @@ After that the control parameter is decreased again.
 Assume that the system is subjected to small noise, so that it fluctuates around its equilibrium.
 Indicate two different hysteresis loops.
 
-<img src="/src/content/exam/fig5_2020.png" alt="bifurcation diagram" style="height: 350px; object-fit: contain;" />
+<img src={fig52020.src} alt="bifurcation diagram" style="height: 350px; object-fit: contain;" />
 
 
 ## 4. Activator-Inhibitor-Systems
@@ -90,12 +104,12 @@ b) Order the snapshots below according to time and provide an argument for your 
 
 
 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-  <img src="/src/content/exam/k1.png" alt="pattern 1" style="height: 170px; object-fit: contain;" />
-  <img src="/src/content/exam/k2.png" alt="pattern 2" style="height: 170px; object-fit: contain;" />
-  <img src="/src/content/exam/k3.png" alt="pattern 3" style="height: 170px; object-fit: contain;" />
-  <img src="/src/content/exam/k4.png" alt="pattern 4" style="height: 170px; object-fit: contain;" />
-  <img src="/src/content/exam/k5.png" alt="pattern 5" style="height: 170px; object-fit: contain;" />
-  <img src="/src/content/exam/k6.png" alt="pattern 6" style="height: 170px; object-fit: contain;" />
+  <img src={k1.src} alt="pattern 1" style="height: 170px; object-fit: contain;" />
+  <img src={k2.src} alt="pattern 2" style="height: 170px; object-fit: contain;" />
+  <img src={k3.src} alt="pattern 3" style="height: 170px; object-fit: contain;" />
+  <img src={k4.src} alt="pattern 4" style="height: 170px; object-fit: contain;" />
+  <img src={k5.src} alt="pattern 5" style="height: 170px; object-fit: contain;" />
+  <img src={k6.src} alt="pattern 6" style="height: 170px; object-fit: contain;" />
 </div>
 
 ## 6. 
@@ -119,10 +133,10 @@ c) A spatial system of pulse-coupled oscillators on a square lattice.
 d) A spatial system with local excitatory and long-range inhibitory coupling.
 
 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-  <img src="/src/content/exam/p1.png" alt="pattern 1" style="height: 150px; object-fit: contain;" />
-  <img src="/src/content/exam/dla3.png" alt="pattern 2" style="height: 150px; object-fit: contain;" />
-  <img src="/src/content/exam/p3.png" alt="pattern 3" style="height: 150px; object-fit: contain;" />
-  <img src="/src/content/exam/kelp.png" alt="pattern 4" style="height: 150px; object-fit: contain;" />
+  <img src={p1.src} alt="pattern 1" style="height: 150px; object-fit: contain;" />
+  <img src={dla3.src} alt="pattern 2" style="height: 150px; object-fit: contain;" />
+  <img src={p3.src} alt="pattern 3" style="height: 150px; object-fit: contain;" />
+  <img src={kelp.src} alt="pattern 4" style="height: 150px; object-fit: contain;" />
 </div>
                
 
@@ -160,4 +174,4 @@ b) $\dot{x}=x(x-y^{2})\qquad\dot{y}=y(y-x^{2})$
 
 c) $\dot{x}=y-x\qquad\dot{y}=x-y^{2}$
 
-<img src="/src/content/exam/coupling.jpeg" alt="illustration of a network" style="height: 250px; object-fit: contain;" />
+<img src={coupling.src} alt="illustration of a network" style="height: 250px; object-fit: contain;" />
