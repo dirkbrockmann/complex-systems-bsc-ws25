@@ -111,6 +111,10 @@ const siteConfig: SiteConfig = {
             href: '/tutorials'
         },
         {
+            text: 'Exams',
+            href: '/exam'
+        },
+        {
             text: 'Contact',
             href: '/contact'
         }

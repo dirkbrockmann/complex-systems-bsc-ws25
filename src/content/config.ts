@@ -58,6 +58,19 @@ const lab = defineCollection({
     })
 });
 
+const exam = defineCollection({
+    loader: glob({pattern: '**/*.{md,mdx}', base: './src/content/exam'}),
+    schema: z.object({
+        title: z.string(),
+        sequence: z.number(),
+        draft: z.boolean().optional(),
+        description: z.string().optional(),
+        publishDate: z.coerce.date(),
+        tags: z.array(z.string()).default([]),
+        seo: seoSchema.optional()
+    })
+});
+
 const lectures = defineCollection({
   loader: glob({ pattern: '**/index.{md,mdx}', base: './src/content/lectures' }),
   schema: z.object({
@@ -82,4 +95,4 @@ const slides = defineCollection({
   }),
 });
 
-export const collections = { slides, blog, pages, lectures, tutorials,lab };
+export const collections = { slides, blog, pages, lectures, tutorials, lab , exam};

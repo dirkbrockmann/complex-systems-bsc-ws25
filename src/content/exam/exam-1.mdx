@@ -1,0 +1,188 @@
+---
+title: Past Exam 2019
+publishDate: 'Feb 09 2026'
+sequence: 1
+draft: false
+tags:
+  - Exam 
+  - Past Exam 
+---
+
+import koch1 from './koch1.png';
+import koch2 from './koch2.png';
+import koch3 from './koch3.png';
+import koch4 from './koch4.png';
+import koch5 from './koch5.png';
+import p1 from './p1.png';
+import p2 from './p2.png';
+import p3 from './p3.png';
+import p4 from './p4.png';
+import dla1 from './dla1.png';
+import dla2 from './dla2.png';
+import dla3 from './dla3.png';
+
+## 1. (10 pts.)
+Wir betrachten ein Modell, dass das Schwarmverhalten von Tieren beschreibt.
+Es bewegen sich N Individuen in einem zwei-dimensionalen, beschränkten Gebiet.
+Die Geschwindigkeit aller Individuen ist gleich.
+In jedem Zeitschritt ändert jedes Individuum n seine aktuelle Richtung $\theta_n$ um ein zufälliges Inkrement $\delta$:
+
+$$\theta_n(t+1)=\theta_n(t)+\delta$$
+
+Die Zufallszahl $\delta$ ist uniform aus einem Intervall $[-\xi/2,\xi/2]$ gezogen. Die Intervallbreite $\xi$ ist ein Parameter des Systems, quasi der "Noise" im System. Nun wechselwirken die Individuen auch, indem sie ihre Richtung am Mittelwert der Richtungen aller Nachbarn in einem Radius R um sich herum anpassen. Somit gibt es drei Parameter des Systems:
+
+1. die Anzahl N (und damit die räumliche Dichte) der Individuen
+2. den Richtungsänderungsnoise $\xi$
+3. den Wechselwirkungsradius R
+
+Die Parameter sind so eingestellt, dass man kollektives Verhalten beobachtet, d.h. die Individuen bewegen sich in eine Richtung. Durch welche Parameteränderung kann man erreichen, dass das Schwarmverhalten zusammenbricht (Bitte zutreffendes ankreuzen):
+
+a) Durch Verkleinern des Noise $\xi$
+
+b) Durch Vergrößern des Radius R
+
+c) Durch Verringern der Individuenanzahl N
+
+d) Durch Vergrößern des Noise $\xi$
+
+e) Durch Verringern des Radius R
+
+
+## 2. [10 pts.]
+Die Abbildungen zeigen 5 Iterationsschritte der sogenannten Anti-Kochkurve.
+Wie gross ist die fraktale Dimension dieser Struktur?
+Tip: Man muss sich nur auf eine Seite der Struktur konzentrieren.
+
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+  <img src={koch1.src} alt="Koch curve iteration 1" style="height: 120px; object-fit: contain;" />
+  <img src={koch2.src} alt="Koch curve iteration 2" style="height: 120px; object-fit: contain;" />
+  <img src={koch3.src} alt="Koch curve iteration 3" style="height: 120px; object-fit: contain;" />
+  <img src={koch4.src} alt="Koch curve iteration 4" style="height: 120px; object-fit: contain;" />
+  <img src={koch5.src} alt="Koch curve iteration 5" style="height: 120px; object-fit: contain;" />
+</div>
+
+## 3. [10 pts.]
+Die Abbildungen zeigen 4 zwei-dimensionale Muster, die durch unterschiedliche Mechanismen entstanden sind.
+Ordnen Sie diese Muster folgenden Mechanismen zu:
+
+a) Ein Snapshot wechselwirkender puls-gekoppelter Oszillatoren.
+
+b) Ein System, daß durch lokale Aktivierung und langreichweitige Inhibition Muster generiert.
+
+c) Ein stochastischer zellulärer Automat
+
+d) Ein Lindenmeyer System
+
+
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+  <img src={p1.src} alt="pattern 1" style="height: 150px; object-fit: contain;" />
+  <img src={p2.src} alt="pattern 2" style="height: 150px; object-fit: contain;" />
+  <img src={p3.src} alt="pattern 3" style="height: 150px; object-fit: contain;" />
+  <img src={p4.src} alt="pattern 4" style="height: 150px; object-fit: contain;" />
+</div>
+
+## 4. [10 pts.]
+Wir betrachten das ein-dimensionale dynamische System 
+
+$$\dot{x}=f(x;\lambda)=(x-1)^{2}(x+1)^{2}+\lambda$$ 
+
+wobei $\lambda$ ein freier Kontrollparameter ist.
+Bemerkung: Hier muss man nichts ausrechnen, sondern nur malen.
+
+a) Betrachten Sie zunächst den Fall $\lambda=0$. Bestimmen Sie die Fixpunkte und deren Stabilität graphisch.
+
+b) Wieviele Fixpunkte hat das Systeme für $\lambda>0$ ?
+
+c) Wieviele Fixpunkte hat das System für $\lambda=-1$ ?
+
+d) Wieviele Fixpunkte hat das System für $-1<\lambda<0$?
+
+e) Wieviele Fixpunkte hat das System wenn $\lambda<-1$ ?
+
+## 5. [10 pts.]
+Wir betrachten ein klassisches Rock-Paper-Scissors-System aus drei Spezies $A$, $B$ und $C$ mit folgenden, zyklischen Reaktionen
+
+$$
+A+B	\rightarrow2A \\
+B+C	\rightarrow2B \\
+C+A	\rightarrow2C
+$$
+
+die alle mit identischer Rate $$\alpha$$  stattfinden.
+Wir bezeichen mit $x,y$ und $z$ den Anteil von A, B bzw. C Individuen in einer Gesamtpopulation, sodass $x+y+z=1$. 
+
+a) Leiten sie die dynamischen Gleichungen her:
+$$
+\dot{x}	=f(x,y,z)\\
+\dot{y}	=g(x,y,z)\\
+\dot{z}	=h(x,y,z)
+$$
+
+b) Zeigen sie, dass die Gesamtpopulation $x(t)+y(t)+z(t)$ konstant bleibt (also $x+y+z=1$),
+und dass das System so auf ein zwei-dimensionales System reduziert werden kann.
+
+c) Berechnen Sie den nichttrivialen ($x,y>0$) Fixpunkt des 2D-Systems (Tip: Symmetrien!).
+
+d) Berechnen sie die Art des Fixpunkts.
+
+## 6. [10 pts.]
+Wir betrachten ein ungerichtetes ungewichtetes Netzwerk mit folgender Adjazenzmatrix:
+
+$$
+A=\left(\begin{array}{cccccccc}
+0 & 1 & 1 & 0 & 0 & 0 & 0 & 0\\
+1 & 0 & 1 & 1 & 0 & 1 & 0 & 0\\
+1 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 1 & 0 & 0 & 0\\
+\text{0} & 0 & 0 & 1 & 0 & 0 & 1 & 1\\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0
+\end{array}\right)
+$$
+
+a) Zeichnen Sie dieses Netzwerk.
+
+b) Berechnen Sie die Linkdichte.
+
+c) Berechnen Sie den mittleren Knotengrad.
+
+d) Welcher Knoten hat den höchsten Kontengrad (degree)?
+
+e) Die betweenness-centrality ist ein Zentralitätsmass für einen Knoten x definiert durch
+die Anzahl der kürzesten Pfade zwischen allen Knotenpaaren y und z.
+Welcher Knoten hat nach ihrer Einschätzung die größte Betweenness-centrality.
+Begründen sie ihre Einschätzung.
+
+## 7. [10 pts.]
+Finden Sie die Fixpunkte dieser dynamischen Systeme und stellen deren Stabilität fest.
+
+a) $ \dot{x}=(1-x^{20})$
+
+b) $ \dot{x}=e^{-x}-1$
+
+c) $ \dot{x}=(x^{2}-x-2)$
+
+d) $ x_{n+1}=1-3x_{n}$ (zeitlich diskrete Abbildung)
+
+e) $ x_{n+1}=-x_{n}/2$ (zeitlich diskrete Abbildung)
+
+## 8. [10 pts.]
+Alle drei der gezeigten Muster sind durch einen dynamischen Wachstumsprozess entstanden,
+bei dem zufällig bewegenden Teilchen an einem Kondensationskeim im Zentrum kleben bleiben.
+
+a) Wie heisst dieser Prozess?
+
+b) Bei einem Muster bewegten sich die Teilchen komplett zufällig (reine Diffusion). Bei welchem?
+
+c) Bei einem Muster bewegten sich die Teilchen auf das Zentrum zu. Bei welchem?
+
+d) Bei einem Muster hatten die aggregierenden Teilchen eine Rotationskomponenten:
+Die Trajektorien waren spiralförmig mit dem Fokus im Zentrum,
+wobei 50% der Teilchen sich im Uhrzeigersinn bewegten und 50% gegen den Uhrzeigersinn.
+
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+  <img src={dla1.src} alt="pattern 1" style="height: 170px; object-fit: contain;" />
+  <img src={dla2.src} alt="pattern 2" style="height: 170px; object-fit: contain;" />
+  <img src={dla3.src} alt="pattern 3" style="height: 170px; object-fit: contain;" />
+</div>

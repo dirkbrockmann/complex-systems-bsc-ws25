@@ -1,0 +1,177 @@
+---
+title: Past Exam 2020 
+publishDate: 'Feb 09 2026'
+sequence: 2
+draft: false
+tags:
+  - Exam 
+  - Past Exam 
+---
+
+import network from './network.png';
+import fig52020 from './fig5_2020.png';
+import k1 from './k1.png';
+import k2 from './k2.png';
+import k3 from './k3.png';
+import k4 from './k4.png';
+import k5 from './k5.png';
+import k6 from './k6.png';
+import p1 from './p1.png';
+import dla3 from './dla3.png';
+import p3 from './p3.png';
+import kelp from './kelp.png';
+import coupling from './coupling.jpeg';
+
+## 1.
+Find the fixpoints of these dynamical systems and determine their stability.
+
+a) $\dot{x}=\cos x+1$
+
+b) $\dot{x}=(x-a)(x-b)$ für $a<b$
+
+c) $\dot{x}=-x^{5}$
+
+d) $x_{n+1}=1-x_{n}/3$ (time discrete map)
+
+e) $x_{n+1}=2-3x_{n}$ (time discrete map)
+
+## 2.
+The illustration below shows an unweighted, undirected network.
+
+a) Write down the adjacency matrix.
+
+b) Compute the link density of the network.
+
+c) What is the mean degree of the network?
+
+d) What node has the highest degree-centrality?
+
+e) By giving the links a direction, construct an acyclic, directed network. Draw it.
+
+f) How many links do you have to remove, to turn the network into a tree?
+
+g) By removing a single node, fragment the network into one with as many components as possible. What node do you have to remove?
+
+h) For all nodes with degree k>1 which have a clustering coefficient of 1.
+
+<img src={network.src} alt="illustration of a network" style="height: 250px; object-fit: contain;" />
+
+
+
+## 3. [12 pts.]
+The diagram below depicts a bifucation diagram of a one-dimensional dynamical system
+
+$$\dot{x}=f(x;\lambda)$$ 
+
+with control parameter $\lambda$. The system has 6 bifurkations.
+
+a) Label the bifurcations according to type.
+
+b) In what range of $\lambda$ has the system the most fixpoints?
+
+c) Indicate with vertical arrows the dynamics of the system.
+
+d) Assume that the system is at a parameter $\lambda_{1}$ and $\lambda$ is slowly increased to the value $\lambda_{2}$.
+After that the control parameter is decreased again.
+Assume that the system is subjected to small noise, so that it fluctuates around its equilibrium.
+Indicate two different hysteresis loops.
+
+<img src={fig52020.src} alt="bifurcation diagram" style="height: 350px; object-fit: contain;" />
+
+
+## 4. Activator-Inhibitor-Systems
+
+a) Explain qualitatively what an activator-inhibitor-sytems is.
+
+b) What asymptotic states are generic for such systems?
+
+c) Construct an activator-inhibitor-system of the form $\dot{x}=f(x,y)$
+$\dot{y}=g(x,y)$
+
+d) Discuss what effects you may observe, when an activator-inhibitor-system evolves in space and when activtor and inhibitor particles move around diffusively. What patterns can emerge?
+
+
+
+## 5. [10 pts.]
+
+Below you see a number of temporal snapshots of a spatial system of phase coupled oscillators (Kuramoto model).
+In this system each oscillator is coupled with its nearest neighbors on a spatial lattice.
+Initially the phases are distributed randomly and are encoded by a rainbow spectrum color.
+
+a) Let's deonte the phase of an oscillator at position (n,m) with $\theta_{nm}(t)$. Write down the dynamical equations that govern the Kuramoto model.
+
+b) Order the snapshots below according to time and provide an argument for your choice.                    
+
+
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+  <img src={k1.src} alt="pattern 1" style="height: 170px; object-fit: contain;" />
+  <img src={k2.src} alt="pattern 2" style="height: 170px; object-fit: contain;" />
+  <img src={k3.src} alt="pattern 3" style="height: 170px; object-fit: contain;" />
+  <img src={k4.src} alt="pattern 4" style="height: 170px; object-fit: contain;" />
+  <img src={k5.src} alt="pattern 5" style="height: 170px; object-fit: contain;" />
+  <img src={k6.src} alt="pattern 6" style="height: 170px; object-fit: contain;" />
+</div>
+
+## 6. 
+Let $f(x)$ be a function of the form described below.:
+$f(x)$ is positive everywhere, has two local minima and one local maximum.
+We define a new function $g(x)=f(x)-\lambda$ where $\lambda$ is a control parameter.
+Analyse the bifurcation diagram of $\dot{x}=g(x)$ graphically and identify the sequence of bifurcations. 
+
+
+
+## 7.
+The following pictures show snapshots of pattern forming systems.
+Associate the right mechanisms with the corresponding patterns they generate:
+
+a) The temporal evolution of a one-dimensional cellular automaton.
+
+b) Diffusion-limited aggregation
+
+c) A spatial system of pulse-coupled oscillators on a square lattice.
+
+d) A spatial system with local excitatory and long-range inhibitory coupling.
+
+<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+  <img src={p1.src} alt="pattern 1" style="height: 150px; object-fit: contain;" />
+  <img src={dla3.src} alt="pattern 2" style="height: 150px; object-fit: contain;" />
+  <img src={p3.src} alt="pattern 3" style="height: 150px; object-fit: contain;" />
+  <img src={kelp.src} alt="pattern 4" style="height: 150px; object-fit: contain;" />
+</div>
+               
+
+## 8.
+Consider the 2-d dynamical system on the domain $x,y>0$ (only positive values):
+
+$$
+\dot{x}=f(x,y)=2x(1-x)-y \\
+\dot{y}=g(x,y)=-y+x
+$$
+
+a) Draw a qualitative interaction diagram that explains the influence the two variables have on each other.
+
+b) Find the fixpoint of the system
+
+c) Draw the null-clines of the system
+
+d) Sketch the trajectories of the system in your diagram
+
+## 9.
+This problem is about Diffusion Limited Aggregation (DLA).
+
+a) Explain the basic ingredients of the process
+
+b) Disuss where DLA might occur in nature
+
+c) Sketch a typical pattern that DLA might generate 
+
+## 10.
+Connect the following dynamical systems with the qualitative interaction schemes.
+
+a) $\dot{x}=x(y-x)\qquad\dot{y}=2-x$
+
+b) $\dot{x}=x(x-y^{2})\qquad\dot{y}=y(y-x^{2})$
+
+c) $\dot{x}=y-x\qquad\dot{y}=x-y^{2}$
+
+<img src={coupling.src} alt="illustration of a network" style="height: 250px; object-fit: contain;" />
